@@ -1,54 +1,141 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Política de Privacidad | Vextria</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <!-- Tailwind CSS (Static Build) -->
     <link href="./css/styles.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
-<body class="bg-[#050505] text-gray-300 font-sans antialiased selection:bg-cyan-500/30 selection:text-cyan-100">
+<body class="antialiased relative overflow-x-hidden selection:bg-cyan-500/30 selection:text-cyan-100">
 
-    <div class="max-w-4xl mx-auto px-6 py-24">
-        <a href="index.html"
-            class="inline-flex items-center gap-2 text-sm text-cyan-400 mb-12 hover:text-cyan-300 transition">
-            &larr; Volver al inicio
-        </a>
+    <!-- Fondo Grid Global -->
+    <div class="fixed inset-0 z-0 bg-grid pointer-events-none"></div>
 
-        <h1 class="text-4xl font-bold text-white mb-8">Política de Privacidad</h1>
-
-        <div class="space-y-6 text-sm leading-relaxed border-t border-white/10 pt-8">
-            <p><strong>Última actualización: Enero 2024</strong></p>
-
-            <h2 class="text-xl font-bold text-white mt-8 mb-4">1. Responsable del Tratamiento</h2>
-            <p>Vextria Agency ("Nosotros") es el responsable del tratamiento de los datos personales recogidos a través
-                de este sitio web.</p>
-
-            <h2 class="text-xl font-bold text-white mt-8 mb-4">2. Datos que Recogemos</h2>
-            <p>Recogemos información que usted nos proporciona directamente, como cuando completa nuestro formulario de
-                contacto (Nombre, Email, Presupuesto, Mensaje). También recogemos datos técnicos automáticamente
-                (Dirección IP, tipo de navegador) para seguridad y analítica básica.</p>
-
-            <h2 class="text-xl font-bold text-white mt-8 mb-4">3. Finalidad</h2>
-            <p>Utilizamos sus datos exclusivamente para:</p>
-            <ul class="list-disc pl-5 space-y-2">
-                <li>Responder a sus consultas y solicitudes de presupuesto.</li>
-                <li>Mejorar el rendimiento técnico de nuestra web ("Zero Latency Assurance").</li>
-                <li>Cumplir con obligaciones legales.</li>
-            </ul>
-
-            <h2 class="text-xl font-bold text-white mt-8 mb-4">4. Destinatarios</h2>
-            <p>No vendemos sus datos. Solo compartimos información con proveedores de servicios técnicos (hosting,
-                email) estrictamente necesarios para operar la web, bajo acuerdos de confidencialidad.</p>
-
-            <h2 class="text-xl font-bold text-white mt-8 mb-4">5. Sus Derechos</h2>
-            <p>Puede ejercer sus derechos de acceso, rectificación, supresión y oposición enviando un email a
-                contacto@vextria.com.</p>
-        </div>
+    <!-- Aurora Effects (Background Glows) -->
+    <div
+        class="fixed top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-cyan-500/20 blur-[120px] rounded-full opacity-20 pointer-events-none z-0">
     </div>
+    <div
+        class="fixed bottom-0 right-0 w-[800px] h-[600px] bg-purple-500/10 blur-[120px] rounded-full opacity-20 pointer-events-none z-0">
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 border-b border-white/5 bg-[#050505]/80 backdrop-blur-md"
+        x-data="{ open: false }">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <a href="index.html" class="flex items-center gap-2">
+                    <div class="w-6 h-6 bg-gradient-to-br from-cyan-400 to-purple-500 rounded-sm"></div>
+                    <span class="font-bold text-lg tracking-tight text-white">VEXTRIA</span>
+                </a>
+            </div>
+
+            <div class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
+                <a href="index.html#metodologia" class="hover:text-white transition-colors">Metodología</a>
+                <a href="index.html#proceso" class="hover:text-white transition-colors">Proceso</a>
+                <a href="index.html#resultados" class="hover:text-white transition-colors">Resultados</a>
+            </div>
+
+            <div class="hidden md:block">
+                <a href="index.html#contacto"
+                    class="px-4 py-2 text-xs font-semibold text-black bg-white rounded hover:bg-gray-200 transition-colors">
+                    Iniciar Proyecto
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button @click="open = !open" class="md:hidden text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div x-show="open" class="md:hidden bg-[#050505] border-b border-white/10 p-4" x-transition>
+            <div class="flex flex-col gap-4">
+                <a href="index.html#metodologia" class="text-gray-400 hover:text-white">Metodología</a>
+                <a href="index.html#proceso" class="text-gray-400 hover:text-white">Proceso</a>
+                <a href="index.html#contacto" class="text-cyan-400 font-semibold">Iniciar Proyecto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTENT SECTION -->
+    <section class="relative z-10 pt-32 pb-24 px-6 min-h-screen">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl font-bold text-white mb-8">Política de Privacidad</h1>
+
+            <div class="space-y-6 text-sm leading-relaxed border-t border-white/10 pt-8">
+                <p><strong>Última actualización: Enero 2024</strong></p>
+
+                <h2 class="text-xl font-bold text-white mt-8 mb-4">1. Responsable del Tratamiento</h2>
+                <p>Vextria Agency ("Nosotros") es el responsable del tratamiento de los datos personales recogidos a
+                    través
+                    de este sitio web.</p>
+
+                <h2 class="text-xl font-bold text-white mt-8 mb-4">2. Datos que Recogemos</h2>
+                <p>Recogemos información que usted nos proporciona directamente, como cuando completa nuestro formulario
+                    de
+                    contacto (Nombre, Email, Presupuesto, Mensaje). También recogemos datos técnicos automáticamente
+                    (Dirección IP, tipo de navegador) para seguridad y analítica básica.</p>
+
+                <h2 class="text-xl font-bold text-white mt-8 mb-4">3. Finalidad</h2>
+                <p>Utilizamos sus datos exclusivamente para:</p>
+                <ul class="list-disc pl-5 space-y-2">
+                    <li>Responder a sus consultas y solicitudes de presupuesto.</li>
+                    <li>Mejorar el rendimiento técnico de nuestra web ("Zero Latency Assurance").</li>
+                    <li>Cumplir con obligaciones legales.</li>
+                </ul>
+
+                <h2 class="text-xl font-bold text-white mt-8 mb-4">4. Destinatarios</h2>
+                <p>No vendemos sus datos. Solo compartimos información con proveedores de servicios técnicos (hosting,
+                    email) estrictamente necesarios para operar la web, bajo acuerdos de confidencialidad.</p>
+
+                <h2 class="text-xl font-bold text-white mt-8 mb-4">5. Sus Derechos</h2>
+                <p>Puede ejercer sus derechos de acceso, rectificación, supresión y oposición enviando un email a
+                    contacto@vextria.com.</p>
+                <h2 class="text-xl font-bold text-white mt-8 mb-4">6. Información Adicional (Lorem Ipsum)</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                    culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p class="mt-4">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                    laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto
+                    beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit
+                    aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                <p class="mt-4">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                    voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati
+                    cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est
+                    laborum et dolorum fuga.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer
+        class="py-12 border-t border-white/5 text-center text-gray-600 text-sm relative z-10 bg-[#050505]/50 backdrop-blur-sm">
+        <p>&copy; 2024 Vextria Agency. Engineering Digital Intelligence.</p>
+        <div class="mt-4 flex flex-wrap justify-center gap-6">
+            <a href="legal.html" class="hover:text-white transition">Aviso Legal</a>
+            <a href="privacidad.html" class="hover:text-white transition">Privacidad</a>
+            <a href="cookies.html" class="hover:text-white transition">Cookies</a>
+        </div>
+    </footer>
 
 </body>
 
