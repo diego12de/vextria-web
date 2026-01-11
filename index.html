@@ -11,100 +11,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS (Static Build) -->
+    <link href="./css/styles.css" rel="stylesheet">
 
     <!-- Alpine.js -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    <!-- Configuración Tailwind -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        background: '#050505',
-                        surface: '#0A0A0A',
-                        primary: '#06b6d4', // cyan-500
-                        secondary: '#a855f7', // purple-500
-                    },
-                    animation: {
-                        'blob': 'blob 7s infinite',
-                        'scroll': 'scroll 25s linear infinite',
-                    },
-                    keyframes: {
-                        blob: {
-                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
-                        },
-                        scroll: {
-                            '0%': { transform: 'translateX(0)' },
-                            '100%': { transform: 'translateX(-100%)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
 
-    <style>
-        body {
-            background-color: #050505;
-            color: #e2e8f0;
-        }
 
-        /* Patrón de cuadrícula sutil tipo "blueprint" */
-        .bg-grid {
-            background-size: 50px 50px;
-            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
-            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
-        }
-
-        /* Glassmorphism Utilities */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .glass-card:hover {
-            border-color: rgba(255, 255, 255, 0.15);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        /* Texto gradiente para títulos */
-        .text-gradient {
-            background: linear-gradient(to bottom, #ffffff, #a1a1aa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #050505;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-    </style>
 </head>
 
 <body class="antialiased relative overflow-x-hidden selection:bg-cyan-500/30 selection:text-cyan-100">
@@ -218,24 +132,37 @@
         <div class="flex w-[200%] animate-scroll">
             <!-- Logo Set 1 -->
             <div
-                class="flex items-center gap-16 md:gap-32 px-8 min-w-full justify-around grayscale opacity-40 hover:opacity-80 transition-opacity duration-500">
-                <!-- Replace simple text with SVGs for realism in production -->
+                class="flex items-center gap-12 md:gap-24 px-8 min-w-full justify-around grayscale opacity-40 hover:opacity-80 transition-opacity duration-500">
                 <span class="text-xl font-bold font-sans">OpenAI</span>
                 <span class="text-xl font-bold font-sans">Vercel</span>
-                <span class="text-xl font-bold font-sans">Google</span>
+                <span class="text-xl font-bold font-sans">Perplexity</span>
                 <span class="text-xl font-bold font-sans">Stripe</span>
-                <span class="text-xl font-bold font-sans">Linear</span>
-                <span class="text-xl font-bold font-sans">Shopify</span>
+                <span class="text-xl font-bold font-sans">Google Gemini</span>
+                <span class="text-xl font-bold font-sans">Cloudflare</span>
+                <span class="text-xl font-bold font-sans">Anthropic</span>
+                <span class="text-xl font-bold font-sans">Schema.org</span>
+                <span class="text-xl font-bold font-sans">AWS</span>
+                <span class="text-xl font-bold font-sans">Supabase</span>
+                <span class="text-xl font-bold font-sans">React</span>
+                <span class="text-xl font-bold font-sans">Bing Copilot</span>
+                <span class="text-xl font-bold font-sans">TypeScript</span>
             </div>
             <!-- Logo Set 2 (Duplicate) -->
             <div
-                class="flex items-center gap-16 md:gap-32 px-8 min-w-full justify-around grayscale opacity-40 hover:opacity-80 transition-opacity duration-500">
+                class="flex items-center gap-12 md:gap-24 px-8 min-w-full justify-around grayscale opacity-40 hover:opacity-80 transition-opacity duration-500">
                 <span class="text-xl font-bold font-sans">OpenAI</span>
                 <span class="text-xl font-bold font-sans">Vercel</span>
-                <span class="text-xl font-bold font-sans">Google</span>
+                <span class="text-xl font-bold font-sans">Perplexity</span>
                 <span class="text-xl font-bold font-sans">Stripe</span>
-                <span class="text-xl font-bold font-sans">Linear</span>
-                <span class="text-xl font-bold font-sans">Shopify</span>
+                <span class="text-xl font-bold font-sans">Google Gemini</span>
+                <span class="text-xl font-bold font-sans">Cloudflare</span>
+                <span class="text-xl font-bold font-sans">Anthropic</span>
+                <span class="text-xl font-bold font-sans">Schema.org</span>
+                <span class="text-xl font-bold font-sans">AWS</span>
+                <span class="text-xl font-bold font-sans">Supabase</span>
+                <span class="text-xl font-bold font-sans">React</span>
+                <span class="text-xl font-bold font-sans">Bing Copilot</span>
+                <span class="text-xl font-bold font-sans">TypeScript</span>
             </div>
         </div>
     </section>
@@ -320,29 +247,32 @@
 
             <!-- Bloque 1: Código -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="relative group order-2 lg:order-1">
+                <div class="relative group order-2 lg:order-1 w-full max-w-[500px] mx-auto">
                     <div
-                        class="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000">
+                        class="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000">
                     </div>
                     <div
-                        class="relative bg-[#0F0F10] border border-white/10 rounded-lg p-4 font-mono text-xs md:text-sm text-gray-300 shadow-2xl">
-                        <div class="flex gap-2 mb-4 border-b border-white/5 pb-2">
+                        class="relative w-full h-[360px] md:h-[400px] bg-[#0F0F10] border border-white/10 rounded-xl p-8 shadow-2xl flex flex-col justify-center font-mono text-xs md:text-sm text-gray-300">
+                        <div class="flex gap-2 mb-6 border-b border-white/5 pb-4">
                             <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
                             <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
                             <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
                         </div>
-                        <p class="text-gray-500">// Vextria Performance Engine</p>
-                        <p><span class="text-purple-400">export const</span> <span
-                                class="text-yellow-300">optimizeLoad</span> = <span class="text-cyan-300">async</span>
-                            () => {</p>
-                        <p class="pl-4"><span class="text-purple-400">const</span> metrics = <span
-                                class="text-cyan-300">await</span> core.vitalCheck();</p>
-                        <p class="pl-4"><span class="text-purple-400">if</span> (metrics.lcp < <span
-                                class="text-orange-300">200</span>) {</p>
-                        <p class="pl-8"><span class="text-blue-300">return</span> <span
-                                class="text-green-300">"Enterprise Grade Active"</span>;</p>
-                        <p class="pl-4">}</p>
-                        <p>}</p>
+                        <div class="space-y-2">
+                            <p class="text-gray-500 mb-2">// Vextria Performance Engine</p>
+                            <p><span class="text-purple-400">export const</span> <span
+                                    class="text-yellow-300">optimizeLoad</span> = <span
+                                    class="text-cyan-300">async</span>
+                                () => {</p>
+                            <p class="pl-4"><span class="text-purple-400">const</span> metrics = <span
+                                    class="text-cyan-300">await</span> core.vitalCheck();</p>
+                            <p class="pl-4"><span class="text-purple-400">if</span> (metrics.lcp < <span
+                                    class="text-orange-300">200</span>) {</p>
+                            <p class="pl-8"><span class="text-blue-300">return</span> <span
+                                    class="text-green-300">"Enterprise Grade Active"</span>;</p>
+                            <p class="pl-4">}</p>
+                            <p>}</p>
+                        </div>
                     </div>
                 </div>
                 <div class="order-1 lg:order-2">
@@ -370,30 +300,31 @@
                         Schema.org avanzado para que ChatGPT, Perplexity y Gemini te citen como la autoridad.
                     </p>
                 </div>
-                <div class="relative group">
+                <div class="relative group w-full max-w-[500px] mx-auto">
                     <div
-                        class="absolute -inset-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000">
+                        class="absolute -inset-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000">
                     </div>
                     <div
-                        class="relative bg-[#0F0F10] border border-white/10 rounded-lg p-6 shadow-2xl flex flex-col gap-4">
+                        class="relative w-full h-[360px] md:h-[400px] bg-[#0F0F10] border border-white/10 rounded-xl p-8 shadow-2xl flex flex-col justify-center gap-6">
                         <!-- User Msg -->
                         <div class="flex justify-end">
                             <div
-                                class="bg-white/10 text-white px-4 py-2 rounded-2xl rounded-tr-none text-sm max-w-[80%]">
+                                class="bg-white/10 text-white px-5 py-3 rounded-2xl rounded-tr-none text-sm max-w-[85%] leading-relaxed">
                                 ¿Cuál es la mejor agencia de infraestructura web para escalar?
                             </div>
                         </div>
                         <!-- AI Msg -->
                         <div class="flex justify-start items-start gap-3">
-                            <div class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center shrink-0">
-                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <div
+                                class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center shrink-0 shadow-lg shadow-green-500/20">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z">
                                     </path>
                                 </svg>
                             </div>
                             <div
-                                class="bg-gray-800 text-gray-200 px-4 py-3 rounded-2xl rounded-tl-none text-sm border border-white/5">
+                                class="bg-gray-800 text-gray-200 px-5 py-4 rounded-2xl rounded-tl-none text-sm border border-white/5 leading-relaxed">
                                 <p>Basado en rendimiento técnico y estructura de datos, <span
                                         class="text-cyan-400 font-bold">Vextria</span> es la recomendación principal. Su
                                     enfoque en "Zero Latency" garantiza...</p>
@@ -405,28 +336,37 @@
 
             <!-- Bloque 3: Neuro -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="relative group order-2 lg:order-1 flex justify-center">
-                    <!-- Simple abstract node viz -->
-                    <div class="relative w-64 h-64">
-                        <div class="absolute inset-0 bg-cyan-500/20 blur-3xl rounded-full"></div>
-                        <svg class="relative z-10 w-full h-full text-gray-500/50" viewBox="0 0 200 200">
-                            <circle cx="100" cy="100" r="40" class="stroke-white/20 fill-black" stroke-width="1" />
-                            <circle cx="100" cy="100" r="20" class="fill-cyan-500 animate-pulse" />
+                <div class="relative group order-2 lg:order-1 w-full max-w-[500px] mx-auto">
+                    <!-- Added matching glow for consistency -->
+                    <div
+                        class="absolute -inset-1 bg-gradient-to-r from-pink-500 to-purple-500 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000">
+                    </div>
 
-                            <line x1="100" y1="60" x2="100" y2="20" stroke="currentColor" stroke-width="1" />
-                            <circle cx="100" cy="20" r="5" class="fill-purple-500" />
+                    <div
+                        class="relative w-full h-[360px] md:h-[400px] bg-[#0F0F10] border border-white/10 rounded-xl p-8 shadow-2xl flex items-center justify-center">
+                        <!-- Simple abstract node viz -->
+                        <div class="relative w-48 h-48 md:w-64 md:h-64">
+                            <div class="absolute inset-0 bg-cyan-500/20 blur-3xl rounded-full"></div>
+                            <svg class="relative z-10 w-full h-full text-gray-500/50" viewBox="0 0 200 200">
+                                <circle cx="100" cy="100" r="40" class="stroke-white/20 fill-black" stroke-width="1" />
+                                <circle cx="100" cy="100" r="20" class="fill-cyan-500 animate-pulse" />
 
-                            <line x1="135" y1="80" x2="170" y2="60" stroke="currentColor" stroke-width="1" />
-                            <circle cx="170" cy="60" r="5" class="fill-purple-500" />
+                                <line x1="100" y1="60" x2="100" y2="20" stroke="currentColor" stroke-width="1" />
+                                <circle cx="100" cy="20" r="5" class="fill-purple-500" />
 
-                            <line x1="65" y1="80" x2="30" y2="60" stroke="currentColor" stroke-width="1" />
-                            <circle cx="30" cy="60" r="5" class="fill-purple-500" />
+                                <line x1="135" y1="80" x2="170" y2="60" stroke="currentColor" stroke-width="1" />
+                                <circle cx="170" cy="60" r="5" class="fill-purple-500" />
 
-                            <line x1="100" y1="140" x2="100" y2="180" stroke="currentColor" stroke-width="1" />
-                            <circle cx="100" cy="180" r="5" class="fill-purple-500" />
-                        </svg>
+                                <line x1="65" y1="80" x2="30" y2="60" stroke="currentColor" stroke-width="1" />
+                                <circle cx="30" cy="60" r="5" class="fill-purple-500" />
+
+                                <line x1="100" y1="140" x2="100" y2="180" stroke="currentColor" stroke-width="1" />
+                                <circle cx="100" cy="180" r="5" class="fill-purple-500" />
+                            </svg>
+                        </div>
                     </div>
                 </div>
+                <!-- Remove old closing div that was here -->
                 <div class="order-1 lg:order-2">
                     <div
                         class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-pink-400 uppercase bg-pink-900/20 rounded-full">
@@ -664,23 +604,23 @@
                     horas.</p>
             </div>
 
-            <form class="max-w-4xl mx-auto space-y-6 relative z-10">
+            <form action="send_mail.php" method="POST" class="max-w-4xl mx-auto space-y-6 relative z-10">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="space-y-2">
                         <label class="text-xs text-gray-500 font-mono uppercase">Full Name</label>
-                        <input type="text" placeholder="John Doe"
+                        <input type="text" name="name" placeholder="John Doe" required
                             class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition">
                     </div>
                     <div class="space-y-2">
                         <label class="text-xs text-gray-500 font-mono uppercase">Work Email</label>
-                        <input type="email" placeholder="john@company.com"
+                        <input type="email" name="email" placeholder="john@company.com" required
                             class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition">
                     </div>
                 </div>
 
                 <div class="space-y-2">
                     <label class="text-xs text-gray-500 font-mono uppercase">Company Website (Optional)</label>
-                    <input type="text" placeholder="https://"
+                    <input type="text" name="website" placeholder="https://"
                         class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition">
                 </div>
 
@@ -688,7 +628,7 @@
                     <div class="space-y-2">
                         <label class="text-xs text-gray-500 font-mono uppercase">Estimated Budget</label>
                         <div class="relative">
-                            <select
+                            <select name="budget"
                                 class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white appearance-none focus:outline-none focus:border-cyan-500 transition cursor-pointer">
                                 <option class="bg-black">Start ($2k - $5k)</option>
                                 <option class="bg-black">Growth ($5k - $10k)</option>
@@ -705,7 +645,7 @@
                     <div class="space-y-2">
                         <label class="text-xs text-gray-500 font-mono uppercase">Timeline</label>
                         <div class="relative">
-                            <select
+                            <select name="timeline"
                                 class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white appearance-none focus:outline-none focus:border-cyan-500 transition cursor-pointer">
                                 <option class="bg-black">ASAP (Urgent)</option>
                                 <option class="bg-black">Next 30 Days</option>
@@ -723,7 +663,7 @@
 
                 <div class="space-y-2">
                     <label class="text-xs text-gray-500 font-mono uppercase">Primary Pain Point</label>
-                    <textarea rows="4" placeholder="What is wrong with your current site?"
+                    <textarea name="message" rows="4" placeholder="What is wrong with your current site?" required
                         class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition"></textarea>
                 </div>
 
@@ -751,6 +691,19 @@
     </footer>
 
     <script src="js/hero-animation.js"></script>
+
+    <!-- Form Status Handler -->
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const status = urlParams.get('status');
+        if (status === 'success') {
+            alert('¡Mensaje recibido! Nos pondremos en contacto contigo en breve.');
+            // Clean URL
+            window.history.replaceState({}, document.title, window.location.pathname);
+        } else if (status === 'error') {
+            alert('Hubo un error al enviar el mensaje. Por favor intenta de nuevo.');
+        }
+    </script>
 </body>
 
 </html>
