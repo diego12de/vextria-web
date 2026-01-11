@@ -604,7 +604,13 @@
                     horas.</p>
             </div>
 
-            <form action="send_mail.php" method="POST" class="max-w-4xl mx-auto space-y-6 relative z-10">
+            <!-- FormSubmit.co Action (Works on Vercel/Netlify/GitHub Pages) -->
+            <form action="https://formsubmit.co/diego12delcastillo@gmail.com" method="POST"
+                class="max-w-4xl mx-auto space-y-6 relative z-10">
+                <!-- Redirect to same page with success param -->
+                <input type="hidden" name="_next" value="https://vextria-web.vercel.app/?status=success">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_subject" value="New Vextria Lead">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="space-y-2">
                         <label class="text-xs text-gray-500 font-mono uppercase">Full Name</label>
@@ -683,10 +689,10 @@
     <!-- FOOTER -->
     <footer class="py-12 border-t border-white/5 text-center text-gray-600 text-sm">
         <p>&copy; 2024 Vextria Agency. Engineering Digital Intelligence.</p>
-        <div class="mt-4 flex justify-center gap-6">
-            <a href="#" class="hover:text-white transition">Privacy</a>
-            <a href="#" class="hover:text-white transition">Terms</a>
-            <a href="#" class="hover:text-white transition">Twitter</a>
+        <div class="mt-4 flex flex-wrap justify-center gap-6">
+            <a href="legal.html" class="hover:text-white transition">Aviso Legal</a>
+            <a href="privacidad.html" class="hover:text-white transition">Privacidad</a>
+            <a href="cookies.html" class="hover:text-white transition">Cookies</a>
         </div>
     </footer>
 
