@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS (Static Build) -->
     <link href="./css/styles.css" rel="stylesheet">
@@ -20,6 +21,79 @@
 
 
 
+    <!-- Schema.org JSON-LD -->
+    <style>
+        @keyframes pulse-slow {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: .5;
+            }
+        }
+
+        .animate-pulse-slow {
+            animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .bg-grid {
+            background-size: 50px 50px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to bottom, #ffffff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gradient-purple {
+            background: linear-gradient(to right, #c084fc, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Fix for missing static Tailwind classes */
+        .pt-12 {
+            padding-top: 3rem;
+        }
+
+        .pb-12 {
+            padding-bottom: 3rem;
+        }
+
+        .pt-24 {
+            padding-top: 6rem;
+        }
+    </style>
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
     {
@@ -91,6 +165,7 @@
             <div class="flex flex-col gap-4">
                 <a href="#metodologia" class="text-gray-400 hover:text-white">Metodología</a>
                 <a href="#proceso" class="text-gray-400 hover:text-white">Proceso</a>
+                <a href="aeo.html" class="text-purple-400 font-semibold hover:text-purple-300">AEO Intelligence</a>
                 <a href="#contacto" class="text-cyan-400 font-semibold">Iniciar Proyecto</a>
             </div>
         </div>
@@ -110,20 +185,20 @@
                         class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
                 </span>
-                <span class="text-[11px] font-mono font-medium tracking-wide text-cyan-400 uppercase">Sistemas
-                    Operacionales</span>
+                <span class="text-[11px] font-mono font-medium tracking-wide text-cyan-400 uppercase">AI Native</span>
             </div>
 
             <!-- H1 -->
             <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white mb-6 leading-[1.1]">
-                Adelántate a tu competencia: <br class="hidden md:block" />
-                <span class="text-gradient">Haz que la IA te recomiende.</span>
+                Deja de ser invisible para la IA<br class="hidden md:block" />
+                <span class="text-gradient">Sé la respuesta</span>
             </h1>
 
             <!-- Subtitle -->
             <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
-                Dejamos atrás las webs lentas y obsoletas. Construimos infraestructura AEO (Answer Engine Optimization)
-                de grado empresarial diseñada para convertir visitantes en ingresos.
+                Adelántate a tu competencia en la nueva era de búsqueda. Diseñamos infraestructura digital con
+                arquitectura nativa para IA, generando la ventaja de autoridad necesaria para que ChatGPT, Google y
+                Perplexity te recomienden.
             </p>
 
             <!-- CTAs -->
@@ -189,13 +264,13 @@
     </section>
 
     <!-- SECTION 3: PRECISION TEXT -->
-    <section class="py-24 px-6 relative z-10">
+    <section class="pt-24 pb-12 px-6 relative z-10">
         <div class="max-w-7xl mx-auto text-center">
-            <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">Precision. Luxury. Performance.
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">Ingeniería de Triple Impacto
             </h2>
             <p class="text-gray-400 max-w-2xl mx-auto">
-                En Vextria, no solo hacemos webs. Creamos legados digitales. Nuestro enfoque combina estética de
-                lujo con ingeniería de rendimiento extremo.
+                Para ganar en 2026 necesitas velocidad, visibilidad ante la Inteligencia artificial y persuasión
+                profunda. Así es como estructuramos tu ventaja competitiva.
             </p>
         </div>
     </section>
@@ -203,7 +278,7 @@
 
 
     <!-- SECTION 4: METODOLOGÍA ZIGZAG -->
-    <section id="metodologia" class="py-24 px-6 relative z-10 overflow-hidden">
+    <section id="metodologia" class="pt-12 pb-24 px-6 relative z-10 overflow-hidden">
         <div class="max-w-7xl mx-auto space-y-32">
 
             <!-- Bloque 1: Código -->
@@ -242,9 +317,9 @@
                         Foundation</div>
                     <h3 class="text-3xl md:text-4xl font-bold text-white mb-6">Código Puro. Sin Bloatware.</h3>
                     <p class="text-gray-400 text-lg leading-relaxed">
-                        Mientras otros usan plantillas pesadas de WordPress o constructores lentos, nosotros escribimos
-                        arquitectura personalizada. Resultado: puntuaciones de Google de 99-100 y una experiencia de
-                        usuario sedosa.
+                        El bloatware de gestores como WordPress lastra la velocidad y mata tu posicionamiento. Nosotros
+                        eliminamos lo superfluo. Desarrollamos ecosistemas de código puro, ligeros y robustos, creando
+                        una base tecnológica de grado empresarial que escala sin romperse.
                     </p>
                 </div>
             </div>
@@ -332,11 +407,12 @@
                     <div
                         class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-pink-400 uppercase bg-pink-900/20 rounded-full">
                         Psychology</div>
-                    <h3 class="text-3xl md:text-4xl font-bold text-white mb-6">Neuro-SEO & Conversion</h3>
+                    <h3 class="text-3xl md:text-4xl font-bold text-white mb-6"> Neuromarketing UX</h3>
                     <p class="text-gray-400 text-lg leading-relaxed">
-                        No diseñamos para ser "bonitos". Diseñamos para el cerebro reptiliano. Usamos contraste,
-                        jerarquía visual y micro-interacciones para reducir la carga cognitiva y aumentar el deseo de
-                        compra.
+                        Nada es aleatorio, cada elemento está ahí por una razón. Utilizamos sesgos cognitivos y
+                        jerarquías visuales para guiar la atención del usuario con
+                        precisión. Diseñamos una experiencia de usuario fluida, asegurando que cada elemento
+                        cumpla una función estratégica en la conversión.
                     </p>
                 </div>
             </div>
