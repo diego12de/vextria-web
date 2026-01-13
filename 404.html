@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 | Vextria</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Space Mono for Tech/Code feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+
+    <!-- Tailwind CSS (Static Build) -->
+    <link href="./css/styles.css" rel="stylesheet">
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        .glitch-text {
+            position: relative;
+            animation: glitch 3s infinite;
+        }
+
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch-text::before {
+            left: 2px;
+            text-shadow: -1px 0 #00ffff;
+            background: #050505;
+            clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+            animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
+        }
+
+        .glitch-text::after {
+            left: -2px;
+            text-shadow: -1px 0 #ff00ff;
+            background: #050505;
+            clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+            animation: glitch-anim-2 3s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim-1 {
+            0% {
+                clip-path: inset(20% 0 80% 0);
+            }
+
+            20% {
+                clip-path: inset(60% 0 1% 0);
+            }
+
+            40% {
+                clip-path: inset(40% 0 10% 0);
+            }
+
+            60% {
+                clip-path: inset(80% 0 5% 0);
+            }
+
+            80% {
+                clip-path: inset(10% 0 60% 0);
+            }
+
+            100% {
+                clip-path: inset(30% 0 20% 0);
+            }
+        }
+
+        @keyframes glitch-anim-2 {
+            0% {
+                clip-path: inset(10% 0 60% 0);
+            }
+
+            20% {
+                clip-path: inset(30% 0 10% 0);
+            }
+
+            40% {
+                clip-path: inset(80% 0 5% 0);
+            }
+
+            60% {
+                clip-path: inset(15% 0 70% 0);
+            }
+
+            80% {
+                clip-path: inset(50% 0 20% 0);
+            }
+
+            100% {
+                clip-path: inset(40% 0 33% 0);
+            }
+        }
+    </style>
+</head>
+
+<body
+    class="bg-[#050505] text-white font-sans antialiased overflow-hidden selection:bg-cyan-500/30 selection:text-cyan-100 flex flex-col h-screen">
+
+    <!-- Fondo Grid Global -->
+    <div class="fixed inset-0 z-0 bg-grid pointer-events-none opacity-40"></div>
+
+    <!-- Canvas Animation -->
+    <canvas id="hero-canvas" class="fixed inset-0 z-0 opacity-40 mix-blend-screen pointer-events-none"></canvas>
+
+    <!-- Aurora Effects (Background Glows) -->
+    <div
+        class="fixed top-1/4 left-1/4 w-[600px] h-[600px] bg-cyan-500/10 blur-[150px] rounded-full opacity-30 pointer-events-none z-0 animate-pulse">
+    </div>
+    <div class="fixed bottom-1/4 right-1/4 w-[500px] h-[500px] bg-purple-600/10 blur-[150px] rounded-full opacity-30 pointer-events-none z-0 animate-pulse"
+        style="animation-duration: 4s;">
+    </div>
+
+    <!-- Navigation (Minimal) -->
+    <nav class="absolute w-full z-50 top-0 pt-8 px-8 flex justify-between items-center">
+        <a href="index.html" class="flex items-center gap-2 group">
+            <div
+                class="w-6 h-6 bg-gradient-to-br from-cyan-400 to-purple-500 rounded-sm group-hover:scale-110 transition-transform">
+            </div>
+            <span
+                class="font-bold text-lg tracking-tight text-white/80 group-hover:text-white transition-colors">VEXTRIA</span>
+        </a>
+    </nav>
+
+    <!-- Content -->
+    <main class="relative z-10 flex-grow flex items-center justify-center flex-col text-center px-6">
+
+        <div class="space-y-6">
+            <p class="font-mono text-cyan-400 text-sm tracking-[0.2em] uppercase">System Error</p>
+
+            <h1 class="text-9xl md:text-[12rem] font-bold leading-none tracking-tighter"
+                style="font-family: 'Space Mono', monospace;">
+                <span class="glitch-text bg-gradient-to-b from-white to-gray-500 bg-clip-text text-transparent"
+                    data-text="404">404</span>
+            </h1>
+
+            <div class="max-w-xl mx-auto space-y-4">
+                <h2 class="text-2xl md:text-3xl font-bold">Ruta no identificada</h2>
+                <p class="text-gray-400 leading-relaxed">
+                    Parece que has intentado acceder a un sector no mapeado de nuestra infraestructura.
+                    <br>La página que buscas ha sido descontinuada o nunca existió.
+                </p>
+            </div>
+
+            <div class="pt-8">
+                <a href="index.html"
+                    class="inline-flex items-center gap-2 px-8 py-4 bg-white text-black font-bold rounded-lg hover:bg-gray-200 transition-all hover:scale-105 shadow-[0_0_30px_rgba(255,255,255,0.15)] group">
+                    <svg class="w-5 h-5 group-hover:-translate-x-1 transition-transform" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    REGRESAR A LA BASE
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/hero-animation.js"></script>
+
+</body>
+
+</html>
