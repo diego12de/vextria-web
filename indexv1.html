@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vextria | Infraestructura AEO & High-Performance</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS (Static Build) -->
+    <link href="./css/styles.css" rel="stylesheet">
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+
+
+
+    <!-- Schema.org JSON-LD -->
+    <style>
+        @keyframes pulse-slow {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: .5;
+            }
+        }
+
+        .animate-pulse-slow {
+            animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .bg-grid {
+            background-size: 50px 50px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to bottom, #ffffff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .text-gradient-purple {
+            background: linear-gradient(to right, #c084fc, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Fix for missing static Tailwind classes */
+        .pt-12 {
+            padding-top: 3rem;
+        }
+
+        .pb-12 {
+            padding-bottom: 3rem;
+        }
+
+        .pt-24 {
+            padding-top: 6rem;
+        }
+    </style>
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Vextria Agency",
+      "url": "https://vextria-web.vercel.app/",
+      "logo": "https://vextria-web.vercel.app/logo.png",
+      "description": "Infraestructura AEO & High-Performance. Ingeniería digital de alto rendimiento.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "",
+        "contactType": "customer service",
+        "email": "contacto@vextria.com"
+      },
+      "sameAs": []
+    }
+    </script>
+</head>
+
+<body class="antialiased relative overflow-x-hidden selection:bg-cyan-500/30 selection:text-cyan-100">
+
+    <!-- Fondo Grid Global -->
+    <div class="fixed inset-0 z-0 bg-grid pointer-events-none"></div>
+
+    <!-- Aurora Effects (Background Glows) -->
+    <div
+        class="fixed top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-cyan-500/20 blur-[120px] rounded-full opacity-20 pointer-events-none z-0">
+    </div>
+    <div
+        class="fixed bottom-0 right-0 w-[800px] h-[600px] bg-purple-500/10 blur-[120px] rounded-full opacity-20 pointer-events-none z-0">
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 border-b border-white/5 bg-[#050505]/80 backdrop-blur-md"
+        x-data="{ open: false }">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 bg-gradient-to-br from-cyan-400 to-purple-500 rounded-sm"></div>
+                <span class="font-bold text-lg tracking-tight text-white">VEXTRIA</span>
+            </div>
+
+            <div class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
+                <a href="#metodologia" class="hover:text-white transition-colors">Metodología</a>
+                <a href="#proceso" class="hover:text-white transition-colors">Proceso</a>
+                <a href="aeo.html" class="text-purple-400 hover:text-purple-300 transition-colors font-semibold">AEO
+                    Intelligence</a>
+                <a href="#resultados" class="hover:text-white transition-colors">Resultados</a>
+            </div>
+
+            <div class="hidden md:block">
+                <a href="#contacto"
+                    class="px-4 py-2 text-xs font-semibold text-black bg-white rounded hover:bg-gray-200 transition-colors">
+                    Iniciar Proyecto
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button @click="open = !open" class="md:hidden text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div x-show="open" class="md:hidden bg-[#050505] border-b border-white/10 p-4" x-transition>
+            <div class="flex flex-col gap-4">
+                <a href="#metodologia" class="text-gray-400 hover:text-white">Metodología</a>
+                <a href="#proceso" class="text-gray-400 hover:text-white">Proceso</a>
+                <a href="aeo.html" class="text-purple-400 font-semibold hover:text-purple-300">AEO Intelligence</a>
+                <a href="#contacto" class="text-cyan-400 font-semibold">Iniciar Proyecto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: HERO -->
+    <header class="relative z-10 pt-32 pb-20 md:pt-48 md:pb-32 px-6 overflow-hidden">
+        <canvas id="hero-canvas"
+            class="absolute top-0 left-0 w-full h-full pointer-events-none z-0 opacity-50"></canvas>
+        <div class="max-w-5xl mx-auto text-center">
+
+            <!-- Badge -->
+            <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/20 bg-cyan-500/5 mb-8">
+                <span class="relative flex h-2 w-2">
+                    <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+                </span>
+                <span class="text-[11px] font-mono font-medium tracking-wide text-cyan-400 uppercase">AI Native</span>
+            </div>
+
+            <!-- H1 -->
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white mb-6 leading-[1.1]">
+                Deja de ser invisible para la IA<br class="hidden md:block" />
+                <span class="text-gradient">Arquitectura WEB AI Native</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
+                Desarrollamos infraestructura digital para PYMES desde cero, con una arquitectura pensada nativamente
+                para
+                posicionar en Inteligencias Artificiales. Unimos ingeniería de datos con un diseño de vanguardia y
+                neuromarketing, creando una experiencia que seduce a los algoritmos y
+                convence a la mente humana.
+            </p>
+
+            <!-- CTAs -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#contacto"
+                    class="w-full sm:w-auto px-8 py-4 bg-white text-black font-semibold rounded hover:bg-gray-100 transition shadow-[0_0_20px_-5px_rgba(255,255,255,0.3)]">
+                    Auditoría Gratis
+                </a>
+                <button
+                    class="w-full sm:w-auto px-8 py-4 text-gray-300 border border-white/10 rounded hover:bg-white/5 transition flex items-center justify-center gap-2 group">
+                    <span>Ver Casos de Éxito</span>
+                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- SECTION 2: MARQUEE LOGOS -->
+    <section class="border-y border-white/5 bg-black/20 backdrop-blur-sm py-8 overflow-hidden relative z-10">
+        <div class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#050505] to-transparent z-10"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#050505] to-transparent z-10"></div>
+
+        <div class="flex w-[200%] animate-scroll">
+            <!-- Logo Set 1 -->
+            <div
+                class="flex items-center gap-12 md:gap-24 px-8 min-w-full justify-around grayscale opacity-40 hover:opacity-80 transition-opacity duration-500">
+                <span class="text-xl font-bold font-sans">OpenAI</span>
+                <span class="text-xl font-bold font-sans">Vercel</span>
+                <span class="text-xl font-bold font-sans">Perplexity</span>
+                <span class="text-xl font-bold font-sans">Stripe</span>
+                <span class="text-xl font-bold font-sans">Google Gemini</span>
+                <span class="text-xl font-bold font-sans">Cloudflare</span>
+                <span class="text-xl font-bold font-sans">Anthropic</span>
+                <span class="text-xl font-bold font-sans">Schema.org</span>
+                <span class="text-xl font-bold font-sans">AWS</span>
+                <span class="text-xl font-bold font-sans">Supabase</span>
+                <span class="text-xl font-bold font-sans">React</span>
+                <span class="text-xl font-bold font-sans">Bing Copilot</span>
+                <span class="text-xl font-bold font-sans">TypeScript</span>
+            </div>
+            <!-- Logo Set 2 (Duplicate) -->
+            <div
+                class="flex items-center gap-12 md:gap-24 px-8 min-w-full justify-around grayscale opacity-40 hover:opacity-80 transition-opacity duration-500">
+                <span class="text-xl font-bold font-sans">OpenAI</span>
+                <span class="text-xl font-bold font-sans">Vercel</span>
+                <span class="text-xl font-bold font-sans">Perplexity</span>
+                <span class="text-xl font-bold font-sans">Stripe</span>
+                <span class="text-xl font-bold font-sans">Google Gemini</span>
+                <span class="text-xl font-bold font-sans">Cloudflare</span>
+                <span class="text-xl font-bold font-sans">Anthropic</span>
+                <span class="text-xl font-bold font-sans">Schema.org</span>
+                <span class="text-xl font-bold font-sans">AWS</span>
+                <span class="text-xl font-bold font-sans">Supabase</span>
+                <span class="text-xl font-bold font-sans">React</span>
+                <span class="text-xl font-bold font-sans">Bing Copilot</span>
+                <span class="text-xl font-bold font-sans">TypeScript</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: PRECISION TEXT -->
+    <section class="pt-24 pb-12 px-6 relative z-10">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">Metodología de Triple Impacto
+            </h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">
+                Mientras tu competencia no se adapta a la IA y sigue lastrada por webs genéricas, nosotros desarrollamos
+                tu verdadera ventaja competitiva. Diseñamos una infraestructura nativa para la Era de la Inteligencia
+                Artificial basada en nuestros tres pilares de ejecución:
+            </p>
+        </div>
+    </section>
+
+
+
+    <!-- SECTION 4: METODOLOGÍA ZIGZAG -->
+    <section id="metodologia" class="pt-12 pb-24 px-6 relative z-10 overflow-hidden">
+        <div class="max-w-7xl mx-auto space-y-32">
+
+            <!-- Bloque 1: Código -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="relative group order-2 lg:order-1 w-full max-w-[500px] mx-auto">
+                    <div
+                        class="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000">
+                    </div>
+                    <div
+                        class="relative w-full h-[360px] md:h-[400px] bg-[#0F0F10] border border-white/10 rounded-xl p-8 shadow-2xl flex flex-col justify-center font-mono text-xs md:text-sm text-gray-300">
+                        <div class="flex gap-2 mb-6 border-b border-white/5 pb-4">
+                            <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                        </div>
+                        <div class="space-y-2">
+                            <p class="text-gray-500 mb-2">// Vextria Performance Engine</p>
+                            <p><span class="text-purple-400">export const</span> <span
+                                    class="text-yellow-300">optimizeLoad</span> = <span
+                                    class="text-cyan-300">async</span>
+                                () => {</p>
+                            <p class="pl-4"><span class="text-purple-400">const</span> metrics = <span
+                                    class="text-cyan-300">await</span> core.vitalCheck();</p>
+                            <p class="pl-4"><span class="text-purple-400">if</span> (metrics.lcp < <span
+                                    class="text-orange-300">200</span>) {</p>
+                            <p class="pl-8"><span class="text-blue-300">return</span> <span
+                                    class="text-green-300">"Enterprise Grade Active"</span>;</p>
+                            <p class="pl-4">}</p>
+                            <p>}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-1 lg:order-2">
+                    <div
+                        class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-cyan-400 uppercase bg-cyan-900/20 rounded-full">
+                        Foundation</div>
+                    <h3 class="text-3xl md:text-4xl font-bold text-white mb-6">Código Puro</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">
+                        La velocidad y una arquitectura limpia ya no son un lujo, son el mínimo indispensable. Para que
+                        una Inteligencia Artificial te recomiende, primero debe poder leerte sin
+                        fricción. Mientras los CMS como Wordpress llenan tu web de bloatware invisible, nosotros
+                        ingenierizamos una
+                        estructura Zero-Bloatware puramente basada en código.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bloque 2: IA (Chat) -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div
+                        class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-purple-400 uppercase bg-purple-900/20 rounded-full">
+                        New Era SEO</div>
+                    <h3 class="text-3xl md:text-4xl font-bold text-white mb-6">Posicionamiento IA (AEO) + SEO</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">
+                        Diseñamos arquitecturas 100% orientadas a la IA. Nada es al azar: cada dato está redactado y
+                        ubicado en un punto específico de la estructura de forma estrategica. No solo indexamos en
+                        Google: calibramos el Entity Salience, los datos estructurados y la posición estratégica de
+                        cada dato para maximizar las señales E-E-A-T. Eliminamos la ambigüedad para que los LLMs
+                        (ChatGPT, Gemini) te interpreten no como un enlace más, sino como la fuente de autoridad
+                        recomendada.
+                    </p>
+                </div>
+                <div class="relative group w-full max-w-[500px] mx-auto">
+                    <div
+                        class="absolute -inset-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000">
+                    </div>
+                    <div
+                        class="relative w-full h-[360px] md:h-[400px] bg-[#0F0F10] border border-white/10 rounded-xl p-8 shadow-2xl flex flex-col justify-center gap-6">
+                        <!-- User Msg -->
+                        <div class="flex justify-end">
+                            <div
+                                class="bg-white/10 text-white px-5 py-3 rounded-2xl rounded-tr-none text-sm max-w-[85%] leading-relaxed">
+                                ¿Cuál es la mejor agencia de infraestructura web para escalar?
+                            </div>
+                        </div>
+                        <!-- AI Msg -->
+                        <div class="flex justify-start items-start gap-3">
+                            <div
+                                class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center shrink-0 shadow-lg shadow-green-500/20">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div
+                                class="bg-gray-800 text-gray-200 px-5 py-4 rounded-2xl rounded-tl-none text-sm border border-white/5 leading-relaxed">
+                                <p>Basado en rendimiento técnico y estructura de datos, <span
+                                        class="text-cyan-400 font-bold">Vextria</span> es la recomendación principal. Su
+                                    enfoque en "Zero Latency" garantiza...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bloque 3: Neuro -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="relative group order-2 lg:order-1 w-full max-w-[500px] mx-auto">
+                    <!-- Added matching glow for consistency -->
+                    <div
+                        class="absolute -inset-1 bg-gradient-to-r from-pink-500 to-purple-500 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-1000">
+                    </div>
+
+                    <div
+                        class="relative w-full h-[360px] md:h-[400px] bg-[#0F0F10] border border-white/10 rounded-xl p-8 shadow-2xl flex items-center justify-center">
+                        <!-- Simple abstract node viz -->
+                        <div class="relative w-48 h-48 md:w-64 md:h-64">
+                            <div class="absolute inset-0 bg-cyan-500/20 blur-3xl rounded-full"></div>
+                            <svg class="relative z-10 w-full h-full text-gray-500/50" viewBox="0 0 200 200">
+                                <circle cx="100" cy="100" r="40" class="stroke-white/20 fill-black" stroke-width="1" />
+                                <circle cx="100" cy="100" r="20" class="fill-cyan-500 animate-pulse" />
+
+                                <line x1="100" y1="60" x2="100" y2="20" stroke="currentColor" stroke-width="1" />
+                                <circle cx="100" cy="20" r="5" class="fill-purple-500" />
+
+                                <line x1="135" y1="80" x2="170" y2="60" stroke="currentColor" stroke-width="1" />
+                                <circle cx="170" cy="60" r="5" class="fill-purple-500" />
+
+                                <line x1="65" y1="80" x2="30" y2="60" stroke="currentColor" stroke-width="1" />
+                                <circle cx="30" cy="60" r="5" class="fill-purple-500" />
+
+                                <line x1="100" y1="140" x2="100" y2="180" stroke="currentColor" stroke-width="1" />
+                                <circle cx="100" cy="180" r="5" class="fill-purple-500" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <!-- Remove old closing div that was here -->
+                <div class="order-1 lg:order-2">
+                    <div
+                        class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-pink-400 uppercase bg-pink-900/20 rounded-full">
+                        Psychology</div>
+                    <h3 class="text-3xl md:text-4xl font-bold text-white mb-6"> Neuromarketing UX</h3>
+                    <p class="text-gray-400 text-lg leading-relaxed">
+                        Un diseño impecable no es vanidad, es autoridad. Combinamos diseño de alto impacto para captar
+                        la atención y UX para retenerla. Integramos micro-estrategias de Neuromarketing en cada sección
+                        para conectar con tu cliente, generar confianza y retener su interés.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 5: TIMELINE -->
+    <section id="proceso" class="py-20 px-6 bg-black relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-16">
+                <h5 class="text-cyan-500 font-mono mb-2">TIMELINE</h5>
+                <h2 class="text-4xl font-bold text-white">Nuestra forma de trabajar</h2>
+                <p class="text-gray-400 mt-2">Transformamos la complejidad técnica en una hoja de ruta clara, definimos
+                    la estrategia juntos y te damos visibilidad de todo el proceso.</p>
+            </div>
+
+            <!-- Desktop Timeline Line -->
+            <div class="relative hidden md:block border-t border-dashed border-gray-800 top-16 z-0"></div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+                <!-- Step 1 -->
+                <div class="pt-8 relative">
+                    <div
+                        class="w-4 h-4 bg-black border-2 border-gray-600 rounded-full absolute -top-2 md:-top-[9px] left-0 md:left-0">
+                    </div>
+                    <div
+                        class="bg-[#0A0A0A] border border-white/10 p-6 rounded-lg hover:border-cyan-500/50 transition duration-300">
+                        <span class="text-xs font-mono text-gray-500 block mb-2">01 / ANALYZE</span>
+                        <h4 class="text-white font-bold mb-2">Análisis y Estrategia</h4>
+                        <p class="text-xs text-gray-400">Realizamos una análisis profundo de tu sector y competencia
+                            para definir una estrategia de ataque clara.</p>
+                    </div>
+                </div>
+                <!-- Step 2 -->
+                <div class="pt-8 relative">
+                    <div
+                        class="w-4 h-4 bg-black border-2 border-gray-600 rounded-full absolute -top-2 md:-top-[9px] left-0 md:left-0">
+                    </div>
+                    <div
+                        class="bg-[#0A0A0A] border border-white/10 p-6 rounded-lg hover:border-cyan-500/50 transition duration-300">
+                        <span class="text-xs font-mono text-gray-500 block mb-2">02 / COMUNICATION</span>
+                        <h4 class="text-white font-bold mb-2">Comunicación</h4>
+                        <p class="text-xs text-gray-400">Te explicamos el porqué de cada estrategia y te damos acceso
+                            directo a nuestro panel de gestión. Verás en vivo cada tarea en proceso, pendiente y cada
+                            decisión. Cero incertidumbre, control total del progreso.</p>
+                    </div>
+                </div>
+                <!-- Step 3 -->
+                <div class="pt-8 relative">
+                    <div
+                        class="w-4 h-4 bg-black border-2 border-gray-600 rounded-full absolute -top-2 md:-top-[9px] left-0 md:left-0">
+                    </div>
+                    <div
+                        class="bg-[#0A0A0A] border border-white/10 p-6 rounded-lg hover:border-cyan-500/50 transition duration-300">
+                        <span class="text-xs font-mono text-gray-500 block mb-2">03 / Development</span>
+                        <h4 class="text-white font-bold mb-2">Construcción</h4>
+                        <p class="text-xs text-gray-400">Implementamos la infraestructura, optimizamos la semántica para
+                            IA y pulimos la experiencia de usuario (UX).</p>
+                    </div>
+                </div>
+                <!-- Step 4 -->
+                <div class="pt-8 relative">
+                    <div
+                        class="w-4 h-4 bg-cyan-500 border-2 border-cyan-500 shadow-[0_0_10px_rgba(6,182,212,0.5)] rounded-full absolute -top-2 md:-top-[9px] left-0 md:left-0 animate-pulse">
+                    </div>
+                    <div
+                        class="bg-[#0A0A0A] border border-cyan-500/30 p-6 rounded-lg shadow-[0_0_30px_-10px_rgba(6,182,212,0.1)]">
+                        <span class="text-xs font-mono text-cyan-500 block mb-2">04 / Launch</span>
+                        <h4 class="text-white font-bold mb-2">Lanzamiento</h4>
+                        <p class="text-xs text-gray-400">Te damos el control total de tu web, con las herramientas de
+                            medición instaladas y la formación necesaria para que no dependas de nadie.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: EL ARQUITECTO -->
+    <section class="py-24 px-6 bg-[#080808] border-y border-white/5">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-16 items-center">
+
+            <div class="flex-1">
+                <span class="text-xs font-bold text-purple-500 tracking-widest uppercase mb-4 block">THE NO-ARTIFICIAL
+                    INTELLIGENCE</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">El humando detras de <span
+                        class="text-gray-500"> Vextria</span></h2>
+                <p class="text-gray-400 text-lg mb-6 leading-relaxed">
+                    Soy Diego Carrodeguas. Antes de que la IA lo cambiara todo, mi vida giraba entorno al Marketing
+                    Digital, centrandome especialmente en el SEO y el Neuromarketing. Entender la mente
+                    del consumidor siempre me ha obsesionado.
+                </p>
+                <p>
+
+                    Pero con el lanzamiento de ChatGPT, vi claro que era el 'Día Cero' de una nueva era. Entendí que el
+                    mundo había cambiado para siempre y me volqué en el estudio intensivo de la Inteligencia Artificial,
+                    siguiendo a diario su vertiginoso ritmo de evolución.
+
+
+                </p>
+                <p class="text-gray-400 text-lg mb-8 leading-relaxed">
+                    Fundé Vextria con un objetivo claro: unir mis dos pasiones y construir la arquitectura de las
+                    webs para la nueva e inevitable revolución industrial de la Inteligencia Artificial.
+                </p>
+                <a href="https://www.linkedin.com/in/diego-carrodeguas-marketing-digital-mba/" target="_blank"
+                    class="text-white font-medium border-b border-white hover:text-cyan-400 hover:border-cyan-400 transition pb-1 inline-flex items-center gap-2">
+                    Conectar en LinkedIn
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="w-full md:w-1/3 flex justify-center relative">
+                <!-- Decorative Elements behind image -->
+                <div
+                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 blur-[60px] rounded-full pointer-events-none">
+                </div>
+
+                <div class="relative group">
+                    <div
+                        class="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full blur opacity-30 group-hover:opacity-60 transition duration-1000">
+                    </div>
+                    <img src="./assets/img/diego-profile.png" alt="Diego Carrodeguas"
+                        class="relative w-64 h-64 md:w-80 md:h-80 object-cover rounded-full grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl ring-1 ring-white/10 z-10">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 7: FAQ (Accordion) -->
+    <section class="py-20 px-6 max-w-3xl mx-auto" x-data="{ active: null }">
+        <h2 class="text-3xl font-bold text-white mb-10 text-center">Preguntas Frecuentes</h2>
+
+        <div class="space-y-4">
+            <!-- FAQ Item 1 -->
+            <div class="border border-white/10 rounded-lg bg-white/5 overflow-hidden">
+                <button @click="active === 1 ? active = null : active = 1"
+                    class="flex justify-between items-center w-full p-4 text-left text-gray-200 hover:bg-white/5 transition">
+                    <span class="font-medium">¿Cómo conseguís que una Inteligencia Artificial recomiende mi
+                        negocio?</span>
+                    <svg class="w-5 h-5 transform transition-transform duration-200"
+                        :class="active === 1 ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div x-show="active === 1" x-collapse
+                    class="p-4 pt-0 text-gray-400 text-sm leading-relaxed border-t border-white/5">
+                    Pasando de la indexación a la enseñanza. Las IAs no "leen" webs como los humanos; procesan datos
+                    estructurados y relaciones semánticas. Nosotros organizamos la información de tu web (Entity
+                    Salience) de forma que modelos como ChatGPT entiendan inequívocamente quién eres, qué haces y por
+                    qué eres el mejor, citándote como fuente fiable en sus respuestas.
+                </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="border border-white/10 rounded-lg bg-white/5 overflow-hidden">
+                <button @click="active === 2 ? active = null : active = 2"
+                    class="flex justify-between items-center w-full p-4 text-left text-gray-200 hover:bg-white/5 transition">
+                    <span class="font-medium">¿Por qué una arquitectura de 'Código Puro' es una inversión superior a una
+                        plantilla o WordPress?</span>
+                    <svg class="w-5 h-5 transform transition-transform duration-200"
+                        :class="active === 2 ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div x-show="active === 2" x-collapse
+                    class="p-4 pt-0 text-gray-400 text-sm leading-relaxed border-t border-white/5">
+                    Las plantillas estándar cargan con un 80% de código basura (bloatware) que nunca usarás,
+                    ralentizando tu web y haciéndola difícil de leer para Google y la IA. Nosotros no instalamos webs;
+                    ingenierizamos activos digitales. Al construir en código puro, garantizamos una velocidad extrema,
+                    seguridad blindada y una estructura que los algoritmos priorizan. No es un gasto, es comprar una
+                    ventaja tecnológica injusta.
+                </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="border border-white/10 rounded-lg bg-white/5 overflow-hidden">
+                <button @click="active === 3 ? active = null : active = 3"
+                    class="flex justify-between items-center w-full p-4 text-left text-gray-200 hover:bg-white/5 transition">
+                    <span class="font-medium">¿Qué significa que la web está diseñada con Neuromarketing?</span>
+                    <svg class="w-5 h-5 transform transition-transform duration-200"
+                        :class="active === 3 ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div x-show="active === 3" x-collapse
+                    class="p-4 pt-0 text-gray-400 text-sm leading-relaxed border-t border-white/5">
+                    Significa que no dejamos nada al azar o al "gusto estético". Cada color, espacio, tipografía y
+                    estructura está diseñado basándose en principios psicológicos de consumo. Reducimos la carga
+                    cognitiva de tus visitas para que navegar sea fluido y tomar la decisión de compra sea el paso
+                    lógico natural. No hacemos arte; hacemos ingeniería de conversión.
+                </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div class="border border-white/10 rounded-lg bg-white/5 overflow-hidden">
+                <button @click="active === 4 ? active = null : active = 4"
+                    class="flex justify-between items-center w-full p-4 text-left text-gray-200 hover:bg-white/5 transition">
+                    <span class="font-medium">¿Es realmente necesario adaptar mi web a la IA si mi competencia aún no lo
+                        hace?</span>
+                    <svg class="w-5 h-5 transform transition-transform duration-200"
+                        :class="active === 4 ? 'rotate-180' : ''" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div x-show="active === 4" x-collapse
+                    class="p-4 pt-0 text-gray-400 text-sm leading-relaxed border-t border-white/5">
+                    Precisamente por eso es el momento crítico. La adopción de la IA no es una tendencia, es la nueva
+                    revolución industrial. Mientras tu competencia sigue siendo invisible para ChatGPT o Gemini, tú
+                    puedes posicionarte como la autoridad de referencia en tu sector. Adaptarse hoy es liderar el
+                    mercado mañana; esperar es arriesgarse a la irrelevancia.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8: CONTACT FORM (DARK MODE) -->
+    <section id="contacto" class="py-24 px-6 relative">
+        <div
+            class="max-w-6xl mx-auto border border-white/10 rounded-3xl bg-[#080808] p-8 md:p-12 shadow-2xl relative overflow-hidden">
+            <!-- Glow effect inside form container -->
+            <div
+                class="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-b from-cyan-500/5 to-transparent rounded-full blur-3xl pointer-events-none">
+            </div>
+
+            <div class="text-center mb-12">
+                <span class="text-green-500 text-xs font-mono tracking-widest uppercase mb-2 block">ASEGURA TU
+                    PLAZA</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">¿Listo para dejar de adivinar?</h2>
+                <p class="text-gray-400">Limitamos nuestros builds activos para garantizar el estándar de entrega de 72
+                    horas.</p>
+            </div>
+
+            <!-- Google Apps Script Action -->
+            <form
+                action="https://script.google.com/macros/s/AKfycbzo9bkGb7MXonSGpugtsI9195hlKDOMyK2V5N6rFBtXmR-ashJ3kn58bw-KoinRDg2_nw/exec"
+                method="POST" class="max-w-4xl mx-auto space-y-6 relative z-10">
+
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                        <label class="text-xs text-gray-500 font-mono uppercase">Nombre Completo</label>
+                        <input type="text" name="name" placeholder="Tu Nombre" required
+                            class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-xs text-gray-500 font-mono uppercase">Email Profesional</label>
+                        <input type="email" name="email" placeholder="tu@empresa.com" required
+                            class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition">
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="text-xs text-gray-500 font-mono uppercase">Sitio Web (Opcional)</label>
+                    <input type="text" name="website" placeholder="https://"
+                        class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition">
+                </div>
+
+                <div class="space-y-2">
+                    <label class="text-xs text-gray-500 font-mono uppercase">Cuéntanos tu reto principal</label>
+                    <textarea name="message" rows="4"
+                        placeholder="¿Qué problema necesitas resolver con infraestructura IA?" required
+                        class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition"></textarea>
+                </div>
+
+                <button type="submit"
+                    class="w-full bg-white text-black font-bold py-4 rounded-lg hover:bg-gray-100 transition shadow-[0_0_20px_rgba(255,255,255,0.2)] flex items-center justify-center gap-2 group">
+                    ENVIAR SOLICITUD
+                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 border-t border-white/5 text-center text-gray-600 text-sm">
+        <p>&copy; 2024 Vextria Agency. Engineering Digital Intelligence.</p>
+        <div class="mt-4 flex flex-wrap justify-center gap-6">
+            <a href="legal.html" class="hover:text-white transition">Aviso Legal</a>
+            <a href="privacidad.html" class="hover:text-white transition">Privacidad</a>
+            <a href="cookies.html" class="hover:text-white transition">Cookies</a>
+        </div>
+    </footer>
+
+    <script src="js/hero-animation.js"></script>
+    <script src="js/contact-form.js"></script>
+</body>
+
+</html>
