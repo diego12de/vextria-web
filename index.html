@@ -59,6 +59,234 @@
         .text-glow {
             text-shadow: 0 0 20px rgba(129, 74, 200, 0.5);
         }
+
+        /* Editor Animation Styles */
+        .terminal-card {
+            padding: 1rem;
+            overflow: hidden;
+            border: 1px solid rgba(197, 197, 197, 0.2);
+            border-radius: 12px;
+            background-color: rgba(217, 217, 217, 0.05);
+            backdrop-filter: blur(8px);
+            width: 100%;
+        }
+
+        .terminal-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            position: relative;
+            z-index: 10;
+            border: 0.5px solid #525252;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .terminal {
+            display: flex;
+            flex-direction: column;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        }
+
+        .terminal-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            overflow: hidden;
+            min-height: 40px;
+            padding-inline: 12px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            background-color: #202425;
+        }
+
+        .terminal-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            height: 2.5rem;
+            user-select: none;
+            font-weight: 600;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: #8e8e8e;
+            font-size: 0.9rem;
+        }
+
+        .terminal-title>svg {
+            height: 18px;
+            width: 18px;
+            margin-top: 2px;
+            color: #006adc;
+        }
+
+        .copy_toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.25rem;
+            border: 0.65px solid #c1c2c5;
+            margin-left: auto;
+            border-radius: 6px;
+            background-color: #202425;
+            color: #8e8e8e;
+            cursor: pointer;
+        }
+
+        .copy_toggle>svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .copy_toggle:active>svg>path,
+        .copy_toggle:focus-within>svg>path {
+            animation: clipboard-check 500ms linear forwards;
+        }
+
+        .terminal-body {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border-bottom-right-radius: 8px;
+            border-bottom-left-radius: 8px;
+            overflow-x: auto;
+            padding: 1rem;
+            line-height: 1.5;
+            color: white;
+            background-color: black;
+            white-space: nowrap;
+        }
+
+        .pre {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            text-wrap: nowrap;
+            white-space: pre;
+            background-color: transparent;
+            overflow: hidden;
+            box-sizing: border-box;
+            font-size: 0.85rem;
+        }
+
+        .pre code:nth-child(1) {
+            color: #575757;
+            margin-right: 0.5rem;
+        }
+
+        .pre code:nth-child(2) {
+            color: #e34ba9;
+        }
+
+        .code-keyword {
+            color: #c678dd;
+        }
+
+        .code-function {
+            color: #61afef;
+        }
+
+        .code-string {
+            color: #98c379;
+        }
+
+        .code-class {
+            color: #e5c07b;
+        }
+
+        .cmd {
+            height: 19px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        .cmd::before {
+            content: attr(data-cmd);
+            position: relative;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            background-color: transparent;
+            animation: inputs 8s steps(22) infinite;
+        }
+
+        .cmd::after {
+            content: "";
+            position: relative;
+            display: block;
+            height: 100%;
+            overflow: hidden;
+            background-color: transparent;
+            border-right: 0.15em solid #e34ba9;
+            animation: cursor 0.5s step-end infinite alternate, blinking 0.5s infinite;
+        }
+
+        @keyframes blinking {
+
+            20%,
+            80% {
+                transform: scaleY(1);
+            }
+
+            50% {
+                transform: scaleY(0);
+            }
+        }
+
+        @keyframes cursor {
+            50% {
+                border-right-color: transparent;
+            }
+        }
+
+        @keyframes inputs {
+
+            0%,
+            100% {
+                width: 0;
+            }
+
+            10%,
+            90% {
+                width: 58px;
+            }
+
+            30%,
+            70% {
+                width: 215px;
+                max-width: max-content;
+            }
+        }
+
+        @keyframes clipboard-check {
+            100% {
+                color: #fff;
+                d: path("M 9 5 H 7 a 2 2 0 0 0 -2 2 v 12 a 2 2 0 0 0 2 2 h 10 a 2 2 0 0 0 2 -2 V 7 a 2 2 0 0 0 -2 -2 h -2 M 9 5 a 2 2 0 0 0 2 2 h 2 a 2 2 0 0 0 2 -2 M 9 5 a 2 2 0 0 1 2 -2 h 2 a 2 2 0 0 1 2 2 m -6 9 l 2 2 l 4 -4");
+            }
+        }
+
+        .card-gradient {
+            background: linear-gradient(#0d0d0d, #0d0d0d) padding-box,
+                linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
+            border: 2px solid transparent;
+            transform-origin: right bottom;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+
+        .card-gradient:hover {
+            transform: rotate(2deg) scale(1.02);
+            box-shadow: 0 10px 40px -10px rgba(232, 28, 255, 0.3);
+        }
+
+        .text-gradient-purple-blue {
+            background: linear-gradient(to right, #e81cff, #40c9ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
     </style>
 </head>
 
@@ -84,11 +312,12 @@
                 <a href="#" class="text-sm font-medium text-text-muted hover:text-white transition-colors">AEO</a>
                 <a href="#"
                     class="text-sm font-medium text-text-muted hover:text-white transition-colors">Metodología</a>
-                <a href="#" class="text-sm font-medium text-text-muted hover:text-white transition-colors">Contacto</a>
+                <a href="#contact"
+                    class="text-sm font-medium text-text-muted hover:text-white transition-colors">Contacto</a>
             </div>
 
             <!-- CTA Button -->
-            <a href="#"
+            <a href="#contact"
                 class="hidden md:flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/10 px-4 py-2 rounded-lg text-sm font-medium transition-all group">
                 <span>Hablemos</span>
                 <svg class="w-4 h-4 text-text-muted group-hover:translate-x-0.5 transition-transform" fill="none"
@@ -133,14 +362,14 @@
 
         <!-- Subtitle -->
         <p class="relative z-10 text-lg md:text-xl text-text-muted max-w-2xl mx-auto mb-10 leading-relaxed">
-            Desarrollamos infraestructura digital para PYMES desde cero, con una arquitectura pensada nativamente para
-            posicionar en Inteligencias Artificiales. Unimos ingeniería de datos con un diseño de vanguardia y
-            neuromarketing, creando una experiencia que seduce a los algoritmos y convence a la mente humana.
+            Infraestructura digital para PYMES nativa para la Era de la IA.<br />
+            Fusionamos ingeniería de datos y neuromarketing, creando webs que seducen a los algoritmos y convencen a la
+            mente humana.
         </p>
 
         <!-- CTA Groups -->
         <div class="relative z-10 flex flex-col sm:flex-row items-center gap-4">
-            <a href="#"
+            <a href="#contact"
                 class="px-8 py-3.5 rounded-lg bg-primary hover:bg-primary/90 text-white font-semibold shadow-lg shadow-primary/25 transition-all w-full sm:w-auto">
                 Hablemos
             </a>
@@ -152,6 +381,84 @@
                         d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
                 </svg>
             </a>
+        </div>
+    </section>
+
+    <!-- Pain Points Section -->
+    <section class="py-20 px-4 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <!-- Section Header -->
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
+                    ¿Por qué tu negocio no escala <br class="hidden md:block" />
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-text-dim">al ritmo del
+                        mercado?</span>
+                </h2>
+                <p class="text-lg text-text-muted max-w-3xl mx-auto leading-relaxed">
+                    El mercado ha cambiado muy rápido. Tu cliente ha elevado sus estándares y ahora utiliza la
+                    Inteligencia Artificial para <b>tomar decisiones</b>. Si tu web no está optimizada para ser
+                    recomendada por
+                    la IA, eres invisible.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1: Obesidad Digital -->
+                <div class="card-gradient rounded-xl p-8 flex flex-col h-full group">
+                    <div
+                        class="mb-6 bg-red-500/10 w-14 h-14 rounded-full flex items-center justify-center border border-red-500/20 group-hover:bg-red-500/20 transition-colors">
+                        <svg class="w-7 h-7 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Intoxicación por Código <br><span
+                            class="text-sm font-normal text-red-400">(Bloatware)</span></h3>
+                    <p class="text-text-muted leading-relaxed text-sm flex-1">
+                        Las plantillas y CMS tradicionales (WordPress/Wix) cargan toneladas de scripts basura que nunca
+                        usas. Para una IA, leer tu web es como buscar una aguja en un pajar de código sucio. Si el bot
+                        gasta demasiada energía (crawl budget) intentando entenderte, simplemente te ignora.
+                    </p>
+                </div>
+
+                <!-- Card 2: Analfabetismo Semántico -->
+                <div class="card-gradient rounded-xl p-8 flex flex-col h-full group" style="transition-delay: 100ms;">
+                    <div
+                        class="mb-6 bg-orange-500/10 w-14 h-14 rounded-full flex items-center justify-center border border-orange-500/20 group-hover:bg-orange-500/20 transition-colors">
+                        <svg class="w-7 h-7 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Invisible para la IA <br><span
+                            class="text-sm font-normal text-orange-400">(Semantic Illiteracy)</span></h3>
+                    <p class="text-text-muted leading-relaxed text-sm flex-1">
+                        Google indexaba palabras clave; la IA interpreta conceptos (Entidades). Tu web actual tiene
+                        texto
+                        plano, pero carece de la Estructura Semántica necesaria para explicarle a modelos como ChatGPT
+                        quién eres y por qué eres la autoridad. Resultado: La IA recomienda a tu competencia, no a ti.
+                    </p>
+                </div>
+
+                <!-- Card 3: La Era Zero-Click -->
+                <div class="card-gradient rounded-xl p-8 flex flex-col h-full group" style="transition-delay: 200ms;">
+                    <div
+                        class="mb-6 bg-purple-500/10 w-14 h-14 rounded-full flex items-center justify-center border border-purple-500/20 group-hover:bg-purple-500/20 transition-colors">
+                        <svg class="w-7 h-7 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Página WEB sin estrategia <br><span
+                            class="text-sm font-normal text-purple-400">(Neuromarketing & UX)</span></h3>
+                    <p class="text-text-muted leading-relaxed text-sm flex-1">
+                        Tu servicio puede ser perfecto, pero si tu web no comunica calidad, el subconsciente del
+                        cliente asume riesgo. Fusionamos estética de vanguardia con estrategias avanzadas de
+                        neuromarketing, retenemos y guiamos la atención del usuario para
+                        maximizar las oportunidades de conversión.
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -260,7 +567,7 @@
                             La velocidad y una arquitectura limpia ya no son un lujo, son el mínimo indispensable. Para
                             que una Inteligencia Artificial te recomiende, primero debe poder leerte sin fricción.
                             Mientras los CMS como Wordpress llenan tu web de bloatware invisible, nosotros
-                            ingenierizamos una estructura Zero-Bloatware puramente basada en código.
+                            desarrollamos una estructura Zero-Bloatware puramente basada en código.
                         </p>
                         <div class="flex flex-wrap gap-3">
                             <span
@@ -281,9 +588,10 @@
                             Assistant</span>
                         <h3 class="text-3xl font-bold mb-4">Posicionamiento IA (AEO) + SEO</h3>
                         <p class="text-text-muted mb-8 leading-relaxed">
-                            Diseñamos arquitecturas 100% orientadas a la IA. Nada es al azar: cada dato está redactado y
-                            ubicado en un punto específico de la estructura de forma estrategica. No solo indexamos en
-                            Google: calibramos el Entity Salience, los datos estructurados y la posición estratégica de
+                            Partiendo de la indipensable base de SEO, diseñamos arquitecturas nativamente orientadas a
+                            la IA. Nada es al azar: cada dato está redactado y
+                            ubicado en un punto específico de la estructura de forma estrategica. Calibramos el Entity
+                            Salience, los datos estructurados y la posición estratégica de
                             cada dato para maximizar las señales E-E-A-T. Eliminamos la ambigüedad para que los LLMs
                             (ChatGPT, Gemini) te interpreten no como un enlace más, sino como la fuente de autoridad
                             recomendada.
@@ -440,7 +748,7 @@
                 <span
                     class="inline-block px-3 py-1 mb-6 rounded-md bg-white/5 border border-border text-xs font-medium text-text-muted">Our
                     Process</span>
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Nuestra forma de trabajar
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight">Te encantará trabajar con nosotros
                 </h2>
                 <p class="text-lg text-text-muted max-w-2xl mx-auto">
                     Transformamos la complejidad técnica en una hoja de ruta clara, definimos la estrategia juntos y te
@@ -457,7 +765,8 @@
                         <span class="text-xs font-bold text-text-dim uppercase tracking-wider">Step 1</span>
                         <h3 class="text-2xl font-bold mt-2 mb-4">Análisis y Estrategia</h3>
                         <p class="text-text-muted text-sm leading-relaxed mb-8">
-                            Realizamos una análisis profundo de tu sector y competencia para definir una estrategia de
+                            Realizamos y compartimos contigo un análisis profundo de tu sector y competencia para
+                            definir una estrategia de
                             ataque clara.
                         </p>
                     </div>
@@ -518,51 +827,11 @@
                     </div>
                 </div>
 
-                <!-- Step 2: AI Development -->
+                <!-- Step 2: Communication -->
                 <div
                     class="bg-surface border border-border rounded-2xl p-8 hover:border-primary/50 transition-colors duration-300 group">
                     <div class="mb-4">
                         <span class="text-xs font-bold text-text-dim uppercase tracking-wider">Step 2</span>
-                        <h3 class="text-2xl font-bold mt-2 mb-4">Desarrollo</h3>
-                        <p class="text-text-muted text-sm leading-relaxed mb-8">
-                            Implementamos la infraestructura, optimizamos la semántica para IA y pulimos la experiencia
-                            de usuario (UX).
-                        </p>
-                    </div>
-                    <!-- Visual Mock -->
-                    <div
-                        class="bg-black/90 border border-white/10 rounded-xl overflow-hidden font-mono text-[10px] min-h-[200px] flex flex-col">
-                        <div class="bg-white/5 border-b border-white/5 px-3 py-2 flex items-center gap-2">
-                            <div class="flex gap-1.5">
-                                <div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
-                                <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
-                                <div class="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
-                            </div>
-                            <div class="ml-auto text-text-dim">automation.py</div>
-                        </div>
-                        <div class="p-4 text-text-muted space-y-1">
-                            <div><span class="text-primary">class</span> <span
-                                    class="text-white">AutomationTrigger</span>:</div>
-                            <div class="pl-4"><span class="text-primary">def</span> <span
-                                    class="text-secondary">__init__</span>(self, threshold):</div>
-                            <div class="pl-8">self.threshold = threshold</div>
-                            <div class="pl-8">self.status = <span class="text-green-400">"inactive"</span></div>
-                            <br />
-                            <div class="pl-4"><span class="text-primary">def</span> <span
-                                    class="text-secondary">check_trigger</span>(self, value):</div>
-                            <div class="pl-8"><span class="text-primary">if</span> value > self.threshold:</div>
-                            <div class="pl-12">self.status = <span class="text-green-400">"active"</span></div>
-                            <div class="pl-12"><span class="text-primary">return</span> <span
-                                    class="text-green-400">"Automation triggered!"</span></div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 3: Seamless Integration -->
-                <div
-                    class="bg-surface border border-border rounded-2xl p-8 hover:border-primary/50 transition-colors duration-300 group">
-                    <div class="mb-4">
-                        <span class="text-xs font-bold text-text-dim uppercase tracking-wider">Step 3</span>
                         <h3 class="text-2xl font-bold mt-2 mb-4">Comunicación</h3>
                         <p class="text-text-muted text-sm leading-relaxed mb-8">
                             Te explicamos el porqué de cada estrategia y te damos acceso directo a nuestro panel de
@@ -571,38 +840,160 @@
                         </p>
                     </div>
                     <!-- Visual Mock -->
-                    <div
-                        class="bg-black/40 border border-white/5 rounded-xl p-6 relative overflow-hidden flex items-center justify-center gap-8 min-h-[200px]">
-                        <!-- Orb -->
-                        <div class="text-center space-y-2">
-                            <div
-                                class="w-12 h-12 rounded-full bg-gradient-radial from-primary to-transparent blur-sm border border-primary/20 flex items-center justify-center relative">
-                                <div class="absolute inset-0 bg-primary/20 animate-pulse rounded-full"></div>
+                    <div class="bg-black/90 border border-white/10 rounded-xl p-4 min-h-[220px] flex flex-col">
+                        <!-- Kanban Header -->
+                        <div class="flex items-center justify-between mb-4 px-2">
+                            <div class="flex items-center gap-2">
+                                <div class="w-2 h-2 rounded-full bg-primary/50"></div>
+                                <span class="text-[10px] font-mono text-text-dim uppercase tracking-wider">Project
+                                    Board</span>
                             </div>
-                            <div class="text-[10px] text-text-dim">Our solution</div>
+                            <div class="flex -space-x-1">
+                                <div class="w-4 h-4 rounded-full bg-white/10 border border-black"></div>
+                                <div class="w-4 h-4 rounded-full bg-white/20 border border-black"></div>
+                                <div
+                                    class="w-4 h-4 rounded-full bg-primary/20 border border-black flex items-center justify-center text-[6px] text-white">
+                                    +2</div>
+                            </div>
                         </div>
 
-                        <!-- Connectors -->
-                        <div class="flex-1 flex flex-col gap-2">
-                            <div class="h-[1px] w-full bg-gradient-to-r from-primary/50 to-white/10 relative">
-                                <div
-                                    class="absolute top-1/2 -translate-y-1/2 left-0 w-full h-[1px] bg-primary/50 animate-[shimmer_2s_infinite]">
+                        <!-- Kanban Columns -->
+                        <div class="flex gap-3 h-full overflow-hidden">
+                            <!-- Column 1: Backlog -->
+                            <div class="flex-1 bg-surface/30 rounded-lg p-2 flex flex-col gap-2 opacity-60">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="text-[9px] font-bold text-text-dim uppercase">Backlog</span>
+                                    <span class="text-[8px] text-text-muted bg-white/5 px-1 rounded">2</span>
+                                </div>
+                                <div class="bg-surface border border-white/5 p-2 rounded shadow-sm">
+                                    <div class="h-1 w-8 bg-purple-500/50 rounded-full mb-1"></div>
+                                    <div class="h-1.5 w-3/4 bg-white/10 rounded mb-1"></div>
+                                    <div class="h-1.5 w-1/2 bg-white/5 rounded"></div>
+                                </div>
+                                <div class="bg-surface border border-white/5 p-2 rounded shadow-sm">
+                                    <div class="h-1.5 w-full bg-white/10 rounded mb-1"></div>
                                 </div>
                             </div>
-                            <div class="h-[1px] w-full bg-gradient-to-r from-primary/50 to-white/10 opacity-50"></div>
-                            <div class="h-[1px] w-full bg-gradient-to-r from-primary/50 to-white/10 opacity-20"></div>
-                        </div>
 
-                        <!-- Stack Icon -->
-                        <div class="text-center space-y-2">
-                            <div
-                                class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-                                <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                                    <path
-                                        d="M6 15a2 2 0 0 1-2 2a2 2 0 0 1-2-2a2 2 0 0 1 2-2h2v2zm1 0a2 2 0 0 1 2-2a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2a2 2 0 0 1-2-2v-5zm2-7a2 2 0 0 1-2-2a2 2 0 0 1 2-2a2 2 0 0 1 2 2v2H9zm-1 0a2 2 0 0 1 2 2a2 2 0 0 1 2 2H5a2 2 0 0 1-2-2a2 2 0 0 1 2-2h5z" />
-                                </svg>
+                            <!-- Column 2: In Progress -->
+                            <div class="flex-1 bg-surface/50 rounded-lg p-2 flex flex-col gap-2">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="text-[9px] font-bold text-white uppercase">In Progress</span>
+                                    <span class="text-[8px] text-white bg-primary/20 px-1 rounded">1</span>
+                                </div>
+                                <div
+                                    class="bg-surface border border-primary/30 p-2 rounded shadow-sm relative group/card">
+                                    <div class="absolute -left-[1px] top-2 bottom-2 w-[2px] bg-primary rounded-r"></div>
+                                    <div class="flex gap-1 mb-1.5">
+                                        <div class="h-1 w-6 bg-red-400/60 rounded-full"></div>
+                                        <div class="h-1 w-6 bg-blue-400/60 rounded-full"></div>
+                                    </div>
+                                    <div class="h-1.5 w-5/6 bg-white/20 rounded mb-1.5"></div>
+                                    <div class="h-1.5 w-2/3 bg-white/10 rounded mb-2"></div>
+                                    <div class="flex justify-between items-center">
+                                        <div class="w-3 h-3 rounded-full bg-white/10"></div>
+                                        <div class="text-[8px] text-text-dim">Due 2d</div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="text-[10px] text-text-dim">Your stack</div>
+
+                            <!-- Column 3: Review -->
+                            <div class="flex-1 bg-surface/30 rounded-lg p-2 flex flex-col gap-2 opacity-80">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="text-[9px] font-bold text-text-dim uppercase">Review</span>
+                                    <span class="text-[8px] text-text-muted bg-white/5 px-1 rounded">1</span>
+                                </div>
+                                <div class="bg-surface border border-white/5 p-2 rounded shadow-sm">
+                                    <div class="h-1 w-8 bg-green-500/50 rounded-full mb-1"></div>
+                                    <div class="h-1.5 w-full bg-white/10 rounded mb-1"></div>
+                                    <div class="h-1.5 w-1/3 bg-white/5 rounded"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: AI Development -->
+                <div
+                    class="bg-surface border border-border rounded-2xl p-8 hover:border-primary/50 transition-colors duration-300 group">
+                    <div class="mb-4">
+                        <span class="text-xs font-bold text-text-dim uppercase tracking-wider">Step 3</span>
+                        <h3 class="text-2xl font-bold mt-2 mb-4">Desarrollo</h3>
+                        <p class="text-text-muted text-sm leading-relaxed mb-8">
+                            Implementamos la infraestructura, optimizamos la semántica para IA y pulimos la experiencia
+                            de usuario (UX).
+                        </p>
+                    </div>
+                    <!-- Visual Mock -->
+                    <div class="terminal-card">
+                        <div class="terminal-wrap">
+                            <div class="terminal">
+                                <div class="terminal-head">
+                                    <div class="terminal-title">
+                                        <svg fill="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                d="M22.25 15.25L13.25 20.75C12.9239 20.9458 12.5087 21.0503 12.0833 21.0503C11.658 21.0503 11.2428 20.9458 10.9167 20.75L1.91667 15.25C1.65083 15.0872 1.44222 14.8622 1.3125 14.6042C1.18278 14.3461 1.13944 14.0625 1.18744 13.8044C1.23544 13.5463 1.37367 13.3156 1.58333 13.1339C1.79299 12.9521 2.06733 12.8333 2.375 12.8333H21.7917C22.0993 12.8333 22.3737 12.9521 22.5833 13.1339C22.793 13.3156 22.9312 13.5463 22.9792 13.8044C23.0272 14.0625 22.9839 14.3461 22.8542 14.6042C22.7244 14.8622 22.5158 15.0872 22.25 15.25ZM20.75 3.58333H3.41667C2.79417 3.58333 2.25 4.1275 2.25 4.75V11.1667H21.9167V4.75C21.9167 4.1275 21.3725 3.58333 20.75 3.58333Z">
+                                            </path>
+                                        </svg>
+                                        vextria_core.py
+                                    </div>
+                                    <div class="copy_toggle">
+                                        <svg viewBox="0 0 24 24" fill="none" class="">
+                                            <path
+                                                d="M15.75 4.25H13.25C12.8358 4.25 12.5 4.58579 12.5 5C12.5 5.41421 12.8358 5.75 13.25 5.75H15.75C16.1642 5.75 16.5 6.08579 16.5 6.5V18.5C16.5 18.9142 16.1642 19.25 15.75 19.25H8.25C7.83579 19.25 7.5 18.9142 7.5 18.5V6.5C7.5 6.08579 7.83579 5.75 8.25 5.75H10.75C11.1642 5.75 11.5 5.41421 11.5 5C11.5 4.58579 11.1642 4.25 10.75 4.25H8.25C7.00736 4.25 6 5.25736 6 6.5V18.5C6 19.7426 7.00736 20.75 8.25 20.75H15.75C16.9926 20.75 18 19.7426 18 18.5V6.5C18 5.25736 16.9926 4.25 15.75 4.25Z"
+                                                fill="currentColor"></path>
+                                            <path
+                                                d="M12 2C11.1716 2 10.5 2.67157 10.5 3.5C10.5 4.32843 11.1716 5 12 5C12.8284 5 13.5 4.32843 13.5 3.5C13.5 2.67157 12.8284 2 12 2Z"
+                                                fill="currentColor"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="terminal-body space-y-1">
+                                    <div class="pre">
+                                        <code>1</code>
+                                        <div class="code-line"><span class="code-keyword">class</span> <span
+                                                class="code-class">VextriaCore</span>:</div>
+                                    </div>
+                                    <div class="pre">
+                                        <code>2</code>
+                                        <div class="code-line pl-4"><span class="code-keyword">def</span> <span
+                                                class="code-function">__init__</span>(self, strategy):</div>
+                                    </div>
+                                    <div class="pre">
+                                        <code>3</code>
+                                        <div class="code-line pl-8">self.engine = <span
+                                                class="code-string">"Neuro_AEO"</span></div>
+                                    </div>
+                                    <div class="pre">
+                                        <code>4</code>
+                                        <div class="code-line pl-8">self.status = <span
+                                                class="code-string">"Standby"</span></div>
+                                    </div>
+                                    <div class="pre">
+                                        <code>5</code>
+                                        <div class="code-line"></div>
+                                    </div>
+                                    <div class="pre">
+                                        <code>6</code>
+                                        <div class="code-line pl-4"><span class="code-keyword">def</span> <span
+                                                class="code-function">optimize</span>(self, traffic):</div>
+                                    </div>
+                                    <div class="pre">
+                                        <code>7</code>
+                                        <div class="code-line pl-8"><span class="code-keyword">if</span> traffic.score >
+                                            90:</div>
+                                    </div>
+                                    <div class="pre">
+                                        <code>8</code>
+                                        <div class="code-line pl-12">self.trigger_conversion()</div>
+                                    </div>
+                                    <div class="pre">
+                                        <code>9</code>
+                                        <div class="cmd flex items-center gap-1 pl-12"
+                                            data-cmd="print('System_Optimized')"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -612,64 +1003,82 @@
                     class="bg-surface border border-border rounded-2xl p-8 hover:border-primary/50 transition-colors duration-300 group">
                     <div class="mb-4">
                         <span class="text-xs font-bold text-text-dim uppercase tracking-wider">Step 4</span>
-                        <h3 class="text-2xl font-bold mt-2 mb-4">Lanzamiento</h3>
+                        <h3 class="text-2xl font-bold mt-2 mb-4">Lanzamiento y revisiones</h3>
                         <p class="text-text-muted text-sm leading-relaxed mb-8">
-                            Te damos el control total de tu web, con las herramientas de medición instaladas y la
-                            formación necesaria para que no dependas de nadie.
+                            Tu satisfacción es lo único que importa. Antes de darte "las llaves", revisamos juntos
+                            cada funcionalidad y diseño. Iteramos y pulimos los detalles finales hasta que estés 100%
+                            satisfecho con el resultado. Solo entonces te transferimos el control absoluto.
                         </p>
                     </div>
                     <!-- Visual Mock -->
                     <div class="bg-black/40 border border-white/5 rounded-xl p-4 space-y-3 min-h-[200px]">
-                        <!-- Item 1 -->
-                        <div class="bg-white/5 border border-white/5 p-3 rounded-lg flex items-center justify-between">
+                        <!-- Item 1: Chatbot system -->
+                        <div
+                            class="bg-white/5 border border-white/5 p-3 rounded-lg flex items-center justify-between group/item hover:border-white/10 transition-colors">
                             <div class="flex items-center gap-3">
-                                <div class="w-8 h-8 rounded bg-white/10 flex items-center justify-center"><svg
-                                        class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
+                                <div
+                                    class="w-8 h-8 rounded bg-white/10 flex items-center justify-center text-text-muted">
+                                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-                                    </svg></div>
+                                    </svg>
+                                </div>
                                 <div>
-                                    <div class="text-xs font-medium text-white">Chatbot system</div>
+                                    <div
+                                        class="text-xs font-medium text-white group-hover/item:text-white transition-colors">
+                                        Chatbot system</div>
                                     <div class="text-[10px] text-text-dim">Efficiency increased by 20%</div>
                                 </div>
                             </div>
-                            <div class="w-4 h-4 rounded-full border border-primary border-t-transparent animate-spin">
+                            <div class="w-4 h-4 rounded-full border-2 border-primary border-t-transparent animate-spin">
                             </div>
                         </div>
-                        <!-- Item 2 -->
-                        <div class="bg-white/5 border border-white/5 p-3 rounded-lg flex items-center justify-between">
+
+                        <!-- Item 2: Workflow system -->
+                        <div
+                            class="bg-white/5 border border-white/5 p-3 rounded-lg flex items-center justify-between group/item hover:border-white/10 transition-colors">
                             <div class="flex items-center gap-3">
-                                <div class="w-8 h-8 rounded bg-white/10 flex items-center justify-center"><svg
-                                        class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
+                                <div
+                                    class="w-8 h-8 rounded bg-white/10 flex items-center justify-center text-text-muted">
+                                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                    </svg></div>
+                                    </svg>
+                                </div>
                                 <div class="flex-1">
-                                    <div class="text-xs font-medium text-white">Workflow system</div>
+                                    <div
+                                        class="text-xs font-medium text-white group-hover/item:text-white transition-colors">
+                                        Workflow system</div>
                                     <div class="text-[10px] text-text-dim">Update available..</div>
                                 </div>
                             </div>
-                            <div class="text-primary text-[10px]">↑</div>
+                            <svg class="w-3 h-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                            </svg>
                         </div>
-                        <!-- Item 3 -->
-                        <div class="bg-white/5 border border-white/5 p-3 rounded-lg flex items-center justify-between">
+
+                        <!-- Item 3: Sales system -->
+                        <div
+                            class="bg-white/5 border border-white/5 p-3 rounded-lg flex items-center justify-between group/item hover:border-white/10 transition-colors">
                             <div class="flex items-center gap-3">
-                                <div class="w-8 h-8 rounded bg-white/10 flex items-center justify-center"><svg
-                                        class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
+                                <div
+                                    class="w-8 h-8 rounded bg-white/10 flex items-center justify-center text-text-muted">
+                                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
-                                    </svg></div>
+                                    </svg>
+                                </div>
                                 <div>
-                                    <div class="text-xs font-medium text-white">Sales system</div>
+                                    <div
+                                        class="text-xs font-medium text-white group-hover/item:text-white transition-colors">
+                                        Sales system</div>
                                     <div class="text-[10px] text-text-dim">Up to date</div>
                                 </div>
                             </div>
-                            <svg class="w-4 h-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg class="w-3 h-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M5 13l4 4L19 7" />
                             </svg>
@@ -738,18 +1147,18 @@
             <div class="text-center mb-16">
                 <span
                     class="inline-block px-3 py-1 mb-4 rounded-md bg-white/5 border border-border text-xs font-medium text-text-muted uppercase tracking-wider">FAQs</span>
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">We’ve Got the Answers You’re Looking For</h2>
-                <p class="text-text-muted">Quick answers to your AI automation questions.</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Preguntas Frecuentes</h2>
+                <p class="text-text-muted">Respuestas rápidas sobre Arquitectura AEO & High-Performance.</p>
             </div>
 
             <div class="space-y-4" x-data="{ active: null }">
-                <!-- FAQ Item 1 -->
+                <!-- FAQ Item 1 (New) -->
                 <div
                     class="bg-surface border border-border rounded-lg overflow-hidden transition-all duration-300 hover:border-primary/50">
                     <button class="w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none"
                         @click="active === 1 ? active = null : active = 1">
-                        <span class="font-semibold text-lg">How can AI automation help my business?</span>
-                        <svg class="w-5 h-5 text-text-muted transition-transform duration-300"
+                        <span class="font-semibold text-lg pr-8">¿Qué pasa con mi web actual?</span>
+                        <svg class="w-5 h-5 text-text-muted transition-transform duration-300 shrink-0"
                             :class="active === 1 ? 'rotate-45' : ''" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4">
@@ -757,10 +1166,13 @@
                         </svg>
                     </button>
                     <div x-show="active === 1" x-collapse>
-                        <div class="px-6 pb-6 text-text-muted">
-                            AI automation streamlines repetitive tasks, processes data faster than humanly possible, and
-                            uncovers insights to drive better decision-making, allowing you to focus on strategic
-                            growth.
+                        <div class="px-6 pb-6 text-text-muted text-sm leading-relaxed">
+                            Es una transición estratégica, no destructiva. Tu web actual sigue operativa al 100% hasta
+                            el
+                            segundo exacto del lanzamiento. Realizamos una migración SEO completa aplicando
+                            redirecciones
+                            301 para transferir toda tu autoridad histórica a la nueva arquitectura, asegurando que no
+                            pierdes tráfico, solo potencias tu alcance.
                         </div>
                     </div>
                 </div>
@@ -770,8 +1182,9 @@
                     class="bg-surface border border-border rounded-lg overflow-hidden transition-all duration-300 hover:border-primary/50">
                     <button class="w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none"
                         @click="active === 2 ? active = null : active = 2">
-                        <span class="font-semibold text-lg">Is AI automation difficult to integrate?</span>
-                        <svg class="w-5 h-5 text-text-muted transition-transform duration-300"
+                        <span class="font-semibold text-lg pr-8">¿Cómo conseguís que una Inteligencia Artificial
+                            recomiende mi negocio?</span>
+                        <svg class="w-5 h-5 text-text-muted transition-transform duration-300 shrink-0"
                             :class="active === 2 ? 'rotate-45' : ''" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4">
@@ -779,9 +1192,11 @@
                         </svg>
                     </button>
                     <div x-show="active === 2" x-collapse>
-                        <div class="px-6 pb-6 text-text-muted">
-                            Not with Vextria. We handle the entire end-to-end integration process, ensuring seamless
-                            compatibility with your existing stack and providing comprehensive training for your team.
+                        <div class="px-6 pb-6 text-text-muted text-sm leading-relaxed">
+                            Pasando de la indexación a la enseñanza. Las IAs no "leen" webs como los humanos; procesan
+                            datos estructurados y relaciones semánticas. Nosotros organizamos la información de tu web
+                            (Entity Salience) de forma que modelos como ChatGPT entiendan inequívocamente quién eres,
+                            qué haces y por qué eres el mejor, citándote como fuente fiable en sus respuestas.
                         </div>
                     </div>
                 </div>
@@ -791,8 +1206,9 @@
                     class="bg-surface border border-border rounded-lg overflow-hidden transition-all duration-300 hover:border-primary/50">
                     <button class="w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none"
                         @click="active === 3 ? active = null : active = 3">
-                        <span class="font-semibold text-lg">What industries can benefit from AI automation?</span>
-                        <svg class="w-5 h-5 text-text-muted transition-transform duration-300"
+                        <span class="font-semibold text-lg pr-8">¿Por qué una arquitectura de 'Código Puro' es mejor que
+                            una plantilla?</span>
+                        <svg class="w-5 h-5 text-text-muted transition-transform duration-300 shrink-0"
                             :class="active === 3 ? 'rotate-45' : ''" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4">
@@ -800,10 +1216,12 @@
                         </svg>
                     </button>
                     <div x-show="active === 3" x-collapse>
-                        <div class="px-6 pb-6 text-text-muted">
-                            Almost all industries can benefit, from E-commerce and SaaS to Healthcare and Finance. Any
-                            sector involving data processing, customer support, or content generation is prime for
-                            automation.
+                        <div class="px-6 pb-6 text-text-muted text-sm leading-relaxed">
+                            Las plantillas estándar cargan con un 80% de código basura (bloatware) que nunca usarás,
+                            ralentizando tu web y haciéndola difícil de leer para Google y la IA. Nosotros no instalamos
+                            webs; ingenierizamos activos digitales. Al construir en código puro, garantizamos una
+                            velocidad extrema, seguridad blindada y una estructura que los algoritmos priorizan. No es
+                            un gasto, es comprar una ventaja tecnológica injusta.
                         </div>
                     </div>
                 </div>
@@ -813,8 +1231,9 @@
                     class="bg-surface border border-border rounded-lg overflow-hidden transition-all duration-300 hover:border-primary/50">
                     <button class="w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none"
                         @click="active === 4 ? active = null : active = 4">
-                        <span class="font-semibold text-lg">Do I need technical knowledge to use AI automation?</span>
-                        <svg class="w-5 h-5 text-text-muted transition-transform duration-300"
+                        <span class="font-semibold text-lg pr-8">¿Qué significa que la web está diseñada con
+                            Neuromarketing?</span>
+                        <svg class="w-5 h-5 text-text-muted transition-transform duration-300 shrink-0"
                             :class="active === 4 ? 'rotate-45' : ''" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4">
@@ -822,9 +1241,11 @@
                         </svg>
                     </button>
                     <div x-show="active === 4" x-collapse>
-                        <div class="px-6 pb-6 text-text-muted">
-                            No. We design intuitive interfaces and workflows so you can leverage the power of AI without
-                            needing to write a single line of code.
+                        <div class="px-6 pb-6 text-text-muted text-sm leading-relaxed">
+                            Significa que no dejamos nada al azar o al "gusto estético". Cada color, espacio, tipografía
+                            y estructura está diseñado basándose en principios psicológicos de consumo. Reducimos la
+                            carga cognitiva de tus visitas para que navegar sea fluido y tomar la decisión de compra sea
+                            el paso lógico natural. No hacemos arte; hacemos ingeniería de conversión.
                         </div>
                     </div>
                 </div>
@@ -834,8 +1255,9 @@
                     class="bg-surface border border-border rounded-lg overflow-hidden transition-all duration-300 hover:border-primary/50">
                     <button class="w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none"
                         @click="active === 5 ? active = null : active = 5">
-                        <span class="font-semibold text-lg">What kind of support do you offer?</span>
-                        <svg class="w-5 h-5 text-text-muted transition-transform duration-300"
+                        <span class="font-semibold text-lg pr-8">¿Es necesario adaptar mi web a la IA si mi competencia
+                            no lo hace?</span>
+                        <svg class="w-5 h-5 text-text-muted transition-transform duration-300 shrink-0"
                             :class="active === 5 ? 'rotate-45' : ''" fill="none" stroke="currentColor"
                             viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4">
@@ -843,9 +1265,11 @@
                         </svg>
                     </button>
                     <div x-show="active === 5" x-collapse>
-                        <div class="px-6 pb-6 text-text-muted">
-                            We provide comprehensive support including system monitoring, regular updates, and dedicated
-                            assistance to ensure your AI automation runs smoothly and evolves with your business.
+                        <div class="px-6 pb-6 text-text-muted text-sm leading-relaxed">
+                            Precisamente por eso es el momento crítico. La adopción de la IA no es una tendencia, es la
+                            nueva revolución industrial. Mientras tu competencia sigue siendo invisible para ChatGPT o
+                            Gemini, tú puedes posicionarte como la autoridad de referencia en tu sector. Adaptarse hoy
+                            es liderar el mercado mañana; esperar es arriesgarse a la irrelevancia.
                         </div>
                     </div>
                 </div>
@@ -855,25 +1279,82 @@
 
 
 
-    <!-- Final CTA -->
-    <section class="py-32 px-4 relative overflow-hidden">
+    <!-- Contact Form Section -->
+    <section id="contact" class="py-24 px-4 relative overflow-hidden">
         <div class="absolute inset-0 bg-hero-glow z-0 pointer-events-none opacity-50"></div>
-        <div class="relative z-10 max-w-4xl mx-auto text-center">
-            <h2 class="text-4xl md:text-6xl font-bold tracking-tight mb-8">
-                Let AI do the Work so you can <span class="italic text-primary">Scale Faster</span>
-            </h2>
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+                <span
+                    class="inline-block px-3 py-1 mb-4 rounded-md bg-white/5 border border-border text-xs font-medium text-text-muted uppercase tracking-wider">ASEGURA
+                    TU PLAZA</span>
+                <h2 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+                    ¿Listo para la Era de la IA?
+                </h2>
+                <p class="text-text-muted text-lg">
+                    Limitamos nuestros builds activos para garantizar el estándar de entrega de 72 horas.
+                </p>
+            </div>
+
+            <!-- Form Container -->
             <div
-                class="bg-surface/50 border border-border rounded-xl p-8 md:p-12 inline-flex flex-col items-center backdrop-blur-sm">
-                <p class="text-xl md:text-2xl font-medium mb-8">Book a Call Today and Start Automating</p>
-                <a href="#"
-                    class="px-8 py-4 rounded-lg bg-primary hover:bg-primary/90 text-white font-bold text-lg shadow-xl shadow-primary/20 transition-all flex items-center gap-3">
-                    <span>Book a free call</span>
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
-                        </path>
-                    </svg>
-                </a>
+                class="bg-surface/50 border border-border rounded-2xl p-8 md:p-12 backdrop-blur-md shadow-2xl relative overflow-hidden">
+                <form
+                    action="https://script.google.com/macros/s/AKfycbzo9bkGb7MXonSGpugtsI9195hlKDOMyK2V5N6rFBtXmR-ashJ3kn58bw-KoinRDg2_nw/exec"
+                    method="POST" class="space-y-6 relative z-10">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-xs text-text-muted font-mono uppercase tracking-wider">Nombre
+                                Completo</label>
+                            <input type="text" name="name" placeholder="Tu Nombre" required
+                                class="w-full bg-black/40 border border-border rounded-lg px-4 py-3 text-white placeholder-text-dim focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xs text-text-muted font-mono uppercase tracking-wider">Email
+                                Profesional</label>
+                            <input type="email" name="email" placeholder="tu@empresa.com" required
+                                class="w-full bg-black/40 border border-border rounded-lg px-4 py-3 text-white placeholder-text-dim focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-xs text-text-muted font-mono uppercase tracking-wider">Sitio Web
+                                (Opcional)</label>
+                            <input type="text" name="website" placeholder="https://"
+                                class="w-full bg-black/40 border border-border rounded-lg px-4 py-3 text-white placeholder-text-dim focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xs text-text-muted font-mono uppercase tracking-wider">Presupuesto
+                                Estimado</label>
+                            <select name="budget" required
+                                class="w-full bg-black/40 border border-border rounded-lg px-4 py-3 text-white placeholder-text-dim focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all appearance-none">
+                                <option value="" disabled selected class="bg-surface text-text-muted">Selecciona un
+                                    rango</option>
+                                <option value="1000-2000" class="bg-surface">1.000€ - 2.000€</option>
+                                <option value="2000-5000" class="bg-surface">2.000€ - 5.000€</option>
+                                <option value="+5000" class="bg-surface">+5.000€</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-xs text-text-muted font-mono uppercase tracking-wider">Cuéntanos tu reto
+                            principal</label>
+                        <textarea name="message" rows="4"
+                            placeholder="¿Qué problema necesitas resolver con infraestructura IA?" required
+                            class="w-full bg-black/40 border border-border rounded-lg px-4 py-3 text-white placeholder-text-dim focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all resize-y"></textarea>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-lg shadow-lg shadow-primary/25 transition-all flex items-center justify-center gap-2 group transform hover:-translate-y-0.5">
+                        <span>ENVIAR SOLICITUD</span>
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </button>
+                </form>
             </div>
         </div>
     </section>
@@ -907,7 +1388,7 @@
                 <ul class="space-y-2 text-sm text-text-muted">
                     <li><a href="#" class="hover:text-primary transition-colors">About</a></li>
                     <li><a href="#" class="hover:text-primary transition-colors">Blog</a></li>
-                    <li><a href="#" class="hover:text-primary transition-colors">Contact</a></li>
+                    <li><a href="#contact" class="hover:text-primary transition-colors">Contact</a></li>
                 </ul>
             </div>
 
@@ -928,7 +1409,7 @@
         </div>
         <div
             class="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center text-xs text-text-dim">
-            <p>&copy; 2025 Vextria. All rights reserved.</p>
+            <p>&copy; 2026 Vextria. All rights reserved.</p>
             <div class="flex gap-4 mt-4 md:mt-0">
                 <a href="#" class="hover:text-white">Privacy Policy</a>
                 <a href="#" class="hover:text-white">Terms of Service</a>
