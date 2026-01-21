@@ -4,29 +4,24 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Figtree', 'sans-serif'],
       },
       colors: {
-        background: '#050505',
-        surface: '#0A0A0A',
-        primary: '#06b6d4', // cyan-500
-        secondary: '#a855f7', // purple-500
-      },
-      animation: {
-        'blob': 'blob 7s infinite',
-        'scroll': 'scroll 25s linear infinite',
-      },
-      keyframes: {
-        blob: {
-            '0%': { transform: 'translate(0px, 0px) scale(1)' },
-            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+        background: '#000000',
+        surface: '#0d0d0d',
+        primary: '#814ac8', // Purple
+        secondary: '#df7afe', // Pink
+        text: {
+          main: '#ffffff',
+          muted: 'rgba(255, 255, 255, 0.75)',
+          dim: 'rgba(255, 255, 255, 0.5)'
         },
-        scroll: {
-            '0%': { transform: 'translateX(0)' },
-            '100%': { transform: 'translateX(-100%)' },
-        }
+        border: 'rgba(255, 255, 255, 0.1)',
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'hero-glow': 'radial-gradient(50% 50% at 50% 50%, rgba(129, 74, 200, 0.15) 0%, rgba(0, 0, 0, 0) 100%)',
+        'card-glow': 'radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0) 100%)'
       }
     },
   },

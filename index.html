@@ -5,14 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vextria | Arquitectura WEB AI Native</title>
+    <!-- PREVENT INDEXING FOR STAGING -->
+    <meta name="robots" content="noindex, nofollow">
     <meta name="description"
         content="Deja de ser invisible para la IA. Automatiza, escala y domina tu mercado con soluciones AI Native.">
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Alpine.js -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,34 +16,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
         rel="stylesheet">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Figtree', 'sans-serif'],
-                    },
-                    colors: {
-                        background: '#000000',
-                        surface: '#0d0d0d',
-                        primary: '#814ac8', // Purple
-                        secondary: '#df7afe', // Pink
-                        text: {
-                            main: '#ffffff',
-                            muted: 'rgba(255, 255, 255, 0.75)',
-                            dim: 'rgba(255, 255, 255, 0.5)'
-                        },
-                        border: 'rgba(255, 255, 255, 0.1)',
-                    },
-                    backgroundImage: {
-                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-                        'hero-glow': 'radial-gradient(50% 50% at 50% 50%, rgba(129, 74, 200, 0.15) 0%, rgba(0, 0, 0, 0) 100%)',
-                        'card-glow': 'radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0) 100%)'
-                    }
-                }
-            }
-        }
-    </script>
+    <!-- CSS (Static) -->
+    <link href="./css/styles.css" rel="stylesheet">
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
     <style>
         /* Custom Utilities */
         .glass {
@@ -63,7 +36,7 @@
         /* Editor Animation Styles */
         .terminal-card {
             padding: 1rem;
-            overflow: hidden;
+            overflow-x: auto;
             border: 1px solid rgba(197, 197, 197, 0.2);
             border-radius: 12px;
             background-color: rgba(217, 217, 217, 0.05);
@@ -309,9 +282,10 @@
             <!-- Desktop Menu -->
             <div class="hidden md:flex items-center gap-8">
                 <a href="#" class="text-sm font-medium text-text-muted hover:text-white transition-colors">Inicio</a>
-                <a href="#" class="text-sm font-medium text-text-muted hover:text-white transition-colors">AEO</a>
-                <a href="#"
+                <a href="#how"
                     class="text-sm font-medium text-text-muted hover:text-white transition-colors">Metodología</a>
+                <a href="#process"
+                    class="text-sm font-medium text-text-muted hover:text-white transition-colors">Proceso</a>
                 <a href="#contact"
                     class="text-sm font-medium text-text-muted hover:text-white transition-colors">Contacto</a>
             </div>
@@ -363,8 +337,7 @@
         <!-- Subtitle -->
         <p class="relative z-10 text-lg md:text-xl text-text-muted max-w-2xl mx-auto mb-10 leading-relaxed">
             Infraestructura digital para PYMES nativa para la Era de la IA.<br />
-            Fusionamos ingeniería de datos y neuromarketing, creando webs que seducen a los algoritmos y convencen a la
-            mente humana.
+            Fusionamos ingeniería de datos y neuromarketing, para que la Inteligencia Artificial recomiende tu negocio.
         </p>
 
         <!-- CTA Groups -->
@@ -415,7 +388,8 @@
                     <h3 class="text-2xl font-bold mb-4 text-white">Invisible para la IA <br><span
                             class="text-sm font-normal text-orange-400">(Semantic Illiteracy)</span></h3>
                     <p class="text-text-muted leading-relaxed text-sm flex-1">
-                        Google indexaba palabras clave; la IA interpreta conceptos (Entidades). Tu web actual tiene
+                        El SEO es muy importante, pero ya no basta, la IA interpreta "Entidades" (conceptos). Tu web
+                        actual tiene
                         texto
                         plano, pero carece de la Estructura Semántica necesaria para explicarle a modelos como ChatGPT
                         quién eres y por qué eres la autoridad. Resultado: La IA recomienda a tu competencia, no a ti.
@@ -736,6 +710,12 @@
                     </div>
                 </div>
             </div>
+
+            <div class="mt-20 flex justify-center">
+                <a href="#contact" class="btn-glow-purple">
+                    CONTACTEMOS
+                </a>
+            </div>
         </div>
     </section>
 
@@ -758,25 +738,15 @@
                 </p>
             </div>
 
-            <!-- Grid -->
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Step 1: Smart Analyzing -->
-                <div
-                    class="bg-surface border border-border rounded-2xl p-8 hover:border-primary/50 transition-colors duration-300 group">
-                    <div class="mb-4">
-                        <span class="text-xs font-bold text-text-dim uppercase tracking-wider">Step 1</span>
-                        <h3 class="text-2xl font-bold mt-2 mb-4">Análisis y Estrategia</h3>
-                        <p class="text-text-muted text-sm leading-relaxed mb-8">
-                            Realizamos y compartimos contigo un análisis profundo de tu sector y competencia para
-                            definir una estrategia de
-                            ataque clara.
-                        </p>
-                    </div>
-                    <!-- Visual Mock -->
+            <!-- List of Steps -->
+            <div class="space-y-32">
+                <!-- Step 1: Analysis (Left Image, Right Text) -->
+                <div class="grid md:grid-cols-2 gap-12 items-center group">
+                    <!-- Graphic Mockup -->
                     <div
-                        class="bg-black/40 border border-white/5 rounded-xl p-6 relative overflow-hidden flex items-center justify-between gap-6 min-h-[200px]">
+                        class="bg-black/40 border border-white/5 rounded-xl p-6 relative overflow-hidden flex flex-col items-center justify-between gap-6 min-h-[300px] hover:border-primary/30 transition-all duration-500">
                         <!-- Radar/Circle Mock -->
-                        <div class="relative w-24 h-24 flex-shrink-0">
+                        <div class="relative w-32 h-32 flex-shrink-0 mt-4">
                             <div class="absolute inset-0 rounded-full border border-white/10"></div>
                             <div class="absolute inset-4 rounded-full border border-white/10"></div>
                             <div class="absolute inset-0 rounded-full border-t-2 border-primary animate-spin"
@@ -785,22 +755,22 @@
                                 <div class="w-2 h-2 rounded-full bg-primary shadow-[0_0_10px_rgba(129,74,200,0.8)]">
                                 </div>
                             </div>
-                            <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 w-max text-[10px] text-text-dim">
+                            <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 w-max text-xs text-text-dim">
                                 Analyzing workflow...</div>
                         </div>
                         <!-- List -->
-                        <div class="flex-1 space-y-2">
+                        <div class="w-full space-y-2 max-w-sm">
                             <div
-                                class="flex items-center gap-2 bg-white/5 border border-white/5 p-2 rounded text-xs text-text-muted">
-                                <svg class="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                class="flex items-center gap-2 bg-white/5 border border-white/5 p-3 rounded text-sm text-text-muted">
+                                <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                                 System check
                             </div>
                             <div
-                                class="flex items-center gap-2 bg-white/5 border border-white/5 p-2 rounded text-xs text-text-muted">
-                                <svg class="w-3 h-3 text-white/50" fill="none" viewBox="0 0 24 24"
+                                class="flex items-center gap-2 bg-white/5 border border-white/5 p-3 rounded text-sm text-text-muted">
+                                <svg class="w-4 h-4 text-white/50" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -808,8 +778,8 @@
                                 Process check
                             </div>
                             <div
-                                class="flex items-center gap-2 bg-white/5 border border-white/5 p-2 rounded text-xs text-text-muted">
-                                <svg class="w-3 h-3 text-white/50" fill="none" viewBox="0 0 24 24"
+                                class="flex items-center gap-2 bg-white/5 border border-white/5 p-3 rounded text-sm text-text-muted">
+                                <svg class="w-4 h-4 text-white/50" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -817,8 +787,8 @@
                                 Speed check
                             </div>
                             <div
-                                class="flex items-center gap-2 bg-white/5 border border-white/5 p-2 rounded text-xs text-text-muted">
-                                <svg class="w-3 h-3 text-white/50" fill="none" viewBox="0 0 24 24"
+                                class="flex items-center gap-2 bg-white/5 border border-white/5 p-3 rounded text-sm text-text-muted">
+                                <svg class="w-4 h-4 text-white/50" fill="none" viewBox="0 0 24 24"
                                     stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -827,107 +797,125 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Text Content -->
+                    <div class="order-first md:order-last">
+                        <span class="text-xs font-bold text-text-dim uppercase tracking-wider mb-2 block">Step 1</span>
+                        <h3 class="text-3xl font-bold mb-4">Análisis y Estrategia</h3>
+                        <p class="text-text-muted leading-relaxed mb-6">
+                            Realizamos y compartimos contigo un análisis profundo de tu sector y competencia para
+                            definir una estrategia de ataque clara. Identificamos los puntos débiles de tus rivales y
+                            las oportunidades ocultas que la IA puede explotar.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span
+                                class="px-3 py-1 rounded bg-surface border border-border text-xs text-text-muted">Market
+                                Scan</span>
+                            <span
+                                class="px-3 py-1 rounded bg-surface border border-border text-xs text-text-muted">Competitor
+                                Analysis</span>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Step 2: Communication -->
-                <div
-                    class="bg-surface border border-border rounded-2xl p-8 hover:border-primary/50 transition-colors duration-300 group">
-                    <div class="mb-4">
-                        <span class="text-xs font-bold text-text-dim uppercase tracking-wider">Step 2</span>
-                        <h3 class="text-2xl font-bold mt-2 mb-4">Comunicación</h3>
-                        <p class="text-text-muted text-sm leading-relaxed mb-8">
+                <!-- Step 2: Communication (Right Image, Left Text) -->
+                <div class="grid md:grid-cols-2 gap-12 items-center group">
+                    <!-- Text Content -->
+                    <div>
+                        <span class="text-xs font-bold text-text-dim uppercase tracking-wider mb-2 block">Step 2</span>
+                        <h3 class="text-3xl font-bold mb-4">Comunicación</h3>
+                        <p class="text-text-muted leading-relaxed mb-6">
                             Te explicamos el porqué de cada estrategia y te damos acceso directo a nuestro panel de
                             gestión. Verás en vivo cada tarea en proceso, pendiente y cada decisión. Cero incertidumbre,
                             control total del progreso.
                         </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-3 py-1 rounded bg-surface border border-border text-xs text-text-muted">Live
+                                Updates</span>
+                            <span class="px-3 py-1 rounded bg-surface border border-border text-xs text-text-muted">Full
+                                Transparency</span>
+                        </div>
                     </div>
+
                     <!-- Visual Mock -->
-                    <div class="bg-black/90 border border-white/10 rounded-xl p-4 min-h-[220px] flex flex-col">
+                    <div
+                        class="bg-black/90 border border-white/10 rounded-xl p-6 min-h-[300px] flex flex-col hover:border-primary/30 transition-all duration-500 shadow-2xl shadow-primary/5">
                         <!-- Kanban Header -->
-                        <div class="flex items-center justify-between mb-4 px-2">
+                        <div class="flex items-center justify-between mb-6 px-2">
                             <div class="flex items-center gap-2">
                                 <div class="w-2 h-2 rounded-full bg-primary/50"></div>
-                                <span class="text-[10px] font-mono text-text-dim uppercase tracking-wider">Project
+                                <span class="text-xs font-mono text-text-dim uppercase tracking-wider">Project
                                     Board</span>
                             </div>
                             <div class="flex -space-x-1">
-                                <div class="w-4 h-4 rounded-full bg-white/10 border border-black"></div>
-                                <div class="w-4 h-4 rounded-full bg-white/20 border border-black"></div>
+                                <div class="w-6 h-6 rounded-full bg-white/10 border border-black"></div>
+                                <div class="w-6 h-6 rounded-full bg-white/20 border border-black"></div>
                                 <div
-                                    class="w-4 h-4 rounded-full bg-primary/20 border border-black flex items-center justify-center text-[6px] text-white">
+                                    class="w-6 h-6 rounded-full bg-primary/20 border border-black flex items-center justify-center text-[8px] text-white">
                                     +2</div>
                             </div>
                         </div>
 
                         <!-- Kanban Columns -->
-                        <div class="flex gap-3 h-full overflow-hidden">
+                        <div class="flex flex-col md:flex-row gap-4 h-full">
                             <!-- Column 1: Backlog -->
-                            <div class="flex-1 bg-surface/30 rounded-lg p-2 flex flex-col gap-2 opacity-60">
+                            <div class="flex-1 bg-surface/30 rounded-lg p-3 flex flex-col gap-3 opacity-60">
                                 <div class="flex items-center justify-between mb-1">
-                                    <span class="text-[9px] font-bold text-text-dim uppercase">Backlog</span>
-                                    <span class="text-[8px] text-text-muted bg-white/5 px-1 rounded">2</span>
+                                    <span class="text-[10px] font-bold text-text-dim uppercase">Backlog</span>
+                                    <span class="text-[9px] text-text-muted bg-white/5 px-1.5 rounded">2</span>
                                 </div>
-                                <div class="bg-surface border border-white/5 p-2 rounded shadow-sm">
-                                    <div class="h-1 w-8 bg-purple-500/50 rounded-full mb-1"></div>
-                                    <div class="h-1.5 w-3/4 bg-white/10 rounded mb-1"></div>
-                                    <div class="h-1.5 w-1/2 bg-white/5 rounded"></div>
+                                <div class="bg-surface border border-white/5 p-3 rounded shadow-sm">
+                                    <div class="h-1.5 w-10 bg-purple-500/50 rounded-full mb-2"></div>
+                                    <div class="h-2 w-3/4 bg-white/10 rounded mb-2"></div>
+                                    <div class="h-2 w-1/2 bg-white/5 rounded"></div>
                                 </div>
-                                <div class="bg-surface border border-white/5 p-2 rounded shadow-sm">
-                                    <div class="h-1.5 w-full bg-white/10 rounded mb-1"></div>
+                                <div class="bg-surface border border-white/5 p-3 rounded shadow-sm">
+                                    <div class="h-2 w-full bg-white/10 rounded mb-1"></div>
                                 </div>
                             </div>
 
                             <!-- Column 2: In Progress -->
-                            <div class="flex-1 bg-surface/50 rounded-lg p-2 flex flex-col gap-2">
+                            <div class="flex-1 bg-surface/50 rounded-lg p-3 flex flex-col gap-3">
                                 <div class="flex items-center justify-between mb-1">
-                                    <span class="text-[9px] font-bold text-white uppercase">In Progress</span>
-                                    <span class="text-[8px] text-white bg-primary/20 px-1 rounded">1</span>
+                                    <span class="text-[10px] font-bold text-white uppercase">In Progress</span>
+                                    <span class="text-[9px] text-white bg-primary/20 px-1.5 rounded">1</span>
                                 </div>
                                 <div
-                                    class="bg-surface border border-primary/30 p-2 rounded shadow-sm relative group/card">
+                                    class="bg-surface border border-primary/30 p-3 rounded shadow-sm relative group/card">
                                     <div class="absolute -left-[1px] top-2 bottom-2 w-[2px] bg-primary rounded-r"></div>
-                                    <div class="flex gap-1 mb-1.5">
-                                        <div class="h-1 w-6 bg-red-400/60 rounded-full"></div>
-                                        <div class="h-1 w-6 bg-blue-400/60 rounded-full"></div>
+                                    <div class="flex gap-1.5 mb-2">
+                                        <div class="h-1.5 w-8 bg-red-400/60 rounded-full"></div>
+                                        <div class="h-1.5 w-8 bg-blue-400/60 rounded-full"></div>
                                     </div>
-                                    <div class="h-1.5 w-5/6 bg-white/20 rounded mb-1.5"></div>
-                                    <div class="h-1.5 w-2/3 bg-white/10 rounded mb-2"></div>
+                                    <div class="h-2 w-5/6 bg-white/20 rounded mb-2"></div>
+                                    <div class="h-2 w-2/3 bg-white/10 rounded mb-3"></div>
                                     <div class="flex justify-between items-center">
-                                        <div class="w-3 h-3 rounded-full bg-white/10"></div>
-                                        <div class="text-[8px] text-text-dim">Due 2d</div>
+                                        <div class="w-4 h-4 rounded-full bg-white/10"></div>
+                                        <div class="text-[9px] text-text-dim">Due 2d</div>
                                     </div>
                                 </div>
                             </div>
 
                             <!-- Column 3: Review -->
-                            <div class="flex-1 bg-surface/30 rounded-lg p-2 flex flex-col gap-2 opacity-80">
+                            <div class="flex-1 bg-surface/30 rounded-lg p-3 flex flex-col gap-3 opacity-80">
                                 <div class="flex items-center justify-between mb-1">
-                                    <span class="text-[9px] font-bold text-text-dim uppercase">Review</span>
-                                    <span class="text-[8px] text-text-muted bg-white/5 px-1 rounded">1</span>
+                                    <span class="text-[10px] font-bold text-text-dim uppercase">Review</span>
+                                    <span class="text-[9px] text-text-muted bg-white/5 px-1.5 rounded">1</span>
                                 </div>
-                                <div class="bg-surface border border-white/5 p-2 rounded shadow-sm">
-                                    <div class="h-1 w-8 bg-green-500/50 rounded-full mb-1"></div>
-                                    <div class="h-1.5 w-full bg-white/10 rounded mb-1"></div>
-                                    <div class="h-1.5 w-1/3 bg-white/5 rounded"></div>
+                                <div class="bg-surface border border-white/5 p-3 rounded shadow-sm">
+                                    <div class="h-1.5 w-10 bg-green-500/50 rounded-full mb-2"></div>
+                                    <div class="h-2 w-full bg-white/10 rounded mb-2"></div>
+                                    <div class="h-2 w-1/3 bg-white/5 rounded"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Step 3: AI Development -->
-                <div
-                    class="bg-surface border border-border rounded-2xl p-8 hover:border-primary/50 transition-colors duration-300 group">
-                    <div class="mb-4">
-                        <span class="text-xs font-bold text-text-dim uppercase tracking-wider">Step 3</span>
-                        <h3 class="text-2xl font-bold mt-2 mb-4">Desarrollo</h3>
-                        <p class="text-text-muted text-sm leading-relaxed mb-8">
-                            Implementamos la infraestructura, optimizamos la semántica para IA y pulimos la experiencia
-                            de usuario (UX).
-                        </p>
-                    </div>
+                <!-- Step 3: AI Development (Left Image, Right Text) -->
+                <div class="grid md:grid-cols-2 gap-12 items-center group">
                     <!-- Visual Mock -->
-                    <div class="terminal-card">
+                    <div class="terminal-card hover:border-primary/30 transition-all duration-500">
                         <div class="terminal-wrap">
                             <div class="terminal">
                                 <div class="terminal-head">
@@ -998,35 +986,63 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Text Content -->
+                    <div class="order-first md:order-last">
+                        <span class="text-xs font-bold text-text-dim uppercase tracking-wider mb-2 block">Step 3</span>
+                        <h3 class="text-3xl font-bold mb-4">Desarrollo</h3>
+                        <p class="text-text-muted leading-relaxed mb-6">
+                            Implementamos la infraestructura, optimizamos la semántica para IA y pulimos la experiencia
+                            de usuario (UX). Usamos las últimas tecnologías para garantizar velocidad, seguridad y
+                            escalabilidad.
+                        </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span
+                                class="px-3 py-1 rounded bg-surface border border-border text-xs text-text-muted">Clean
+                                Architecture</span>
+                            <span class="px-3 py-1 rounded bg-surface border border-border text-xs text-text-muted">AEO
+                                Optimization</span>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Step 4: Continuous Optimization -->
-                <div
-                    class="bg-surface border border-border rounded-2xl p-8 hover:border-primary/50 transition-colors duration-300 group">
-                    <div class="mb-4">
-                        <span class="text-xs font-bold text-text-dim uppercase tracking-wider">Step 4</span>
-                        <h3 class="text-2xl font-bold mt-2 mb-4">Lanzamiento y revisiones</h3>
-                        <p class="text-text-muted text-sm leading-relaxed mb-8">
+                <!-- Step 4: Continuous Optimization (Right Image, Left Text) -->
+                <div class="grid md:grid-cols-2 gap-12 items-center group">
+                    <!-- Text Content -->
+                    <div>
+                        <span class="text-xs font-bold text-text-dim uppercase tracking-wider mb-2 block">Step 4</span>
+                        <h3 class="text-3xl font-bold mb-4">Lanzamiento y revisiones</h3>
+                        <p class="text-text-muted leading-relaxed mb-6">
                             Tu satisfacción es lo único que importa. Antes de darte "las llaves", revisamos juntos
                             cada funcionalidad y diseño. Iteramos y pulimos los detalles finales hasta que estés 100%
                             satisfecho con el resultado. Solo entonces te transferimos el control absoluto.
                         </p>
+                        <div class="flex flex-wrap gap-3">
+                            <span
+                                class="px-3 py-1 rounded bg-surface border border-border text-xs text-text-muted">Quality
+                                Assurance</span>
+                            <span
+                                class="px-3 py-1 rounded bg-surface border border-border text-xs text-text-muted">Final
+                                Polish</span>
+                        </div>
                     </div>
+
                     <!-- Visual Mock: AI Machine Vision -->
                     <div
-                        class="relative bg-black/40 border border-white/5 rounded-xl overflow-hidden min-h-[200px] group">
+                        class="relative bg-black/40 border border-white/5 rounded-xl overflow-hidden min-h-[300px] group hover:border-primary/30 transition-all duration-500 shadow-2xl shadow-primary/5">
                         <!-- Holographic Grid Background -->
                         <div
                             class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:20px_20px] opacity-20">
                         </div>
 
                         <!-- Split Interface -->
-                        <div class="relative z-10 grid grid-cols-2 h-full min-h-[220px]">
+                        <div class="relative z-10 grid grid-cols-1 md:grid-cols-2 h-auto md:h-full min-h-[300px]">
                             <!-- Left: Wireframe Web View -->
-                            <div class="border-r border-white/5 p-5 flex flex-col gap-3 opacity-40 blur-[1px]">
-                                <div class="h-2 w-1/3 bg-white/30 rounded-full mb-2"></div>
+                            <div
+                                class="border-b md:border-b-0 md:border-r border-white/5 p-6 flex flex-col gap-4 opacity-40 blur-[1px]">
+                                <div class="h-3 w-1/3 bg-white/30 rounded-full mb-2"></div>
                                 <div class="aspect-video w-full bg-white/10 rounded-lg"></div>
-                                <div class="space-y-2">
+                                <div class="space-y-3">
                                     <div class="h-2 w-full bg-white/10 rounded"></div>
                                     <div class="h-2 w-5/6 bg-white/10 rounded"></div>
                                     <div class="h-2 w-4/6 bg-white/10 rounded"></div>
@@ -1034,7 +1050,7 @@
                             </div>
 
                             <!-- Right: Knowledge Graph / Nodes -->
-                            <div class="relative p-5 flex items-center justify-center">
+                            <div class="relative p-6 flex items-center justify-center min-h-[300px] md:min-h-0">
                                 <div class="absolute inset-0 flex items-center justify-center">
                                     <svg class="w-full h-full absolute inset-0 text-primary/30"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -1051,19 +1067,19 @@
 
                                     <!-- Central Node -->
                                     <div
-                                        class="relative w-4 h-4 rounded-full bg-primary shadow-[0_0_15px_rgba(232,28,255,0.6)] z-10 animate-pulse">
+                                        class="relative w-6 h-6 rounded-full bg-primary shadow-[0_0_15px_rgba(232,28,255,0.6)] z-10 animate-pulse">
                                     </div>
 
                                     <!-- Satellite Nodes -->
                                     <div
-                                        class="absolute top-[30%] left-[20%] w-2 h-2 rounded-full bg-secondary shadow-[0_0_10px_#40c9ff]">
+                                        class="absolute top-[30%] left-[20%] w-3 h-3 rounded-full bg-secondary shadow-[0_0_10px_#40c9ff]">
                                     </div>
                                     <div
-                                        class="absolute top-[30%] right-[20%] w-2 h-2 rounded-full bg-secondary shadow-[0_0_10px_#40c9ff]">
+                                        class="absolute top-[30%] right-[20%] w-3 h-3 rounded-full bg-secondary shadow-[0_0_10px_#40c9ff]">
                                     </div>
-                                    <div class="absolute bottom-[30%] left-[30%] w-2 h-2 rounded-full bg-white/50">
+                                    <div class="absolute bottom-[30%] left-[30%] w-3 h-3 rounded-full bg-white/50">
                                     </div>
-                                    <div class="absolute bottom-[30%] right-[30%] w-2 h-2 rounded-full bg-white/50">
+                                    <div class="absolute bottom-[30%] right-[30%] w-3 h-3 rounded-full bg-white/50">
                                     </div>
                                 </div>
                                 <div class="absolute top-2 right-2 text-[8px] font-mono text-primary/80">ANALYZING...
@@ -1072,9 +1088,10 @@
                         </div>
 
                         <!-- HUD Overlay Labels -->
-                        <div class="absolute bottom-3 left-3 right-3 flex flex-col gap-1.5 font-mono text-[9px]">
+                        <div
+                            class="relative md:absolute md:bottom-4 md:left-4 md:right-4 flex flex-col gap-2 font-mono text-[10px] p-4 md:p-0">
                             <div
-                                class="flex items-center justify-between bg-black/80 backdrop-blur-sm border border-green-500/20 rounded px-2 py-1 text-green-400/90 shadow-sm">
+                                class="flex items-center justify-between bg-black/80 backdrop-blur-sm border border-green-500/20 rounded px-3 py-1.5 text-green-400/90 shadow-sm">
                                 <div class="flex items-center gap-2">
                                     <div class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
                                     <span>Rastreo de Bots</span>
@@ -1083,9 +1100,9 @@
                             </div>
 
                             <div
-                                class="flex items-center justify-between bg-black/80 backdrop-blur-sm border border-primary/20 rounded px-2 py-1 text-primary/90 shadow-sm">
+                                class="flex items-center justify-between bg-black/80 backdrop-blur-sm border border-primary/20 rounded px-3 py-1.5 text-primary/90 shadow-sm">
                                 <div class="flex items-center gap-2">
-                                    <svg class="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M13 10V3L4 14h7v7l9-11h-7z" />
                                     </svg>
@@ -1095,9 +1112,9 @@
                             </div>
 
                             <div
-                                class="flex items-center justify-between bg-black/80 backdrop-blur-sm border border-secondary/20 rounded px-2 py-1 text-secondary/90 shadow-sm">
+                                class="flex items-center justify-between bg-black/80 backdrop-blur-sm border border-secondary/20 rounded px-3 py-1.5 text-secondary/90 shadow-sm">
                                 <div class="flex items-center gap-2">
-                                    <svg class="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
@@ -1108,6 +1125,14 @@
                         </div>
                     </div>
                 </div>
+
+            </div>
+
+            <div class="mt-20 flex justify-center">
+                <a href="#contact" class="btn-sparkle-spin">
+                    <span class="text_button">CONSULTORÍA GRATIS</span>
+                    <div class="dots_border"></div>
+                </a>
             </div>
         </div>
     </section>
@@ -1314,7 +1339,7 @@
                     ¿Listo para la Era de la IA?
                 </h2>
                 <p class="text-text-muted text-lg">
-                    Limitamos el número de proyectos activos para garantizar la máxima calidad técnica en cada entrega.
+                    ¿Quieres saber como y que hacemos exactamente? Te lo explicamos, sin compromiso
                 </p>
             </div>
 
@@ -1395,28 +1420,8 @@
                 </p>
             </div>
 
-            <!-- Links 1 -->
-            <div>
-                <h4 class="font-semibold mb-4 text-white">Platform</h4>
-                <ul class="space-y-2 text-sm text-text-muted">
-                    <li><a href="#" class="hover:text-primary transition-colors">Solutions</a></li>
-                    <li><a href="#" class="hover:text-primary transition-colors">How it Works</a></li>
-                    <li><a href="#" class="hover:text-primary transition-colors">Pricing</a></li>
-                </ul>
-            </div>
-
-            <!-- Links 2 -->
-            <div>
-                <h4 class="font-semibold mb-4 text-white">Company</h4>
-                <ul class="space-y-2 text-sm text-text-muted">
-                    <li><a href="#" class="hover:text-primary transition-colors">About</a></li>
-                    <li><a href="#" class="hover:text-primary transition-colors">Blog</a></li>
-                    <li><a href="#contact" class="hover:text-primary transition-colors">Contact</a></li>
-                </ul>
-            </div>
-
             <!-- Newsletter -->
-            <div>
+            <div class="md:col-span-1">
                 <h4 class="font-semibold mb-4 text-white">Subscribe</h4>
                 <div class="flex gap-2">
                     <input type="email" placeholder="Enter your email"
@@ -1434,8 +1439,9 @@
             class="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center text-xs text-text-dim">
             <p>&copy; 2026 Vextria. All rights reserved.</p>
             <div class="flex gap-4 mt-4 md:mt-0">
-                <a href="#" class="hover:text-white">Privacy Policy</a>
-                <a href="#" class="hover:text-white">Terms of Service</a>
+                <a href="legal.html" class="hover:text-white transition-colors">Aviso Legal</a>
+                <a href="privacidad.html" class="hover:text-white transition-colors">Privacidad</a>
+                <a href="cookies.html" class="hover:text-white transition-colors">Cookies</a>
             </div>
         </div>
     </footer>

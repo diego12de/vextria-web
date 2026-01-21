@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviso Legal | Vextria</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS (Static Build) -->
+    <link href="./css/styles.css" rel="stylesheet">
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+
+<body class="antialiased relative overflow-x-hidden selection:bg-cyan-500/30 selection:text-cyan-100">
+
+    <!-- Fondo Grid Global -->
+    <div class="fixed inset-0 z-0 bg-grid pointer-events-none"></div>
+
+    <!-- Aurora Effects (Background Glows) -->
+    <div
+        class="fixed top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-cyan-500/20 blur-[120px] rounded-full opacity-20 pointer-events-none z-0">
+    </div>
+    <div
+        class="fixed bottom-0 right-0 w-[800px] h-[600px] bg-purple-500/10 blur-[120px] rounded-full opacity-20 pointer-events-none z-0">
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 border-b border-white/5 bg-[#050505]/80 backdrop-blur-md"
+        x-data="{ open: false }">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <a href="index.html" class="flex items-center gap-2">
+                    <div class="w-6 h-6 bg-gradient-to-br from-cyan-400 to-purple-500 rounded-sm"></div>
+                    <span class="font-bold text-lg tracking-tight text-white">VEXTRIA</span>
+                </a>
+            </div>
+
+            <div class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
+                <a href="index.html#metodologia" class="hover:text-white transition-colors">Metodología</a>
+                <a href="index.html#proceso" class="hover:text-white transition-colors">Proceso</a>
+                <a href="index.html#resultados" class="hover:text-white transition-colors">Resultados</a>
+            </div>
+
+            <div class="hidden md:block">
+                <a href="index.html#contacto"
+                    class="px-4 py-2 text-xs font-semibold text-black bg-white rounded hover:bg-gray-200 transition-colors">
+                    Iniciar Proyecto
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button @click="open = !open" class="md:hidden text-white focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div x-show="open" class="md:hidden bg-[#050505] border-b border-white/10 p-4" x-transition>
+            <div class="flex flex-col gap-4">
+                <a href="index.html#metodologia" class="text-gray-400 hover:text-white">Metodología</a>
+                <a href="index.html#proceso" class="text-gray-400 hover:text-white">Proceso</a>
+                <a href="index.html#contacto" class="text-cyan-400 font-semibold">Iniciar Proyecto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- CONTENT SECTION -->
+    <section class="relative z-10 pt-32 pb-24 px-6 min-h-screen">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl font-bold text-white mb-8">Aviso Legal</h1>
+
+            <div class="space-y-6 text-sm leading-relaxed border-t border-white/10 pt-8">
+
+                <h2 class="text-xl font-bold text-white mt-8 mb-4">I. INFORMACIÓN GENERAL</h2>
+                <p>En cumplimiento con el deber de información dispuesto en la Ley 34/2002 de Servicios de la Sociedad
+                    de la Información y el Comercio Electrónico (LSSI-CE) de 11 de julio, se facilitan a continuación
+                    los datos de información general de este sitio web:</p>
+                <p>La titularidad de este sitio web, Vextria (en adelante, Sitio Web), la ostenta: <strong>Diego José
+                        Carrodeguas Movilla</strong>, con NIF: 25203893X, y cuyos datos de contacto son:</p>
+                <p>
+                    <strong>Dirección:</strong> Tomás Ostrariz Forcén 72<br>
+                    <strong>Teléfono de contacto:</strong> 630 867 155<br>
+                    <strong>Email de contacto:</strong> diegodeguas@gmail.com<br>
+                    <strong>Actividad:</strong> Agencia de posicionamiento AEO e Infraestructura IA.
+                </p>
+
+                <h2 class="text-xl font-bold text-white mt-8 mb-4">II. TÉRMINOS Y CONDICIONES GENERALES DE USO</h2>
+                <h3 class="text-lg font-semibold text-white mt-4 mb-2">El objeto de las condiciones: El Sitio Web</h3>
+                <p>El objeto de las presentes Condiciones Generales de Uso (en adelante, Condiciones) es regular el
+                    acceso y la utilización del Sitio Web. A los efectos de las presentes Condiciones se entenderá como
+                    Sitio Web: la apariencia externa de los interfaces de pantalla, tanto de forma estática como de
+                    forma dinámica, es decir, el árbol de navegación; y todos los elementos integrados tanto en los
+                    interfaces de pantalla como en el árbol de navegación (en adelante, Contenidos) y todos aquellos
+                    servicios o recursos en línea que en su caso ofrezca a los Usuarios (en adelante, Servicios).</p>
+                <p>Vextria se reserva la facultad de modificar, en cualquier momento, y sin aviso previo, la
+                    presentación y configuración del Sitio Web y de los Contenidos y Servicios que en él pudieran estar
+                    incorporados. El Usuario reconoce y acepta que en cualquier momento Vextria pueda interrumpir,
+                    desactivar y/o cancelar cualquiera de estos elementos que se integran en el Sitio Web o el acceso a
+                    los mismos.</p>
+
+                <h3 class="text-lg font-semibold text-white mt-4 mb-2">El Usuario</h3>
+                <p>El acceso, la navegación y uso del Sitio Web, confiere la condición de Usuario, por lo que se
+                    aceptan, desde que se inicia la navegación por el Sitio Web, todas las Condiciones aquí
+                    establecidas, así como sus ulteriores modificaciones, sin perjuicio de la aplicación de la
+                    correspondiente normativa legal de obligado cumplimiento según el caso. Dada la relevancia de lo
+                    anterior, se recomienda al Usuario leerlas cada vez que visite el Sitio Web.</p>
+                <p>El Usuario asume su responsabilidad para realizar un uso correcto del Sitio Web. Esta responsabilidad
+                    se extenderá a:</p>
+                <ul class="list-disc pl-5 space-y-2">
+                    <li>Un uso de la información, Contenidos y/o Servicios y datos ofrecidos por Vextria sin que sea
+                        contrario a lo dispuesto por las presentes Condiciones, la Ley, la moral o el orden público, o
+                        que de cualquier otro modo puedan suponer lesión de los derechos de terceros o del mismo
+                        funcionamiento del Sitio Web.</li>
+                    <li>La veracidad y licitud de las informaciones aportadas por el Usuario en los formularios
+                        extendidos por Vextria para el acceso a ciertos Contenidos o Servicios ofrecidos por el Sitio
+                        Web.</li>
+                </ul>
+
+                <h2 class="text-xl font-bold text-white mt-8 mb-4">III. ACCESO Y NAVEGACIÓN EN EL SITIO WEB: EXCLUSIÓN
+                    DE GARANTÍAS Y RESPONSABILIDAD</h2>
+                <p>Vextria no garantiza la continuidad, disponibilidad y utilidad del Sitio Web, ni de los Contenidos o
+                    Servicios. Vextria hará todo lo posible por el buen funcionamiento del Sitio Web, sin embargo, no se
+                    responsabiliza ni garantiza que el acceso a este Sitio Web no vaya a ser ininterrumpido o que esté
+                    libre de error.</p>
+                <p>Tampoco se responsabiliza o garantiza que el contenido o software al que pueda accederse a través de
+                    este Sitio Web, esté libre de error o cause un daño al sistema informático (software y hardware) del
+                    Usuario. En ningún caso Vextria será responsable por las pérdidas, daños o perjuicios de cualquier
+                    tipo que surjan por el acceso, navegación y el uso del Sitio Web, incluyéndose, pero no limitándose,
+                    a los ocasionados a los sistemas informáticos o los provocados por la introducción de virus.</p>
+
+                <h2 class="text-xl font-bold text-white mt-8 mb-4">IV. POLÍTICA DE ENLACES</h2>
+                <p>Se informa que el Sitio Web de Vextria pone o puede poner a disposición de los Usuarios medios de
+                    enlace (como, entre otros, links, banners, botones), directorios y motores de búsqueda que permiten
+                    a los Usuarios acceder a sitios web pertenecientes y/o gestionados por terceros.</p>
+                <p>La instalación de estos enlaces, directorios y motores de búsqueda en el Sitio Web tiene por objeto
+                    facilitar a los Usuarios la búsqueda de y acceso a la información disponible en Internet, sin que
+                    pueda considerarse una sugerencia, recomendación o invitación para la visita de los mismos. Vextria
+                    no ofrece ni comercializa por sí ni por medio de terceros los productos y/o servicios disponibles en
+                    dichos sitios enlazados.</p>
+
+                <h2 class="text-xl font-bold text-white mt-8 mb-4">V. PROPIEDAD INTELECTUAL E INDUSTRIAL</h2>
+                <p>Vextria por sí o como parte cesionaria, es titular de todos los derechos de propiedad intelectual e
+                    industrial del Sitio Web, así como de los elementos contenidos en el mismo (a título enunciativo y
+                    no exhaustivo, imágenes, sonido, audio, vídeo, software o textos, marcas o logotipos, combinaciones
+                    de colores, estructura y diseño, selección de materiales usados, programas de ordenador necesarios
+                    para su funcionamiento, acceso y uso, etc.). Serán, por consiguiente, obras protegidas como
+                    propiedad intelectual por el ordenamiento jurídico español, siéndoles aplicables tanto la normativa
+                    española y comunitaria en este campo, como los tratados internacionales relativos a la materia y
+                    suscritos por España.</p>
+                <p>Todos los derechos reservados. Quedan expresamente prohibidas la reproducción, la distribución y la
+                    comunicación pública, incluida su modalidad de puesta a disposición, de la totalidad o parte de los
+                    contenidos de esta página web, con fines comerciales, en cualquier soporte y por cualquier medio
+                    técnico, sin la autorización de Vextria.</p>
+
+                <h2 class="text-xl font-bold text-white mt-8 mb-4">VI. ACCIONES LEGALES, LEGISLACIÓN APLICABLE Y
+                    JURISDICCIÓN</h2>
+                <p>Vextria se reserva la facultad de presentar las acciones civiles o penales que considere necesarias
+                    por la utilización indebida del Sitio Web y Contenidos, o por el incumplimiento de las presentes
+                    Condiciones.</p>
+                <p>La relación entre el Usuario y Vextria se regirá por la normativa vigente y de aplicación en el
+                    territorio español. De surgir cualquier controversia en relación con la interpretación y/o a la
+                    aplicación de estas Condiciones las partes someterán sus conflictos a la jurisdicción ordinaria
+                    sometiéndose a los jueces y tribunales que correspondan conforme a derecho.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer
+        class="py-12 border-t border-white/5 text-center text-gray-600 text-sm relative z-10 bg-[#050505]/50 backdrop-blur-sm">
+        <p>&copy; 2024 Vextria Agency. Engineering Digital Intelligence.</p>
+        <div class="mt-4 flex flex-wrap justify-center gap-6">
+            <a href="legal.html" class="hover:text-white transition">Aviso Legal</a>
+            <a href="privacidad.html" class="hover:text-white transition">Privacidad</a>
+            <a href="cookies.html" class="hover:text-white transition">Cookies</a>
+        </div>
+    </footer>
+
+</body>
+
+</html>

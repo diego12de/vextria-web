@@ -5,136 +5,184 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Política de Cookies | Vextria</title>
+    <!-- PREVENT INDEXING FOR STAGING -->
+    <meta name="robots" content="noindex, nofollow">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
 
-    <!-- Tailwind CSS (Static Build) -->
+    <!-- CSS (Static) -->
     <link href="./css/styles.css" rel="stylesheet">
 
     <!-- Alpine.js -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
+    <style>
+        .glass {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
 </head>
 
-<body class="antialiased relative overflow-x-hidden selection:bg-cyan-500/30 selection:text-cyan-100">
-
-    <!-- Fondo Grid Global -->
-    <div class="fixed inset-0 z-0 bg-grid pointer-events-none"></div>
-
-    <!-- Aurora Effects (Background Glows) -->
-    <div
-        class="fixed top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[400px] bg-cyan-500/20 blur-[120px] rounded-full opacity-20 pointer-events-none z-0">
-    </div>
-    <div
-        class="fixed bottom-0 right-0 w-[800px] h-[600px] bg-purple-500/10 blur-[120px] rounded-full opacity-20 pointer-events-none z-0">
-    </div>
+<body class="bg-background text-text-main font-sans antialiased selection:bg-primary selection:text-white">
 
     <!-- Navigation -->
-    <nav class="fixed w-full z-50 top-0 border-b border-white/5 bg-[#050505]/80 backdrop-blur-md"
-        x-data="{ open: false }">
-        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <a href="index.html" class="flex items-center gap-2">
-                    <div class="w-6 h-6 bg-gradient-to-br from-cyan-400 to-purple-500 rounded-sm"></div>
-                    <span class="font-bold text-lg tracking-tight text-white">VEXTRIA</span>
-                </a>
+    <nav class="fixed top-0 inset-x-0 z-50 glass border-b border-border transition-all duration-300"
+        x-data="{ atTop: true }" @scroll.window="atTop = (window.pageYOffset < 20)">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-2 group">
+                <svg class="w-8 h-8 text-primary group-hover:text-secondary transition-colors duration-300"
+                    viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 19h20L12 2zm0 3.8l6.8 11.2H5.2L12 5.8z" />
+                </svg>
+                <span class="text-xl font-bold tracking-tight italic">VEXTRIA</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html"
+                    class="text-sm font-medium text-text-muted hover:text-white transition-colors">Inicio</a>
+                <a href="index.html#how"
+                    class="text-sm font-medium text-text-muted hover:text-white transition-colors">Metodología</a>
+                <a href="index.html#process"
+                    class="text-sm font-medium text-text-muted hover:text-white transition-colors">Proceso</a>
+                <a href="index.html#contact"
+                    class="text-sm font-medium text-text-muted hover:text-white transition-colors">Contacto</a>
             </div>
 
-            <div class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
-                <a href="index.html#metodologia" class="hover:text-white transition-colors">Metodología</a>
-                <a href="index.html#proceso" class="hover:text-white transition-colors">Proceso</a>
-                <a href="index.html#resultados" class="hover:text-white transition-colors">Resultados</a>
-            </div>
-
-            <div class="hidden md:block">
-                <a href="index.html#contacto"
-                    class="px-4 py-2 text-xs font-semibold text-black bg-white rounded hover:bg-gray-200 transition-colors">
-                    Iniciar Proyecto
-                </a>
-            </div>
+            <!-- CTA Button -->
+            <a href="index.html#contact"
+                class="hidden md:flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/10 px-4 py-2 rounded-lg text-sm font-medium transition-all group">
+                <span>Hablemos</span>
+                <svg class="w-4 h-4 text-text-muted group-hover:translate-x-0.5 transition-transform" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6">
+                    </path>
+                </svg>
+            </a>
 
             <!-- Mobile Menu Button -->
-            <button @click="open = !open" class="md:hidden text-white focus:outline-none">
+            <button class="md:hidden p-2 text-text-muted">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
                     </path>
                 </svg>
             </button>
         </div>
-
-        <!-- Mobile Menu -->
-        <div x-show="open" class="md:hidden bg-[#050505] border-b border-white/10 p-4" x-transition>
-            <div class="flex flex-col gap-4">
-                <a href="index.html#metodologia" class="text-gray-400 hover:text-white">Metodología</a>
-                <a href="index.html#proceso" class="text-gray-400 hover:text-white">Proceso</a>
-                <a href="index.html#contacto" class="text-cyan-400 font-semibold">Iniciar Proyecto</a>
-            </div>
-        </div>
     </nav>
 
-    <!-- CONTENT SECTION -->
-    <section class="relative z-10 pt-32 pb-24 px-6 min-h-screen">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-4xl font-bold text-white mb-8">Política de Cookies</h1>
+    <!-- Main Content -->
+    <main class="pt-32 pb-24 px-6 min-h-screen relative z-10">
+        <!-- Glow Effect -->
+        <div class="absolute inset-0 bg-hero-glow z-0 pointer-events-none opacity-30"></div>
 
-            <div class="space-y-6 text-sm leading-relaxed border-t border-white/10 pt-8">
-                <h2 class="text-xl font-bold text-white mt-8 mb-4">INFORMACIÓN SOBRE COOKIES</h2>
-                <p>El acceso a este Sitio Web puede implicar la utilización de cookies. Las cookies son pequeñas
-                    cantidades de información que se almacenan en el navegador utilizado por cada Usuario —en los
-                    distintos dispositivos que pueda utilizar para navegar— para que el servidor recuerde cierta
-                    información que posteriormente y únicamente el servidor que la implementó leerá. Las cookies
-                    facilitan la navegación, la hacen más amigable, y no dañan el dispositivo de navegación.</p>
+        <div class="max-w-4xl mx-auto relative z-10">
+            <h1 class="text-4xl md:text-5xl font-bold mb-12 tracking-tight">Política de Cookies</h1>
 
-                <h2 class="text-xl font-bold text-white mt-8 mb-4">TIPOS DE COOKIES UTILIZADAS</h2>
+            <div class="space-y-8 text-text-muted leading-relaxed">
 
-                <h3 class="text-lg font-semibold text-white mt-4 mb-2">1. Cookies propias</h3>
-                <p>Son aquellas cookies que son enviadas al ordenador o dispositivo del Usuario y gestionadas
-                    exclusivamente por Vextria para el mejor funcionamiento del Sitio Web. La información que se recaba
-                    se emplea para mejorar la calidad del Sitio Web y su Contenido y su experiencia como Usuario. Estas
-                    cookies permiten reconocer al Usuario como visitante recurrente del Sitio Web y adaptar el contenido
-                    para ofrecerle contenidos que se ajusten a sus preferencias.</p>
+                <section>
+                    <h2 class="text-2xl font-bold text-white mb-4">INFORMACIÓN SOBRE COOKIES</h2>
+                    <p class="mb-4">El acceso a este Sitio Web puede implicar la utilización de cookies. Las cookies son
+                        pequeñas cantidades de información que se almacenan en el navegador utilizado por cada Usuario
+                        —en los distintos dispositivos que pueda utilizar para navegar— para que el servidor recuerde
+                        cierta información que posteriormente y únicamente el servidor que la implementó leerá. Las
+                        cookies facilitan la navegación, la hacen más amigable, y no dañan el dispositivo de navegación.
+                    </p>
+                </section>
 
-                <h3 class="text-lg font-semibold text-white mt-4 mb-2">2. Cookies de terceros</h3>
-                <p>Son cookies utilizadas y gestionadas por entidades externas que proporcionan a Vextria servicios
-                    solicitados por este mismo para mejorar el Sitio Web y la experiencia del usuario al navegar en el
-                    Sitio Web. Los principales objetivos para los que se utilizan cookies de terceros son la obtención
-                    de estadísticas de accesos y analizar la información de la navegación (ej. Google Analytics).</p>
-                <p>La información que se obtiene se refiere, por ejemplo, al número de páginas visitadas, el idioma, el
-                    lugar a la que la dirección IP desde el que accede el Usuario, el número de Usuarios que acceden, la
-                    frecuencia y reincidencia de las visitas, el tiempo de visita, el navegador que usan, el operador o
-                    tipo de dispositivo desde el que se realiza la visita. Esta información se utiliza para mejorar el
-                    Sitio Web y detectar nuevas necesidades para ofrecer a los Usuarios un Contenido y/o servicio de
-                    óptima calidad. En todo caso, la información se recopila de forma anónima y se elaboran informes de
-                    tendencias del Sitio Web sin identificar a usuarios individuales.</p>
+                <section>
+                    <h2 class="text-2xl font-bold text-white mb-4">TIPOS DE COOKIES UTILIZADAS</h2>
 
-                <h2 class="text-xl font-bold text-white mt-8 mb-4">DESHABILITAR, RECHAZAR Y ELIMINAR COOKIES</h2>
-                <p>El Usuario puede deshabilitar, rechazar y eliminar las cookies —total o parcialmente— instaladas en
-                    su dispositivo mediante la configuración de su navegador (entre los que se encuentran, por ejemplo,
-                    Chrome, Firefox, Safari, Explorer, Edge). En este sentido, los procedimientos para rechazar y
-                    eliminar las cookies pueden diferir de un navegador de Internet a otro. En consecuencia, el Usuario
-                    debe acudir a las instrucciones facilitadas por el propio navegador de Internet que esté utilizando.
-                </p>
-                <p>En el supuesto de que rechace el uso de cookies —total o parcialmente— podrá seguir usando el Sitio
-                    Web, si bien podrá tener limitada la utilización de algunas de las prestaciones del mismo.</p>
+                    <h3 class="text-xl font-semibold text-white mt-6 mb-3">1. Cookies propias</h3>
+                    <p class="mb-4">Son aquellas cookies que son enviadas al ordenador o dispositivo del Usuario y
+                        gestionadas exclusivamente por Vextria para el mejor funcionamiento del Sitio Web. La
+                        información que se recaba se emplea para mejorar la calidad del Sitio Web y su Contenido y su
+                        experiencia como Usuario. Estas cookies permiten reconocer al Usuario como visitante recurrente
+                        del Sitio Web y adaptar el contenido para ofrecerle contenidos que se ajusten a sus
+                        preferencias.</p>
 
-                <h2 class="text-xl font-bold text-white mt-8 mb-4">CAMBIOS EN LA POLÍTICA DE COOKIES</h2>
-                <p>Es posible que la Política de Cookies del Sitio Web cambie o se actualice, por ello es recomendable
-                    que el Usuario revise esta política cada vez que acceda al Sitio Web con el objetivo de estar
-                    adecuadamente informado sobre cómo y para qué usamos las cookies.</p>
+                    <h3 class="text-xl font-semibold text-white mt-6 mb-3">2. Cookies de terceros</h3>
+                    <p class="mb-4">Son cookies utilizadas y gestionadas por entidades externas que proporcionan a
+                        Vextria servicios solicitados por este mismo para mejorar el Sitio Web y la experiencia del
+                        usuario al navegar en el Sitio Web. Los principales objetivos para los que se utilizan cookies
+                        de terceros son la obtención de estadísticas de accesos y analizar la información de la
+                        navegación (ej. Google Analytics).</p>
+                    <p class="mb-4">La información que se obtiene se refiere, por ejemplo, al número de páginas
+                        visitadas, el idioma, el lugar a la que la dirección IP desde el que accede el Usuario, el
+                        número de Usuarios que acceden, la frecuencia y reincidencia de las visitas, el tiempo de
+                        visita, el navegador que usan, el operador o tipo de dispositivo desde el que se realiza la
+                        visita. Esta información se utiliza para mejorar el Sitio Web y detectar nuevas necesidades para
+                        ofrecer a los Usuarios un Contenido y/o servicio de óptima calidad. En todo caso, la información
+                        se recopila de forma anónima y se elaboran informes de tendencias del Sitio Web sin identificar
+                        a usuarios individuales.</p>
+                </section>
+
+                <section>
+                    <h2 class="text-2xl font-bold text-white mb-4">DESHABILITAR, RECHAZAR Y ELIMINAR COOKIES</h2>
+                    <p class="mb-4">El Usuario puede deshabilitar, rechazar y eliminar las cookies —total o
+                        parcialmente— instaladas en su dispositivo mediante la configuración de su navegador (entre los
+                        que se encuentran, por ejemplo, Chrome, Firefox, Safari, Explorer, Edge). En este sentido, los
+                        procedimientos para rechazar y eliminar las cookies pueden diferir de un navegador de Internet a
+                        otro. En consecuencia, el Usuario debe acudir a las instrucciones facilitadas por el propio
+                        navegador de Internet que esté utilizando.</p>
+                    <p class="mb-4">En el supuesto de que rechace el uso de cookies —total o parcialmente— podrá seguir
+                        usando el Sitio Web, si bien podrá tener limitada la utilización de algunas de las prestaciones
+                        del mismo.</p>
+                </section>
+
+                <section>
+                    <h2 class="text-2xl font-bold text-white mb-4">CAMBIOS EN LA POLÍTICA DE COOKIES</h2>
+                    <p class="mb-4">Es posible que la Política de Cookies del Sitio Web cambie o se actualice, por ello
+                        es recomendable que el Usuario revise esta política cada vez que acceda al Sitio Web con el
+                        objetivo de estar adecuadamente informado sobre cómo y para qué usamos las cookies.</p>
+                </section>
+
             </div>
         </div>
-    </section>
+    </main>
 
-    <!-- FOOTER -->
-    <footer
-        class="py-12 border-t border-white/5 text-center text-gray-600 text-sm relative z-10 bg-[#050505]/50 backdrop-blur-sm">
-        <p>&copy; 2024 Vextria Agency. Engineering Digital Intelligence.</p>
-        <div class="mt-4 flex flex-wrap justify-center gap-6">
-            <a href="legal.html" class="hover:text-white transition">Aviso Legal</a>
-            <a href="privacidad.html" class="hover:text-white transition">Privacidad</a>
-            <a href="cookies.html" class="hover:text-white transition">Cookies</a>
+    <!-- Footer -->
+    <footer class="border-t border-border py-12 bg-surface/20">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+            <!-- Brand -->
+            <div class="md:col-span-1">
+                <a href="index.html" class="flex items-center gap-2 mb-6">
+                    <span class="text-xl font-bold italic">VEXTRIA</span>
+                </a>
+                <p class="text-sm text-text-muted">
+                    Arquitectura WEB AI Native &<br>Advanced Process Automation.
+                </p>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="md:col-span-1">
+                <h4 class="font-semibold mb-4 text-white">Subscribe</h4>
+                <div class="flex gap-2">
+                    <input type="email" placeholder="Enter your email"
+                        class="bg-black border border-border rounded px-3 py-2 text-sm w-full focus:outline-none focus:border-primary text-white">
+                    <button class="bg-white/10 hover:bg-white/20 p-2 rounded transition-colors text-white">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div
+            class="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center text-xs text-text-dim">
+            <p>&copy; 2026 Vextria. All rights reserved.</p>
+            <div class="flex gap-4 mt-4 md:mt-0">
+                <a href="privacidad.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="legal.html" class="hover:text-white transition-colors">Terms of Service</a>
+                <a href="cookies.html" class="hover:text-white transition-colors">Cookies</a>
+            </div>
         </div>
     </footer>
 
