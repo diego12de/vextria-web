@@ -103,6 +103,48 @@
         transform: translateX(15em);
     }
 
+    .btn-glow-linkedin {
+        --blue: #0077b5;
+        font-size: 15px;
+        padding: 0.7em 2.7em;
+        letter-spacing: 0.06em;
+        position: relative;
+        font-family: inherit;
+        border-radius: 0.6em;
+        overflow: hidden;
+        transition: all 0.3s;
+        line-height: 1.4em;
+        border: 2px solid var(--blue);
+        background: linear-gradient(to right, rgba(0, 119, 181, 0.1) 1%, transparent 40%, transparent 60%, rgba(0, 119, 181, 0.1) 100%);
+        color: var(--blue);
+        box-shadow: inset 0 0 10px rgba(0, 119, 181, 0.4), 0 0 9px 3px rgba(0, 119, 181, 0.1);
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .btn-glow-linkedin:hover {
+        color: #58c6ff;
+        box-shadow: inset 0 0 10px rgba(0, 119, 181, 0.6), 0 0 9px 3px rgba(0, 119, 181, 0.2);
+    }
+
+    .btn-glow-linkedin:before {
+        content: "";
+        position: absolute;
+        left: -4em;
+        width: 4em;
+        height: 100%;
+        top: 0;
+        transition: transform .4s ease-in-out;
+        background: linear-gradient(to right, transparent 1%, rgba(0, 119, 181, 0.1) 40%, rgba(0, 119, 181, 0.1) 60%, transparent 100%);
+    }
+
+    .btn-glow-linkedin:hover:before {
+        transform: translateX(15em);
+    }
+
     /* Spinning Sparkle Button */
     .btn-sparkle-spin {
         --black-700: #050505;
@@ -280,5 +322,48 @@
         color: transparent;
         font-weight: 600;
         text-transform: uppercase;
+    }
+}
+
+/* Hero Spinner Animation */
+.hero-spinner {
+    background-image: linear-gradient(rgb(186, 66, 255) 35%, rgb(0, 225, 255));
+    width: 780px;
+    height: 780px;
+    animation: hero-spinning 1.7s linear infinite;
+    text-align: center;
+    border-radius: 50%;
+    filter: blur(5px);
+    box-shadow: 0px -25px 80px 0px rgb(186, 66, 255), 0px 25px 80px 0px rgb(0, 225, 255);
+    opacity: 0.25;
+}
+
+@keyframes float-subtle {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.animate-float-subtle {
+    animation: float-subtle 4s ease-in-out infinite;
+}
+
+.hero-spinner-inner {
+    background-color: rgb(5, 5, 5);
+    width: 780px;
+    height: 780px;
+    border-radius: 50%;
+    filter: blur(40px);
+}
+
+@keyframes hero-spinning {
+    to {
+        transform: rotate(360deg);
     }
 }
