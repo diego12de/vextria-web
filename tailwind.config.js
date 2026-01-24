@@ -11,6 +11,7 @@ module.exports = {
         surface: '#0d0d0d',
         primary: '#814ac8', // Purple
         secondary: '#df7afe', // Pink
+        linkedin: '#0077b5', // LinkedIn Blue
         text: {
           main: '#ffffff',
           muted: 'rgba(255, 255, 255, 0.75)',
