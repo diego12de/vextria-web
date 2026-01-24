@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | Vextria</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
+    <!-- CSS -->
+    <link href="./css/styles.css" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .input-dark {
+            background-color: #0a0a0a;
+            border: 1px solid #262626;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .input-dark:focus {
+            border-color: #814AC8;
+            /* Primary Purple */
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(129, 74, 200, 0.2);
+        }
+
+        .glass {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+
+<body class="bg-black text-white min-h-screen font-sans antialiased selection:bg-primary selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 inset-x-0 z-50 glass border-b border-border transition-all duration-300"
+        x-data="{ atTop: true }" @scroll.window="atTop = (window.pageYOffset < 20)">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-2 group">
+                <svg class="w-8 h-8 text-primary group-hover:text-secondary transition-colors duration-300"
+                    viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 19h20L12 2zm0 3.8l6.8 11.2H5.2L12 5.8z" />
+                </svg>
+                <span class="text-xl font-bold tracking-tight italic">VEXTRIA</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html"
+                    class="text-sm font-medium text-text-muted hover:text-white transition-colors">Inicio</a>
+                <a href="index.html#how"
+                    class="text-sm font-medium text-text-muted hover:text-white transition-colors">Metodología</a>
+                <a href="index.html#process"
+                    class="text-sm font-medium text-text-muted hover:text-white transition-colors">Proceso</a>
+                <a href="index.html#contact"
+                    class="text-sm font-medium text-text-muted hover:text-white transition-colors">Contacto</a>
+            </div>
+
+            <!-- CTA Button -->
+            <a href="index.html#contact"
+                class="hidden md:flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/10 px-4 py-2 rounded-lg text-sm font-medium transition-all group">
+                <span>Hablemos</span>
+                <svg class="w-4 h-4 text-text-muted group-hover:translate-x-0.5 transition-transform" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6">
+                    </path>
+                </svg>
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden p-2 text-text-muted">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <main class="min-h-screen flex flex-col items-center justify-center p-4 py-20 relative overflow-hidden">
+        <!-- Background Glow -->
+        <div
+            class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/20 rounded-full blur-[120px] pointer-events-none">
+        </div>
+
+        <!-- Header Section -->
+        <div class="text-center z-10 max-w-2xl mx-auto mb-16">
+            <span
+                class="inline-block px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm font-medium mb-8">
+                Contacto
+            </span>
+            <h1 class="text-5xl md:text-6xl font-bold mb-6 tracking-tight">
+                Ponte en Contacto
+            </h1>
+            <p class="text-text-muted text-lg">
+                ¿Tienes preguntas o necesitas soluciones de IA? ¡Háznoslo saber rellenando el formulario y nos pondremos
+                en contacto contigo!
+            </p>
+        </div>
+
+        <div class="w-full max-w-4xl z-10 space-y-8">
+            <!-- Contact Info Cards -->
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Email Card -->
+                <div
+                    class="glass-card p-6 rounded-2xl flex flex-col justify-center h-32 group hover:border-primary/30 transition-colors">
+                    <div class="flex items-center gap-3 mb-2 text-text-muted">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        <span class="font-medium">Email</span>
+                    </div>
+                    <a href="mailto:diego@vextria.es"
+                        class="text-xl font-semibold hover:text-primary transition-colors">diego@vextria.es</a>
+                </div>
+
+                <!-- Phone Card -->
+                <div
+                    class="glass-card p-6 rounded-2xl flex flex-col justify-center h-32 group hover:border-primary/30 transition-colors">
+                    <div class="flex items-center gap-3 mb-2 text-text-muted">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 5a2 2 0 012-2 3 3 0 003 3 2 2 0 012 2 3 3 0 003 3 2 2 0 012 2 3 3 0 003 3 2 2 0 012 2 3 3 0 003 3 2 2 0 012 2z" />
+                        </svg>
+                        <span class="font-medium">Teléfono</span>
+                    </div>
+                    <a href="tel:+34600000000" class="text-xl font-semibold hover:text-primary transition-colors">+34
+                        600 000 000</a>
+                </div>
+            </div>
+
+            <!-- Contact Form Container -->
+            <div class="glass-card rounded-2xl p-8 md:p-10">
+                <form id="contactForm"
+                    action="https://script.google.com/macros/s/AKfycbzo9bkGb7MXonSGpugtsI9195hlKDOMyK2V5N6rFBtXmR-ashJ3kn58bw-KoinRDg2_nw/exec"
+                    method="POST" class="space-y-6">
+                    <!-- Row 1: Name & Email -->
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold text-gray-300">Nombre Completo</label>
+                            <input type="text" name="name" placeholder="Tu Nombre"
+                                class="w-full rounded-lg px-4 py-3 input-dark placeholder-gray-600 focus:text-white"
+                                required>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold text-gray-300">Email Profesional</label>
+                            <input type="email" name="email" placeholder="tu@empresa.com"
+                                class="w-full rounded-lg px-4 py-3 input-dark placeholder-gray-600 focus:text-white"
+                                required>
+                        </div>
+                    </div>
+
+                    <!-- Row 2: Phone & Website -->
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold text-gray-300">Teléfono</label>
+                            <input type="tel" name="phone" placeholder="+34 600 000 000"
+                                class="w-full rounded-lg px-4 py-3 input-dark placeholder-gray-600 focus:text-white">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-semibold text-gray-300">Sitio Web (Opcional)</label>
+                            <input type="text" name="website" placeholder="https://"
+                                class="w-full rounded-lg px-4 py-3 input-dark placeholder-gray-600 focus:text-white">
+                        </div>
+                    </div>
+
+                    <!-- Row 3: Budget -->
+                    <div class="space-y-2">
+                        <label class="block text-sm font-semibold text-gray-300">Presupuesto Estimado</label>
+                        <select name="budget" required
+                            class="w-full rounded-lg px-4 py-3 input-dark placeholder-gray-600 focus:text-white appearance-none">
+                            <option value="" disabled selected class="text-gray-500">Selecciona un rango</option>
+                            <option value="1000-2000" class="bg-black">Visibilidad Profesional (1.000€ - 2.500€)
+                            </option>
+                            <option value="2000-5000" class="bg-black">Proyecto de Crecimiento (2.500€ - 5.000€)
+                            </option>
+                            <option value="+5000" class="bg-black">Infraestructura Avanzada (+5.000€)</option>
+                        </select>
+                    </div>
+
+                    <!-- Row 4: Message -->
+                    <div class="space-y-2">
+                        <label class="block text-sm font-semibold text-gray-300">Cuéntanos tu reto principal</label>
+                        <textarea name="message" rows="4"
+                            placeholder="¿Qué problema necesitas resolver con infraestructura IA?"
+                            class="w-full rounded-lg px-4 py-3 input-dark placeholder-gray-600 focus:text-white resize-none"
+                            required></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit"
+                        class="w-full bg-[#814AC8] hover:bg-[#6d3da8] text-white font-medium py-4 rounded-lg transition-all transform active:scale-[0.98] shadow-lg shadow-primary/25">
+                        ENVIAR SOLICITUD
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-border py-8 bg-surface/20">
+        <div
+            class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-xs text-text-dim">
+            <p>&copy; 2026 Vextria. All rights reserved.</p>
+            <div class="flex gap-4 mt-4 md:mt-0">
+                <a href="contact.html" class="hover:text-white transition-colors">Contacto</a>
+                <a href="legal.html" class="hover:text-white transition-colors">Aviso Legal</a>
+                <a href="privacidad.html" class="hover:text-white transition-colors">Privacidad</a>
+                <a href="cookies.html" class="hover:text-white transition-colors">Cookies</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/contact-form.js"></script>
+</body>
+
+</html>

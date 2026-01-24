@@ -267,7 +267,7 @@
 
     <!-- Navigation -->
     <nav class="fixed top-0 inset-x-0 z-50 glass border-b border-border transition-all duration-300"
-        x-data="{ atTop: true, mobileMenuOpen: false }" @scroll.window="atTop = (window.pageYOffset < 20)">
+        x-data="{ atTop: true }" @scroll.window="atTop = (window.pageYOffset < 20)">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <!-- Logo -->
             <a href="#" class="flex items-center gap-2 group">
@@ -302,31 +302,12 @@
             </a>
 
             <!-- Mobile Menu Button (Simple) -->
-            <button class="md:hidden p-2 text-text-muted" @click="mobileMenuOpen = !mobileMenuOpen">
+            <button class="md:hidden p-2 text-text-muted">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
                     </path>
                 </svg>
             </button>
-        </div>
-
-        <!-- Mobile Menu Dropdown -->
-        <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-200"
-            x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
-            x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0"
-            x-transition:leave-end="opacity-0 -translate-y-2"
-            class="md:hidden absolute top-20 inset-x-0 bg-surface/95 border-b border-border backdrop-blur-xl"
-            style="display: none;">
-            <div class="px-6 py-4 space-y-4 flex flex-col">
-                <a href="#" class="text-sm font-medium text-text-muted hover:text-white transition-colors"
-                    @click="mobileMenuOpen = false">Inicio</a>
-                <a href="#how" class="text-sm font-medium text-text-muted hover:text-white transition-colors"
-                    @click="mobileMenuOpen = false">Metodología</a>
-                <a href="#process" class="text-sm font-medium text-text-muted hover:text-white transition-colors"
-                    @click="mobileMenuOpen = false">Proceso</a>
-                <a href="#contact" class="text-sm font-medium text-text-muted hover:text-white transition-colors"
-                    @click="mobileMenuOpen = false">Contacto</a>
-            </div>
         </div>
     </nav>
 
@@ -1159,8 +1140,8 @@
                 <div class="pt-8 space-y-8">
                     <!-- Profile & LinkedIn (Left Aligned) -->
                     <div class="flex items-center justify-start gap-6">
-                        <img src="assets/img/diego-profile.webp" alt="Diego Carrodeguas" width="64" height="64"
-                            loading="lazy"
+                        <img src="assets/img/diego-profile.webp" alt="Diego Carrodeguas"
+                            width="64" height="64" loading="lazy"
                             class="w-16 h-16 rounded-full object-cover border-2 border-primary/50 grayscale">
                         <a href="https://www.linkedin.com/in/diego-ai-architect/" target="_blank"
                             class="flex items-center justify-center w-12 h-12 rounded-lg bg-black border-2 border-linkedin text-linkedin hover:bg-linkedin hover:text-white transition-all transform hover:scale-110 shadow-lg shadow-blue-900/20"

@@ -100,48 +100,49 @@
         class="fixed bottom-0 right-1/2 translate-x-1/2 w-[600px] h-[600px] bg-cyan-500/10 blur-[100px] rounded-full opacity-20 pointer-events-none z-0">
     </div>
 
-    <!-- Navigation (Consistente con Home) -->
-    <nav class="fixed w-full z-50 top-0 border-b border-white/5 bg-[#050505]/80 backdrop-blur-md"
-        x-data="{ open: false }">
-        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-                <!-- Logo clicable para volver a home -->
-                <a href="index.html" class="flex items-center gap-2 group">
-                    <div
-                        class="w-6 h-6 bg-gradient-to-br from-cyan-400 to-purple-500 rounded-sm group-hover:scale-110 transition-transform">
-                    </div>
-                    <span class="font-bold text-lg tracking-tight text-white">VEXTRIA</span>
-                </a>
+    <!-- Navigation -->
+    <nav class="fixed top-0 inset-x-0 z-50 glass border-b border-border transition-all duration-300"
+        x-data="{ atTop: true }" @scroll.window="atTop = (window.pageYOffset < 20)">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center gap-2 group">
+                <svg class="w-8 h-8 text-primary group-hover:text-secondary transition-colors duration-300"
+                    viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2L2 19h20L12 2zm0 3.8l6.8 11.2H5.2L12 5.8z" />
+                </svg>
+                <span class="text-xl font-bold tracking-tight italic">VEXTRIA</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="index.html"
+                    class="text-sm font-medium text-text-muted hover:text-white transition-colors">Inicio</a>
+                <a href="index.html#how"
+                    class="text-sm font-medium text-text-muted hover:text-white transition-colors">Metodología</a>
+                <a href="index.html#process"
+                    class="text-sm font-medium text-text-muted hover:text-white transition-colors">Proceso</a>
+                <a href="index.html#contact"
+                    class="text-sm font-medium text-text-muted hover:text-white transition-colors">Contacto</a>
             </div>
 
-            <div class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
-                <a href="index.html" class="hover:text-white transition-colors">Home</a>
-                <a href="#definition" class="text-white transition-colors">¿Qué es AEO?</a>
-                <a href="#knowledge-graph" class="hover:text-white transition-colors">Knowledge Graph</a>
-                <a href="#simulation" class="hover:text-white transition-colors">Simulación</a>
-            </div>
+            <!-- CTA Button -->
+            <a href="index.html#contact"
+                class="hidden md:flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/10 px-4 py-2 rounded-lg text-sm font-medium transition-all group">
+                <span>Hablemos</span>
+                <svg class="w-4 h-4 text-text-muted group-hover:translate-x-0.5 transition-transform" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6">
+                    </path>
+                </svg>
+            </a>
 
-            <div class="hidden md:block">
-                <a href="#contacto"
-                    class="px-4 py-2 text-xs font-semibold text-black bg-white rounded hover:bg-gray-200 transition-colors">
-                    Auditoría AEO
-                </a>
-            </div>
-
-            <button @click="open = !open" class="md:hidden text-white focus:outline-none">
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden p-2 text-text-muted">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
                     </path>
                 </svg>
             </button>
-        </div>
-        <!-- Mobile Menu -->
-        <div x-show="open" class="md:hidden bg-[#050505] border-b border-white/10 p-4" x-transition>
-            <div class="flex flex-col gap-4">
-                <a href="index.html" class="text-gray-400 hover:text-white">Home</a>
-                <a href="#definition" class="text-gray-400 hover:text-white">¿Qué es AEO?</a>
-                <a href="#contacto" class="text-purple-400 font-semibold">Auditoría AEO</a>
-            </div>
         </div>
     </nav>
 
@@ -557,13 +558,17 @@
         </div>
     </section>
 
-    <!-- FOOTER (Idéntico a index.html) -->
-    <footer class="py-12 border-t border-white/5 text-center text-gray-600 text-sm">
-        <p>&copy; 2024 Vextria Agency. Engineering Digital Intelligence.</p>
-        <div class="mt-4 flex flex-wrap justify-center gap-6">
-            <a href="index.html" class="hover:text-white transition">Home</a>
-            <a href="legal.html" class="hover:text-white transition">Aviso Legal</a>
-            <a href="privacidad.html" class="hover:text-white transition">Privacidad</a>
+    <!-- Footer -->
+    <footer class="border-t border-border py-8 bg-surface/20">
+        <div
+            class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-xs text-text-dim">
+            <p>&copy; 2026 Vextria. All rights reserved.</p>
+            <div class="flex gap-4 mt-4 md:mt-0">
+                <a href="contact.html" class="hover:text-white transition-colors">Contacto</a>
+                <a href="legal.html" class="hover:text-white transition-colors">Aviso Legal</a>
+                <a href="privacidad.html" class="hover:text-white transition-colors">Privacidad</a>
+                <a href="cookies.html" class="hover:text-white transition-colors">Cookies</a>
+            </div>
         </div>
     </footer>
 
