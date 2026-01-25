@@ -13,65 +13,175 @@
 
     <!-- JSON-LD Schema -->
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
+      "@type": "WebSite",
+      "@id": "https://vextria.es/#website",
+      "url": "https://vextria.es/",
+      "name": "Vextria | Agencia AI Native",
+      "description": "Desarrollo Web Zero-Bloatware, SEO Semántico y Automatización de procesos. Arquitectura digital optimizada para IAs.",
+      "inLanguage": "es-ES",
+      "publisher": {
+        "@id": "https://vextria.es/#organization"
+      }
+    },
+    {
+      "@type": "OnlineBusiness",
+      "@id": "https://vextria.es/#organization",
+      "name": "Vextria",
+      "legalName": "Vextria Engineering",
+      "url": "https://vextria.es",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://vextria.es/assets/img/logo-vextria.png",
+        "width": 384,
+        "height": 96,
+        "caption": "Vextria AI Native Agency"
+      },
+      "image": "https://vextria.es/assets/img/logo-vextria.png",
+      "description": "Agencia de ingeniería digital especializada en AEO (Answer Engine Optimization) y Desarrollo Web de alto rendimiento. Creamos ecosistemas digitales que las Inteligencias Artificiales recomiendan.",
+      "foundingDate": "2026",
+      "founder": {
+        "@id": "https://vextria.es/#founder"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "ES",
+        "addressRegion": "Zaragoza",
+        "addressLocality": "Zaragoza",
+        "postalCode": "50016",
+        "streetAddress": "Tomás Ostariz Forcén, 72"
+      },
+      "areaServed": [
         {
-          "@type": "Organization",
-          "name": "Vextria",
-          "url": "https://vextria.es",
-          "logo": "https://vextria.es/assets/img/logo-vextria.png",
-          "sameAs": [
-            "https://www.linkedin.com/in/diego-ai-architect/"
-          ],
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+34 630 86 71 55",
-            "contactType": "customer service",
-            "areaServed": "ES",
-            "availableLanguage": "Spanish"
+          "@type": "Country",
+          "name": "España",
+          "identifier": "ES"
+        },
+        {
+          "@type": "Country",
+          "name": "Global"
+        }
+      ],
+      "knowsAbout": [
+        {
+          "@type": "Thing",
+          "name": "Artificial Intelligence",
+          "sameAs": "https://www.wikidata.org/wiki/Q11660"
+        },
+        {
+          "@type": "Thing",
+          "name": "Search Engine Optimization",
+          "sameAs": "https://www.wikidata.org/wiki/Q180711"
+        },
+        {
+          "@type": "Thing",
+          "name": "Neuromarketing",
+          "sameAs": "https://www.wikidata.org/wiki/Q215967"
+        },
+        {
+          "@type": "Thing",
+          "name": "Web Development",
+          "sameAs": "https://www.wikidata.org/wiki/Q1146603"
+        },
+        {
+          "@type": "Thing",
+          "name": "Automation",
+          "sameAs": "https://www.wikidata.org/wiki/Q1100300"
+        }
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+34 630 86 71 55",
+        "contactType": "customer service",
+        "email": "diego@vextria.es",
+        "areaServed": "ES",
+        "availableLanguage": ["Spanish"]
+      },
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Desarrollo Web AI Native",
+            "description": "Webs estáticas ultrarrápidas sin bloatware, optimizadas para Core Web Vitals y rastreo de LLMs."
           }
         },
         {
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "¿Qué pasa con mi web actual?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Tu web actual permanecerá operativa al 100% hasta el lanzamiento. Realizamos una transición estratégica y segura mediante redirecciones 301 para transferir toda tu autoridad histórica a la nueva arquitectura. No pierdes tráfico, solo potencias tu alcance."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿Cómo conseguís que una Inteligencia Artificial recomiende mi negocio?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Estructuramos tu web para que las IAs la entiendan y prioricen. Organizamos la información semántica (Entity Salience) para que modelos como ChatGPT entiendan inequívocamente quién eres y te citen como fuente fiable en sus respuestas. Pasamos de la indexación a la enseñanza."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿Por qué una arquitectura de \"Código Puro\" es mejor que un Wordpress?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "El Código Puro supera a Wordpress en velocidad, seguridad y legibilidad para IAs. Al eliminar el 80% de código basura (bloatware) de las plantillas, garantizamos tiempos de carga instantáneos que los algoritmos priorizan. No instalamos webs; desarrollamos activos digitales competitivos."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "¿Qué significa que la web está diseñada con Neuromarketing?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "El diseño con Neuromarketing aplica principios psicológicos para facilitar la decisión de compra. No es solo estética; reducimos la carga cognitiva del usuario mediante colores, tipografía y estructuras diseñadas para que la navegación sea fluida y la conversión sea el paso lógico natural."
-              }
-            }
-          ]
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Posicionamiento AEO/GEO",
+            "description": "Optimización de Knowledge Graph para aparecer en respuestas de Inteligencia Artificial como ChatGPT, Perplexity y Google SGE."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Ingeniería de Automatización",
+            "description": "Implementación de agentes autónomos, n8n y Python para escalar operaciones de negocio."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://vextria.es/#founder",
+      "name": "Diego Carrodeguas",
+      "jobTitle": "AI Architect & Founder",
+      "url": "https://www.linkedin.com/in/diego-ai-architect/",
+      "image": "https://vextria.es/assets/img/diego-profile.webp",
+      "sameAs": [
+        "https://www.linkedin.com/in/diego-ai-architect/"
+      ],
+      "worksFor": {
+        "@id": "https://vextria.es/#organization"
+      },
+      "knowsAbout": ["SEO Técnico", "Generative AI", "Vive coding"]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Qué pasa con mi web actual?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tu web actual permanecerá operativa al 100% hasta el lanzamiento. Realizamos una transición estratégica mediante redirecciones 301 para transferir toda tu autoridad histórica a la nueva arquitectura AI Native."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo conseguís que una IA recomiende mi negocio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Estructuramos tu web con datos semánticos (Entity Salience) y optimización de Knowledge Graph. Esto permite que modelos como ChatGPT y Gemini entiendan tu propuesta de valor y te citen como fuente autorizada."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Por qué código puro en lugar de Wordpress?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El Código Puro elimina el bloatware y las vulnerabilidades de Wordpress. Garantizamos tiempos de carga instantáneos (LCP < 1s) que Google y las IAs priorizan para el posicionamiento."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué es el diseño con Neuromarketing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Es la aplicación de principios cognitivos al diseño UI/UX. Reducimos la carga mental del usuario y guiamos su atención visual para convertir la visita en cliente de forma natural y sin fricción."
+          }
         }
       ]
     }
-    </script>
+  ]
+}
+</script>
 
     <!-- Fonts -->
     <!-- Fonts (Local & Optimized) -->
@@ -466,7 +576,8 @@
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <!-- Logo -->
             <a href="#" class="flex items-center gap-2 group">
-                <img src="assets/img/logo-vextria.png" alt="VEXTRIA" class="h-10 w-auto object-contain">
+                <img src="assets/img/logo-vextria.png" alt="VEXTRIA" width="160" height="40"
+                    class="h-10 w-auto object-contain">
             </a>
 
             <!-- Desktop Menu -->
@@ -492,7 +603,8 @@
             </a>
 
             <!-- Mobile Menu Button (Simple) -->
-            <button class="md:hidden p-2 text-text-muted" @click="mobileMenuOpen = !mobileMenuOpen">
+            <button class="md:hidden p-2 text-text-muted" @click="mobileMenuOpen = !mobileMenuOpen"
+                aria-label="Toggle Navigation">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
                     </path>
@@ -1019,7 +1131,7 @@
 
                     <!-- Content -->
                     <div class="relative z-10 w-full flex-1 flex items-center justify-center">
-                        <img src="assets/img/logo-vextria.png" alt="Vextria"
+                        <img src="assets/img/logo-vextria.png" alt="Vextria" width="384" height="96"
                             class="h-24 w-auto opacity-90 drop-shadow-[0_0_15px_rgba(112,0,255,0.5)]">
                     </div>
 
@@ -1401,6 +1513,7 @@
                             loading="lazy"
                             class="w-16 h-16 rounded-full object-cover border-2 border-primary/50 grayscale">
                         <a href="https://www.linkedin.com/in/diego-ai-architect/" target="_blank"
+                            aria-label="Perfil de LinkedIn de Diego Carrodeguas"
                             class="flex items-center justify-center w-12 h-12 rounded-lg bg-black border-2 border-linkedin text-linkedin hover:bg-linkedin hover:text-white transition-all transform hover:scale-110 shadow-lg shadow-blue-900/20"
                             style="border-color: #0077b5; color: #0077b5;">
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -1579,9 +1692,10 @@
                     </div>
 
                     <div class="space-y-2">
-                        <label class="text-xs text-text-muted font-mono uppercase tracking-wider">Presupuesto
+                        <label for="budget"
+                            class="text-xs text-text-muted font-mono uppercase tracking-wider">Presupuesto
                             Estimado</label>
-                        <select name="budget" required
+                        <select id="budget" name="budget" required
                             class="w-full bg-black/40 border border-border rounded-lg px-4 py-3 text-white placeholder-text-dim focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all appearance-none">
                             <option value="" disabled selected class="bg-surface text-text-muted">Selecciona un
                                 rango</option>
