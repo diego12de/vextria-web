@@ -1189,108 +1189,86 @@
                 <p class="text-text-muted">Respuestas rápidas sobre VEXTRIA</p>
             </div>
 
-            <div class="space-y-4" x-data="{ active: null }">
+            <div class="space-y-4">
                 <!-- FAQ Item 1 (New) -->
-                <div
-                    class="bg-surface border border-border rounded-lg overflow-hidden transition-all duration-300 hover:border-primary/50">
-                    <button class="w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none"
-                        @click="active === 1 ? active = null : active = 1">
-                        <span class="font-semibold text-lg pr-8">¿Qué pasa con mi web actual?</span>
-                        <svg class="w-5 h-5 text-text-muted transition-transform duration-300 shrink-0"
-                            :class="active === 1 ? 'rotate-45' : ''" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
+                <details
+                    class="group bg-surface border border-border rounded-lg overflow-hidden transition-all duration-300 hover:border-primary/50">
+                    <summary
+                        class="list-none [&::-webkit-details-marker]:hidden w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none cursor-pointer select-none">
+                        <span class="font-semibold text-lg pr-8 text-white">¿Qué pasa con mi web actual?</span>
+                        <svg class="w-5 h-5 text-text-muted transition-transform duration-300 shrink-0 group-open:rotate-45"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4">
                             </path>
                         </svg>
-                    </button>
-                    <div x-show="active === 1" x-collapse>
-                        <div class="px-6 pb-6 text-text-muted text-sm leading-relaxed">
-                            Es una transición estratégica, no destructiva. Tu web actual sigue operativa al 100% hasta
-                            el
-                            segundo exacto del lanzamiento. Realizamos una migración SEO completa aplicando
-                            redirecciones
-                            301 para transferir toda tu autoridad histórica a la nueva arquitectura, asegurando que no
-                            pierdes tráfico, solo potencias tu alcance.
-                        </div>
+                    </summary>
+                    <div class="px-6 pb-6 text-text-muted text-sm leading-relaxed">
+                        Tu web actual permanecerá operativa al 100% hasta el lanzamiento. Realizamos una transición
+                        estratégica y segura mediante redirecciones 301 para transferir toda tu autoridad histórica a la
+                        nueva arquitectura. No pierdes tráfico, solo potencias tu alcance.
                     </div>
-                </div>
+                </details>
 
                 <!-- FAQ Item 2 -->
-                <div
-                    class="bg-surface border border-border rounded-lg overflow-hidden transition-all duration-300 hover:border-primary/50">
-                    <button class="w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none"
-                        @click="active === 2 ? active = null : active = 2">
-                        <span class="font-semibold text-lg pr-8">¿Cómo conseguís que una Inteligencia Artificial
-                            recomiende mi negocio?</span>
-                        <svg class="w-5 h-5 text-text-muted transition-transform duration-300 shrink-0"
-                            :class="active === 2 ? 'rotate-45' : ''" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
+                <details
+                    class="group bg-surface border border-border rounded-lg overflow-hidden transition-all duration-300 hover:border-primary/50">
+                    <summary
+                        class="list-none [&::-webkit-details-marker]:hidden w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none cursor-pointer select-none">
+                        <span class="font-semibold text-lg pr-8 text-white">¿Cómo conseguís que una Inteligencia
+                            Artificial recomiende mi negocio?</span>
+                        <svg class="w-5 h-5 text-text-muted transition-transform duration-300 shrink-0 group-open:rotate-45"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4">
                             </path>
                         </svg>
-                    </button>
-                    <div x-show="active === 2" x-collapse>
-                        <div class="px-6 pb-6 text-text-muted text-sm leading-relaxed">
-                            Pasando de la indexación a la enseñanza. Las IAs no "leen" webs como los humanos; procesan
-                            datos estructurados y relaciones semánticas. Nosotros organizamos la información de tu web
-                            (Entity Salience) de forma que modelos como ChatGPT entiendan inequívocamente quién eres,
-                            qué haces y por qué eres el mejor, citándote como fuente fiable en sus respuestas.
-                        </div>
+                    </summary>
+                    <div class="px-6 pb-6 text-text-muted text-sm leading-relaxed">
+                        Estructuramos tu web para que las IAs la entiendan y prioricen. Organizamos la información
+                        semántica (Entity Salience) para que modelos como ChatGPT entiendan inequívocamente quién eres y
+                        te citen como fuente fiable en sus respuestas. Pasamos de la indexación a la enseñanza.
                     </div>
-                </div>
+                </details>
 
                 <!-- FAQ Item 3 -->
-                <div
-                    class="bg-surface border border-border rounded-lg overflow-hidden transition-all duration-300 hover:border-primary/50">
-                    <button class="w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none"
-                        @click="active === 3 ? active = null : active = 3">
-                        <span class="font-semibold text-lg pr-8">¿Por qué una arquitectura de "Código Puro" es mejor
-                            que
-                            un Wordpress</span>
-                        <svg class="w-5 h-5 text-text-muted transition-transform duration-300 shrink-0"
-                            :class="active === 3 ? 'rotate-45' : ''" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
+                <details
+                    class="group bg-surface border border-border rounded-lg overflow-hidden transition-all duration-300 hover:border-primary/50">
+                    <summary
+                        class="list-none [&::-webkit-details-marker]:hidden w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none cursor-pointer select-none">
+                        <span class="font-semibold text-lg pr-8 text-white">¿Por qué una arquitectura de "Código Puro"
+                            es mejor que un Wordpress?</span>
+                        <svg class="w-5 h-5 text-text-muted transition-transform duration-300 shrink-0 group-open:rotate-45"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4">
                             </path>
                         </svg>
-                    </button>
-                    <div x-show="active === 3" x-collapse>
-                        <div class="px-6 pb-6 text-text-muted text-sm leading-relaxed">
-                            Las plantillas estándar cargan con un 80% de código basura (bloatware) que nunca usarás,
-                            ralentizando tu web y haciéndola difícil de leer para Google y la IA. Nosotros no
-                            instalamos
-                            webs; ingenierizamos activos digitales. Al construir en código puro, garantizamos una
-                            velocidad extrema, seguridad blindada y una estructura que los algoritmos priorizan. No es
-                            un gasto, es comprar una ventaja competitiva.
-                        </div>
+                    </summary>
+                    <div class="px-6 pb-6 text-text-muted text-sm leading-relaxed">
+                        El Código Puro supera a Wordpress en velocidad, seguridad y legibilidad para IAs. Al eliminar el
+                        80% de código basura (bloatware) de las plantillas, garantizamos tiempos de carga instantáneos
+                        que los algoritmos priorizan. No instalamos webs; desarrollamos activos digitales competitivos.
                     </div>
-                </div>
+                </details>
 
                 <!-- FAQ Item 4 -->
-                <div
-                    class="bg-surface border border-border rounded-lg overflow-hidden transition-all duration-300 hover:border-primary/50">
-                    <button class="w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none"
-                        @click="active === 4 ? active = null : active = 4">
-                        <span class="font-semibold text-lg pr-8">¿Qué significa que la web está diseñada con
+                <details
+                    class="group bg-surface border border-border rounded-lg overflow-hidden transition-all duration-300 hover:border-primary/50">
+                    <summary
+                        class="list-none [&::-webkit-details-marker]:hidden w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none cursor-pointer select-none">
+                        <span class="font-semibold text-lg pr-8 text-white">¿Qué significa que la web está diseñada con
                             Neuromarketing?</span>
-                        <svg class="w-5 h-5 text-text-muted transition-transform duration-300 shrink-0"
-                            :class="active === 4 ? 'rotate-45' : ''" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
+                        <svg class="w-5 h-5 text-text-muted transition-transform duration-300 shrink-0 group-open:rotate-45"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4">
                             </path>
                         </svg>
-                    </button>
-                    <div x-show="active === 4" x-collapse>
-                        <div class="px-6 pb-6 text-text-muted text-sm leading-relaxed">
-                            Significa que no dejamos nada al azar o al "gusto estético". Cada color, espacio,
-                            tipografía
-                            y estructura está diseñado basándose en principios psicológicos de consumo. Reducimos la
-                            carga cognitiva de tus visitas para que navegar sea fluido y tomar la decisión de compra
-                            sea
-                            el paso lógico natural.
-                        </div>
+                    </summary>
+                    <div class="px-6 pb-6 text-text-muted text-sm leading-relaxed">
+                        El diseño con Neuromarketing aplica principios psicológicos para facilitar la decisión de
+                        compra. No es solo estética; reducimos la carga cognitiva del usuario mediante colores,
+                        tipografía y estructuras diseñadas para que la navegación sea fluida y la conversión sea el paso
+                        lógico natural.
                     </div>
-                </div>
+                </details>
             </div>
         </div>
     </section>
