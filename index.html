@@ -322,6 +322,139 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
+        /* Flip Card Styles */
+        .card-flip-container {
+            width: 600px;
+            height: 380px;
+            perspective: 1000px;
+            margin: 0 auto;
+            max-width: 100%;
+        }
+
+        .card-flip-content {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 16px;
+            box-shadow: 0 0 20px rgba(112, 0, 255, 0.1);
+        }
+
+        .card-flip-container:hover .card-flip-content {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #000;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-front {
+            transform: rotateY(0deg);
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: #050505;
+        }
+
+        /* Animated Border for Back */
+        .card-back::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: conic-gradient(from 0deg, transparent 0%, #7000ff 25%, transparent 50%);
+            animation: rotate-border 4s linear infinite;
+            z-index: 0;
+            opacity: 0.5;
+        }
+
+        .card-back-inner {
+            position: relative;
+            z-index: 1;
+            background: #050505;
+            width: 98%;
+            height: 96%;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 16px;
+        }
+
+        /* Animated Circles for Front */
+        .circle-glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(25px);
+            opacity: 0.6;
+            animation: float-glow 6s infinite ease-in-out;
+        }
+
+        .circle-1 {
+            width: 80px;
+            height: 80px;
+            background: #7000ff;
+            top: -20px;
+            right: -20px;
+        }
+
+        .circle-2 {
+            width: 100px;
+            height: 100px;
+            background: #3b0764;
+            bottom: -30px;
+            left: -30px;
+            animation-delay: -2s;
+        }
+
+        .circle-3 {
+            width: 40px;
+            height: 40px;
+            background: #e81cff;
+            top: 40%;
+            right: 20%;
+            animation-delay: -4s;
+            opacity: 0.4;
+        }
+
+        @keyframes rotate-border {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes float-glow {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(10px, -10px) scale(1.1);
+            }
+        }
     </style>
 </head>
 
@@ -565,6 +698,8 @@
         </div>
         </div>
     </section>
+
+
 
     <!-- Features Section -->
     <section id="how" class="py-24 px-4 overflow-hidden">
@@ -871,6 +1006,49 @@
         </div>
     </section>
 
+    <!-- Vextria Flip Card -->
+    <section class="pb-20 px-4 bg-black flex justify-center overflow-visible z-20 relative">
+        <div class="card-flip-container">
+            <div class="card-flip-content">
+                <!-- Front Side -->
+                <div class="card-front relative flex flex-col justify-between p-10 group">
+                    <!-- Glows -->
+                    <div class="circle-glow circle-1"></div>
+                    <div class="circle-glow circle-2"></div>
+                    <div class="circle-glow circle-3"></div>
+
+                    <!-- Content -->
+                    <div class="relative z-10 w-full flex-1 flex items-center justify-center">
+                        <img src="assets/img/logo-vextria.png" alt="Vextria"
+                            class="h-24 w-auto opacity-90 drop-shadow-[0_0_15px_rgba(112,0,255,0.5)]">
+                    </div>
+
+                    <div
+                        class="relative z-10 glass rounded-2xl p-6 border border-white/5 bg-black/40 backdrop-blur-md w-full flex items-center justify-center">
+                        <h3 class="text-white font-bold text-2xl leading-tight text-center">
+                            Soluciones a Medida <span class="text-vextria-violet">IA & Automatización</span>
+                        </h3>
+                    </div>
+                </div>
+
+                <!-- Back Side -->
+                <div class="card-back">
+                    <div class="card-back-inner">
+                        <p class="text-gray-300 text-lg leading-relaxed font-light px-4">
+                            La tecnología de las grandes empresas, ahora al servicio de tu PYME.
+                            <br><br>
+                            Evaluamos qué procesos pueden delegarse a la IA y los automatizamos para que recuperes tu
+                            activo más valioso: tu tiempo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Restored Button -->
+
+
     </section>
 
     <!-- Process Section -->
@@ -1173,12 +1351,13 @@
 
         </div>
 
-        <div class="mt-20 flex justify-center">
-            <a href="#contact" class="btn-sparkle-spin">
+
+
+        <div class="py-20 flex justify-center w-full relative z-30">
+            <a href="#contact" class="btn-sparkle-spin scale-110">
                 <span class="text_button">CONSULTORÍA GRATUITA</span>
                 <div class="dots_border"></div>
             </a>
-        </div>
         </div>
     </section>
 
@@ -1196,7 +1375,8 @@
 
                 <div class="space-y-6 text-lg text-text-muted leading-relaxed">
                     <p>
-                        Soy Diego Carrodeguas. Antes de que la IA lo cambiara todo, mi vida giraba entorno al Marketing
+                        Soy Diego Carrodeguas. Antes de que la IA lo cambiara todo, mi vida giraba entorno al
+                        Marketing
                         Digital, centrandome especialmente en el SEO y el Neuromarketing. Entender la mente del
                         consumidor siempre me ha apasionado.
                     </p>
@@ -1207,7 +1387,8 @@
                         Artificial, siguiendo a diario su vertiginoso ritmo de evolución.
                     </p>
                     <p>
-                        Fundé Vextria con un objetivo claro: unir mis dos pasiones y construir la arquitectura de las
+                        Fundé Vextria con un objetivo claro: unir mis dos pasiones y construir la arquitectura de
+                        las
                         webs para la nueva e inevitable revolución industrial de la Inteligencia Artificial.
                     </p>
                 </div>
@@ -1267,7 +1448,8 @@
                     </summary>
                     <div class="px-6 pb-6 text-text-muted text-sm leading-relaxed">
                         Tu web actual permanecerá operativa al 100% hasta el lanzamiento. Realizamos una transición
-                        estratégica y segura mediante redirecciones 301 para transferir toda tu autoridad histórica a la
+                        estratégica y segura mediante redirecciones 301 para transferir toda tu autoridad histórica
+                        a la
                         nueva arquitectura. No pierdes tráfico, solo potencias tu alcance.
                     </div>
                 </details>
@@ -1287,7 +1469,8 @@
                     </summary>
                     <div class="px-6 pb-6 text-text-muted text-sm leading-relaxed">
                         Estructuramos tu web para que las IAs la entiendan y prioricen. Organizamos la información
-                        semántica (Entity Salience) para que modelos como ChatGPT entiendan inequívocamente quién eres y
+                        semántica (Entity Salience) para que modelos como ChatGPT entiendan inequívocamente quién
+                        eres y
                         te citen como fuente fiable en sus respuestas. Pasamos de la indexación a la enseñanza.
                     </div>
                 </details>
@@ -1297,7 +1480,8 @@
                     class="group bg-surface border border-border rounded-lg overflow-hidden transition-all duration-300 hover:border-primary/50">
                     <summary
                         class="list-none [&::-webkit-details-marker]:hidden w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none cursor-pointer select-none">
-                        <span class="font-semibold text-lg pr-8 text-white">¿Por qué una arquitectura de "Código Puro"
+                        <span class="font-semibold text-lg pr-8 text-white">¿Por qué una arquitectura de "Código
+                            Puro"
                             es mejor que un Wordpress?</span>
                         <svg class="w-5 h-5 text-text-muted transition-transform duration-300 shrink-0 group-open:rotate-45"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1306,9 +1490,12 @@
                         </svg>
                     </summary>
                     <div class="px-6 pb-6 text-text-muted text-sm leading-relaxed">
-                        El Código Puro supera a Wordpress en velocidad, seguridad y legibilidad para IAs. Al eliminar el
-                        80% de código basura (bloatware) de las plantillas, garantizamos tiempos de carga instantáneos
-                        que los algoritmos priorizan. No instalamos webs; desarrollamos activos digitales competitivos.
+                        El Código Puro supera a Wordpress en velocidad, seguridad y legibilidad para IAs. Al
+                        eliminar el
+                        80% de código basura (bloatware) de las plantillas, garantizamos tiempos de carga
+                        instantáneos
+                        que los algoritmos priorizan. No instalamos webs; desarrollamos activos digitales
+                        competitivos.
                     </div>
                 </details>
 
@@ -1317,7 +1504,8 @@
                     class="group bg-surface border border-border rounded-lg overflow-hidden transition-all duration-300 hover:border-primary/50">
                     <summary
                         class="list-none [&::-webkit-details-marker]:hidden w-full px-6 py-5 text-left flex items-center justify-between focus:outline-none cursor-pointer select-none">
-                        <span class="font-semibold text-lg pr-8 text-white">¿Qué significa que la web está diseñada con
+                        <span class="font-semibold text-lg pr-8 text-white">¿Qué significa que la web está diseñada
+                            con
                             Neuromarketing?</span>
                         <svg class="w-5 h-5 text-text-muted transition-transform duration-300 shrink-0 group-open:rotate-45"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1328,7 +1516,8 @@
                     <div class="px-6 pb-6 text-text-muted text-sm leading-relaxed">
                         El diseño con Neuromarketing aplica principios psicológicos para facilitar la decisión de
                         compra. No es solo estética; reducimos la carga cognitiva del usuario mediante colores,
-                        tipografía y estructuras diseñadas para que la navegación sea fluida y la conversión sea el paso
+                        tipografía y estructuras diseñadas para que la navegación sea fluida y la conversión sea el
+                        paso
                         lógico natural.
                     </div>
                 </details>
