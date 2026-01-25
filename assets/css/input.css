@@ -2,6 +2,71 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Fuentes Locales (Self-hosted) para GDPR y Performance */
+@font-face {
+    font-family: 'Figtree';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('../fonts/figtree-v9-latin-300.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Figtree';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/figtree-v9-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Figtree';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('../fonts/figtree-v9-latin-500.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Figtree';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('../fonts/figtree-v9-latin-600.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Figtree';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('../fonts/figtree-v9-latin-700.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Figtree';
+    font-style: normal;
+    font-weight: 800;
+    font-display: swap;
+    src: url('../fonts/figtree-v9-latin-800.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Figtree';
+    font-style: italic;
+    font-weight: 400; /* Asumiendo que usaremos el regular para itálica por ahora si no hay archivo específico, o el navegador simula. El usuario pidió 'ital' en Google fonts. */
+    font-display: swap;
+    src: url('../fonts/figtree-v9-latin-regular.woff2') format('woff2'); /* Fallback/Simulated if needed, or simply omit if not present. Using regular for now to avoid 404. Ideally we need italic file. User didn't provide italic file. */
+}
+
+@font-face {
+    font-family: 'Figtree';
+    font-style: normal;
+    font-weight: 900;
+    font-display: swap;
+    src: url('../fonts/figtree-v9-latin-900.woff2') format('woff2');
+}
+
 @layer base {
     body {
         background-color: #050505;
