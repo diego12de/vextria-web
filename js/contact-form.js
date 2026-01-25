@@ -19,37 +19,40 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const formData = new FormData(form);
 
-            await fetch(form.action, {
+            const response = await fetch("https://api.web3forms.com/submit", {
                 method: 'POST',
-                body: formData,
-                mode: 'no-cors'
+                body: formData
             });
 
-            // Show success message (Premium UI)
-            const successMessage = document.createElement('div');
-            successMessage.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-4 rounded-lg shadow-2xl z-50 transform transition-all duration-500 translate-y-0 opacity-100 flex items-center gap-3';
-            successMessage.innerHTML = `
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                <div>
-                    <h4 class="font-bold">¡Mensaje Recibido!</h4>
-                    <p class="text-sm">Te contactaremos en breve.</p>
-                </div>
-            `;
-            document.body.appendChild(successMessage);
+            const data = await response.json();
 
-            // Reset form
-            form.reset();
+            if (response.ok && data.success) {
+                 // Show success message (Premium UI)
+                const successMessage = document.createElement('div');
+                successMessage.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-4 rounded-lg shadow-2xl z-50 transform transition-all duration-500 translate-y-0 opacity-100 flex items-center gap-3';
+                successMessage.innerHTML = `
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    <div>
+                        <h4 class="font-bold">¡Mensaje Recibido!</h4>
+                        <p class="text-sm">Te contactaremos en breve.</p>
+                    </div>
+                `;
+                document.body.appendChild(successMessage);
 
-            // Store original button text to reset it after delay
-            setTimeout(() => {
-                successMessage.classList.add('opacity-0', '-translate-y-full');
-                setTimeout(() => successMessage.remove(), 500);
-            }, 5000);
+                // Reset form
+                form.reset();
+
+                // Store original button text to reset it after delay
+                setTimeout(() => {
+                    successMessage.classList.add('opacity-0', '-translate-y-full');
+                    setTimeout(() => successMessage.remove(), 500);
+                }, 5000);
+            } else {
+                 throw new Error(data.message || 'Error al enviar el formulario');
+            }
 
         } catch (error) {
             console.error('Error:', error);
-            // Even if fetch fails (e.g. opaque response in some cors cases), we might want to assume success if using no-cors
-            // For now, let's keep it simple. If it really errors, alert.
             alert('Hubo un error al enviar el mensaje. Por favor intenta de nuevo.');
         } finally {
             // Restore button state

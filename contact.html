@@ -138,16 +138,15 @@
                         </svg>
                         <span class="font-medium">Teléfono</span>
                     </div>
-                    <a href="tel:+34600000000" class="text-xl font-semibold hover:text-primary transition-colors">+34
-                        600 000 000</a>
+                    <a href="tel:+34630867155" class="text-xl font-semibold hover:text-primary transition-colors">+34
+                        630 86 71 55</a>
                 </div>
             </div>
 
             <!-- Contact Form Container -->
             <div class="glass-card rounded-2xl p-8 md:p-10">
-                <form id="contactForm"
-                    action="https://script.google.com/macros/s/AKfycbzo9bkGb7MXonSGpugtsI9195hlKDOMyK2V5N6rFBtXmR-ashJ3kn58bw-KoinRDg2_nw/exec"
-                    method="POST" class="space-y-6">
+                <form id="contactForm" action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+                    <input type="hidden" name="access_key" value="32e9f76c-94b3-4aef-bf93-6042bfb19096">
                     <!-- Row 1: Name & Email -->
                     <div class="grid md:grid-cols-2 gap-6">
                         <div class="space-y-2">
@@ -168,7 +167,7 @@
                     <div class="grid md:grid-cols-2 gap-6">
                         <div class="space-y-2">
                             <label class="block text-sm font-semibold text-gray-300">Teléfono</label>
-                            <input type="tel" name="phone" placeholder="+34 600 000 000"
+                            <input type="tel" name="phone" placeholder="+34 630 86 71 55"
                                 class="w-full rounded-lg px-4 py-3 input-dark placeholder-gray-600 focus:text-white">
                         </div>
                         <div class="space-y-2">

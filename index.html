@@ -353,14 +353,14 @@
         </div>
 
         <!-- H1 -->
-        <h1 class="relative z-10 text-5xl md:text-7xl font-bold tracking-tight mb-6 max-w-5xl mx-auto leading-tight">
-            <span class="block text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-text-dim">La
-                IA recomendará</span>
-            <span class="block text-primary italic text-glow">tu negocio</span>
+        <h1
+            class="relative z-10 text-5xl md:text-7xl font-semibold tracking-tight mb-6 max-w-5xl mx-auto leading-tight">
+            <span class="block text-white">La IA recomendará</span>
+            <span class="block text-white text-glow">tu negocio</span>
         </h1>
 
         <!-- Subtitle -->
-        <p class="relative z-10 text-lg md:text-xl text-text-muted max-w-2xl mx-auto mb-10 leading-relaxed">
+        <p class="relative z-10 text-lg md:text-xl text-white max-w-2xl mx-auto mb-10 leading-relaxed">
             Desarrollamos infraestructura digital para PYMES nativa para la era de la IA.<br />
             Combinamos posicionamiento en IA con estrategias avanzadas de neuromarketing para potenciar tu negocio.
         </p>
@@ -431,8 +431,31 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Card 1: Analfabetismo Semántico -->
+                <!-- Card 1: Intoxicación por Código -->
                 <div class="card-gradient rounded-xl p-8 flex flex-col h-full group">
+                    <div
+                        class="mb-6 bg-red-500/10 w-14 h-14 rounded-full flex items-center justify-center border border-red-500/20 group-hover:bg-red-500/20 transition-colors">
+                        <svg class="w-7 h-7 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Intoxicación por Código <br><span
+                            class="text-sm font-normal text-red-400">(Bloatware)</span></h3>
+                    <p class="text-text-muted leading-relaxed text-sm flex-1">
+                        La IAs no navegan como tú; <strong>leen el código fuente línea por línea</strong>.
+                        <br><br>
+                        Las plantillas y CMS tradicionales (WordPress/Wix) cargan toneladas de scripts y código
+                        (bloatware) que no usas. Para una IA, leer tu web de plantilla es como buscar una aguja en un
+                        pajar de <strong>código sucio</strong>.
+                        <br><br>
+                        Si el bot gasta demasiada energía (<strong>crawl budget</strong>) intentando entender tu web,
+                        <strong>simplemente te ignora</strong>.
+                    </p>
+                </div>
+
+                <!-- Card 2: Estructura técnicamente obsoleta -->
+                <div class="card-gradient rounded-xl p-8 flex flex-col h-full group" style="transition-delay: 100ms;">
                     <div
                         class="mb-6 bg-orange-500/10 w-14 h-14 rounded-full flex items-center justify-center border border-orange-500/20 group-hover:bg-orange-500/20 transition-colors">
                         <svg class="w-7 h-7 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -454,30 +477,6 @@
                         fallas en demostrar el
                         <strong>E-E-A-T</strong> que modelos como ChatGPT o Gemini exigen para recomendarte.
                     </p>
-                </div>
-
-                <!-- Card 2: Obesidad Digital -->
-                <div class="card-gradient rounded-xl p-8 flex flex-col h-full group" style="transition-delay: 100ms;">
-                    <div
-                        class="mb-6 bg-red-500/10 w-14 h-14 rounded-full flex items-center justify-center border border-red-500/20 group-hover:bg-red-500/20 transition-colors">
-                        <svg class="w-7 h-7 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">Intoxicación por Código <br><span
-                            class="text-sm font-normal text-red-400">(Bloatware)</span></h3>
-                    <p class="text-text-muted leading-relaxed text-sm flex-1">
-                        La IAs no navegan como tú; <strong>leen el código fuente línea por línea</strong>.
-                        <br><br>
-                        Las plantillas y CMS tradicionales (WordPress/Wix) cargan toneladas de scripts y código
-                        (bloatware) que no usas. Para una IA, leer tu web de plantilla es como buscar una aguja en un
-                        pajar de <strong>código sucio</strong>.
-                        <br><br>
-                        Si el bot gasta demasiada energía (<strong>crawl budget</strong>) intentando entender tu web,
-                        <strong>simplemente te ignora</strong>.
-                    </p>
-
                 </div>
 
                 <!-- Card 3: Página WEB sin estrategia -->
@@ -1322,9 +1321,9 @@
             <!-- Form Container -->
             <div
                 class="bg-surface/50 border border-border rounded-2xl p-8 md:p-12 backdrop-blur-md shadow-2xl relative overflow-hidden">
-                <form id="contactForm"
-                    action="https://script.google.com/macros/s/AKfycbzo9bkGb7MXonSGpugtsI9195hlKDOMyK2V5N6rFBtXmR-ashJ3kn58bw-KoinRDg2_nw/exec"
-                    method="POST" class="space-y-6 relative z-10">
+                <form id="contactForm" action="https://api.web3forms.com/submit" method="POST"
+                    class="space-y-6 relative z-10">
+                    <input type="hidden" name="access_key" value="32e9f76c-94b3-4aef-bf93-6042bfb19096">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-2">
                             <label class="text-xs text-text-muted font-mono uppercase tracking-wider">Nombre
@@ -1343,7 +1342,7 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="space-y-2">
                             <label class="text-xs text-text-muted font-mono uppercase tracking-wider">Teléfono</label>
-                            <input type="tel" name="phone" placeholder="+34 600 000 000"
+                            <input type="tel" name="phone" placeholder="+34 630 86 71 55"
                                 class="w-full bg-black/40 border border-border rounded-lg px-4 py-3 text-white placeholder-text-dim focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all">
                         </div>
                         <div class="space-y-2">
