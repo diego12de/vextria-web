@@ -96,3 +96,10 @@ ErrorDocument 500 /404.html
 #     RewriteCond %{REQUEST_FILENAME}.html -f
 #     RewriteRule ^(.*)$ $1.html [L]
 # </IfModule>
+
+<IfModule mod_headers.c>
+    # Permitir que Clarity (y otros) carguen tus fuentes y estilos
+    <FilesMatch "\.(ttf|ttc|otf|eot|woff|woff2|font.css|css|js)$">
+        Header set Access-Control-Allow-Origin "*"
+    </FilesMatch>
+</IfModule>

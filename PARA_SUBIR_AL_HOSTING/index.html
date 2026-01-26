@@ -261,6 +261,7 @@
             -webkit-text-fill-color: transparent;
         }
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.css">
 </head>
 
 <body class="bg-background text-text-main font-sans antialiased selection:bg-primary selection:text-white">
@@ -1140,10 +1141,10 @@
                 <div class="pt-8 space-y-8">
                     <!-- Profile & LinkedIn (Left Aligned) -->
                     <div class="flex items-center justify-start gap-6">
-                        <img src="assets/img/diego-profile.webp" alt="Diego Carrodeguas"
-                            width="64" height="64" loading="lazy"
+                        <img src="assets/img/diego-profile.webp" alt="Diego Carrodeguas" width="64" height="64"
+                            loading="lazy"
                             class="w-16 h-16 rounded-full object-cover border-2 border-primary/50 grayscale">
-                        <a href="https://www.linkedin.com/in/diego-ai-architect/" target="_blank"
+                        <a href="https://www.linkedin.com/in/diego-carrodeguas/" target="_blank"
                             class="flex items-center justify-center w-12 h-12 rounded-lg bg-black border-2 border-linkedin text-linkedin hover:bg-linkedin hover:text-white transition-all transform hover:scale-110 shadow-lg shadow-blue-900/20"
                             style="border-color: #0077b5; color: #0077b5;">
                             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -1387,6 +1388,87 @@
     </footer>
 
     <script src="js/contact-form.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.umd.js"></script>
+    <script>
+        /**
+         * Función auxiliar para avisar a GTM
+         */
+        function updateGtmConsent() {
+            if (CookieConsent.acceptedCategory('analytics')) {
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                    'event': 'analytics_granted'
+                });
+                console.log('Consentimiento Analytics: CONCEDIDO');
+            }
+        }
+
+        CookieConsent.run({
+            guiOptions: {
+                consentModal: {
+                    layout: 'box',
+                    position: 'bottom right',
+                    equalWeightButtons: true,
+                    flipButtons: false
+                },
+                preferencesModal: {
+                    layout: 'box',
+                    position: 'right',
+                    equalWeightButtons: true,
+                    flipButtons: false
+                }
+            },
+            categories: {
+                necessary: {
+                    readOnly: true,
+                    enabled: true
+                },
+                analytics: {
+                    enabled: false // Bloqueado por defecto (RGPD)
+                }
+            },
+            language: {
+                default: 'es',
+                translations: {
+                    es: {
+                        consentModal: {
+                            title: 'Usamos cookies con IA',
+                            description: 'Utilizamos cookies propias y de terceros para analizar el comportamiento y optimizar nuestra IA.',
+                            acceptAllBtn: 'Aceptar todas',
+                            acceptNecessaryBtn: 'Rechazar',
+                            showPreferencesBtn: 'Gestionar preferencias'
+                        },
+                        preferencesModal: {
+                            title: 'Centro de Preferencias',
+                            acceptAllBtn: 'Aceptar todas',
+                            acceptNecessaryBtn: 'Rechazar todas',
+                            savePreferencesBtn: 'Guardar preferencias',
+                            sections: [
+                                {
+                                    title: 'Estrictamente necesarias',
+                                    description: 'Necesarias para que la web funcione.',
+                                    linkedCategory: 'necessary'
+                                },
+                                {
+                                    title: 'Analítica y Rendimiento',
+                                    description: 'Nos ayudan a entender cómo interactúas con la web (GA4 y Clarity).',
+                                    linkedCategory: 'analytics'
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            // Callback: Se ejecuta la primera vez que aceptan
+            onConsent: function () {
+                updateGtmConsent();
+            },
+            // Callback: Se ejecuta en cada recarga si ya aceptaron antes
+            onBoot: function () {
+                updateGtmConsent();
+            }
+        });
+    </script>
 </body>
 
 </html>
