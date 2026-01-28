@@ -572,6 +572,64 @@
         }
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.css">
+    <style>
+        /* Cookie Consent Customization for Vextria */
+        :root {
+            --cc-bg: #050505;
+            --cc-text: #a1a1aa;
+            --cc-btn-primary-bg: #7000ff;
+            --cc-btn-primary-text: #ffffff;
+            --cc-btn-primary-hover-bg: #5a00cc;
+            --cc-btn-secondary-bg: #1a1a1a;
+            --cc-btn-secondary-text: #ffffff;
+            --cc-btn-secondary-hover-bg: #2a2a2a;
+            --cc-toggle-bg-off: #333333;
+            --cc-toggle-bg-on: #7000ff;
+            --cc-toggle-knob-bg: #ffffff;
+            --cc-block-text: #a1a1aa;
+            --cc-cookie-category-block-bg: #0a0a0a;
+            --cc-cookie-category-block-bg-hover: #111111;
+            --cc-section-border: rgba(255, 255, 255, 0.1);
+            --cc-cookie-table-border: rgba(255, 255, 255, 0.1);
+            --cc-overlay-bg: rgba(0, 0, 0, 0.6);
+            --cc-webkit-scrollbar-bg: #050505;
+            --cc-webkit-scrollbar-bg-hover: #1a1a1a;
+        }
+
+        #cc-main .cm {
+            border: none;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            border-radius: 20px;
+            padding: 2.5rem !important;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 550px !important;
+            text-align: center;
+        }
+
+        #cc-main .cm__title {
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        #cc-main .cm__btn {
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        #cc-main .cm__btn--primary {
+            box-shadow: 0 4px 12px rgba(112, 0, 255, 0.25);
+        }
+
+        #cc-main .cm__btn--primary:hover {
+            box-shadow: 0 6px 16px rgba(112, 0, 255, 0.4);
+            transform: translateY(-1px);
+        }
+    </style>
 </head>
 
 <body class="bg-background text-text-main font-sans antialiased selection:bg-primary selection:text-white">
@@ -1791,14 +1849,14 @@
             guiOptions: {
                 consentModal: {
                     layout: 'box',
-                    position: 'bottom right',
+                    position: 'right',
                     equalWeightButtons: true,
                     flipButtons: false
                 },
-                preferencesModal: {
+                consentModal: {
                     layout: 'box',
-                    position: 'right',
-                    equalWeightButtons: true,
+                    position: 'middle center',
+                    equalWeightButtons: false,
                     flipButtons: false
                 }
             },
@@ -1818,9 +1876,9 @@
                         consentModal: {
                             title: 'Usamos cookies con IA',
                             description: 'Utilizamos cookies propias y de terceros para analizar el comportamiento y optimizar nuestra IA.',
-                            acceptAllBtn: 'Aceptar todas',
-                            acceptNecessaryBtn: 'Rechazar',
-                            showPreferencesBtn: 'Gestionar preferencias'
+                            acceptAllBtn: 'ACEPTAR TODO',
+                            acceptNecessaryBtn: 'RECHAZAR',
+                            showPreferencesBtn: 'MOSTRAR DETALLES'
                         },
                         preferencesModal: {
                             title: 'Centro de Preferencias',

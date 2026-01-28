@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Vextria AI | Big Eyes Robot</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #7c3aed;
+            --bg-body: #0f172a;
+            --chat-bg: #020617; 
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            margin: 0; padding: 0; font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body); color: #fff; height: 100vh; overflow: hidden;
+        }
+
+        .ambient-light {
+            position: fixed; width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, rgba(15, 23, 42, 0) 70%);
+            top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: -1; pointer-events: none;
+        }
+
+        .hero-content {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            height: 100%; text-align: center; padding: 20px;
+        }
+        h1 { font-weight: 600; margin-bottom: 10px; }
+        p { color: #64748b; }
+
+        /* --- CONTENEDOR DEL CHAT --- */
+        #vextria-chat-wrapper {
+            position: fixed; bottom: 100px; right: 30px; z-index: 1000;
+            opacity: 0; visibility: hidden;
+            transform: translateY(15px) scale(0.98);
+            transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+            transform-origin: bottom right;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
+        }
+
+        #vextria-chat-wrapper.active {
+            opacity: 1; visibility: visible; transform: translateY(0) scale(1);
+        }
+
+        /* --- BOTÓN ROBOT --- */
+        .chat-launcher {
+            position: fixed; bottom: 30px; right: 30px;
+            width: 64px; height: 64px;
+            
+            /* Color Violeta Neón */
+            background: linear-gradient(135deg, var(--primary), #4c1d95);
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
+            
+            border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            cursor: pointer; z-index: 1001;
+            
+            /* Animación de entrada (Rodando) */
+            transform: translateX(150px) rotate(720deg);
+            opacity: 0;
+            transition: transform 1.2s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease;
+        }
+
+        .chat-launcher.rolled-in {
+            transform: translateX(0) rotate(0deg);
+            opacity: 1;
+        }
+
+        .chat-launcher.rolled-in:hover {
+            transform: scale(1.1) rotate(0deg); 
+            box-shadow: 0 15px 35px rgba(124, 58, 237, 0.6);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        /* --- CARA ROBOT AJUSTADA --- */
+        .robot-face { display: flex; gap: 8px; transition: 0.3s; }
+        
+        .eye { 
+            width: 13px; /* Ligeramente más ancho */
+            height: 19px; 
+            background: #fff; 
+            border-radius: 8px; 
+            position: relative; 
+            overflow: hidden; 
+            animation: blink 4.5s infinite; 
+        }
+
+        .pupil { 
+            /* AUMENTADO: Antes era 5px, ahora 7.5px */
+            width: 7.5px; 
+            height: 7.5px; 
+            background: #000; 
+            border-radius: 50%; 
+            position: absolute; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+        }
+
+        @keyframes blink { 0%, 96%, 100% { height: 19px; } 98% { height: 2px; } }
+
+        .icon-close { position: absolute; width: 24px; height: 24px; fill: #fff; opacity: 0; transform: rotate(-90deg); transition: 0.3s; }
+        
+        .chat-launcher.is-open .robot-face { opacity: 0; transform: rotate(90deg) scale(0.5); }
+        .chat-launcher.is-open .icon-close { opacity: 1; transform: rotate(0); }
+
+        @media (max-width: 480px) {
+            #vextria-chat-wrapper { bottom: 0; right: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: flex-end; }
+            deep-chat { width: 100% !important; height: 85vh !important; border-radius: 20px 20px 0 0 !important; border: none !important; }
+            .chat-launcher { bottom: 20px; right: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-light"></div>
+    <div class="hero-content">
+        <h1>Vextria AI</h1>
+        <p>Espera 2 segundos para ver al bot entrar...</p>
+    </div>
+
+    <!-- CHAT WRAPPER (Lazy Loaded) -->
+    <div id="vextria-chat-wrapper">
+        <deep-chat
+            id="chat-vextria"
+            style="
+                background-color: #020617;
+                border: 1px solid rgba(255,255,255,0.08);
+                border-radius: 12px;
+                width: 360px; height: 550px;
+                font-family: 'Inter', sans-serif;
+                font-size: 0.95rem;
+            "
+            introMessage='{"text": "Hola. Soy Vextria. ¿Cómo puedo ayudarte?"}'
+            textInput='{
+                "placeholder": {"text": "Escribe un mensaje...", "style": {"color": "#64748b"}},
+                "styles": {
+                    "container": {"backgroundColor": "#020617", "borderTop": "1px solid rgba(255,255,255,0.08)", "boxShadow": "none", "padding": "15px 0"},
+                    "text": {"color": "#e2e8f0", "fontSize": "15px", "paddingLeft": "15px"}
+                }
+            }'
+            messageStyles='{
+                "default": {
+                    "shared": {"bubble": {"borderRadius": "10px", "padding": "10px 14px", "fontSize": "14px", "lineHeight": "1.5", "boxShadow": "none"}},
+                    "user": {"bubble": {"backgroundColor": "#7c3aed", "color": "#ffffff"}},
+                    "ai": {"bubble": {"backgroundColor": "#1e293b", "color": "#cbd5e1"}}
+                }
+            }'
+            submitButtonStyles='{
+                "submit": {
+                    "container": {"default": {"bottom": "14px", "right": "10px"}, "hover": {"backgroundColor": "transparent"}, "click": {"backgroundColor": "transparent"}},
+                    "svg": {"styles": {"default": {"filter": "brightness(0) saturate(100%) invert(29%) sepia(55%) saturate(3476%) hue-rotate(254deg) brightness(97%) contrast(96%)"}}}
+                }
+            }'
+            request='{"url": "https://odd-rice-b381.diego-55e.workers.dev/", "method": "POST", "headers": {"Content-Type": "application/json"}}'
+        ></deep-chat>
+    </div>
+
+    <!-- BOTÓN ROBOT -->
+    <div class="chat-launcher" id="chat-launcher" onclick="toggleChat()">
+        <div class="robot-face" id="robot-face">
+            <div class="eye"><div class="pupil"></div></div>
+            <div class="eye"><div class="pupil"></div></div>
+        </div>
+        <svg class="icon-close" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+    </div>
+
+    <!-- LÓGICA -->
+    <script>
+        const launcher = document.getElementById('chat-launcher');
+        const chatWrapper = document.getElementById('vextria-chat-wrapper');
+        let isOpen = false;
+
+        // 1. CARGA DIFERIDA + ANIMACIÓN RODAR
+        setTimeout(() => {
+            const script = document.createElement('script');
+            script.type = 'module';
+            script.src = 'https://unpkg.com/deep-chat@1.4.10/dist/deepChat.bundle.js';
+            document.body.appendChild(script);
+            
+            // Activa la clase que "rueda" el botón hacia adentro
+            launcher.classList.add('rolled-in');
+        }, 2000);
+
+        // 2. ABRIR/CERRAR
+        function toggleChat() {
+            isOpen = !isOpen;
+            if (isOpen) {
+                chatWrapper.classList.add('active');
+                launcher.classList.add('is-open');
+            } else {
+                chatWrapper.classList.remove('active');
+                launcher.classList.remove('is-open');
+            }
+        }
+
+        // 3. EYE TRACKING (Ajustado para pupilas grandes)
+        document.addEventListener('mousemove', (e) => {
+            if (isOpen || !launcher.classList.contains('rolled-in')) return;
+            document.querySelectorAll('.pupil').forEach((pupil) => {
+                const rect = pupil.parentElement.getBoundingClientRect();
+                const x = rect.left + rect.width / 2;
+                const y = rect.top + rect.height / 2;
+                
+                // Calcular ángulo
+                const angle = Math.atan2(e.clientY - y, e.clientX - x);
+                
+                // Reduje un poco el movimiento (de 2.5 a 2.2) para que
+                // las pupilas grandes no se "salgan" del ojo
+                const moveDist = 2.2; 
+                
+                const moveX = Math.cos(angle) * moveDist;
+                const moveY = Math.sin(angle) * moveDist;
+
+                pupil.style.transform = `translate(calc(-50% + ${moveX}px), calc(-50% + ${moveY}px))`;
+            });
+        });
+    </script>
+</body>
+</html>

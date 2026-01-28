@@ -571,7 +571,59 @@
             }
         }
     </style>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.css">
+    <link rel="stylesheet" href="assets/css/cookieconsent.css" media="print" onload="this.media='all'">
+    <style>
+        /* Cookie Consent Customization for Vextria */
+        :root {
+            --cc-bg: #050505;
+            --cc-text: #a1a1aa;
+            --cc-btn-primary-bg: #7000ff;
+            --cc-btn-primary-text: #ffffff;
+            --cc-btn-primary-hover-bg: #5a00cc;
+            --cc-btn-secondary-bg: #1a1a1a;
+            --cc-btn-secondary-text: #ffffff;
+            --cc-btn-secondary-hover-bg: #2a2a2a;
+            --cc-toggle-bg-off: #333333;
+            --cc-toggle-bg-on: #7000ff;
+            --cc-toggle-knob-bg: #ffffff;
+            --cc-block-text: #a1a1aa;
+            --cc-cookie-category-block-bg: #0a0a0a;
+            --cc-cookie-category-block-bg-hover: #111111;
+            --cc-section-border: rgba(255, 255, 255, 0.1);
+            --cc-cookie-table-border: rgba(255, 255, 255, 0.1);
+            --cc-overlay-bg: rgba(0, 0, 0, 0.6);
+            --cc-webkit-scrollbar-bg: #050505;
+            --cc-webkit-scrollbar-bg-hover: #1a1a1a;
+        }
+
+        #cc-main .cm {
+            border: none;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border-radius: 16px;
+        }
+
+        #cc-main .cm__title {
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        #cc-main .cm__btn {
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        #cc-main .cm__btn--primary {
+            box-shadow: 0 4px 12px rgba(112, 0, 255, 0.25);
+        }
+
+        #cc-main .cm__btn--primary:hover {
+            box-shadow: 0 6px 16px rgba(112, 0, 255, 0.4);
+            transform: translateY(-1px);
+        }
+    </style>
 </head>
 
 <body class="bg-background text-text-main font-sans antialiased selection:bg-primary selection:text-white">
@@ -604,9 +656,9 @@
 
             <!-- CTA Button -->
             <a href="#contact"
-                class="hidden md:flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/10 px-4 py-2 rounded-lg text-sm font-medium transition-all group">
+                class="hidden md:flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg text-sm font-medium shadow-lg shadow-primary/25 transition-all group">
                 <span>Hablemos</span>
-                <svg class="w-4 h-4 text-text-muted group-hover:translate-x-0.5 transition-transform" fill="none"
+                <svg class="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform" fill="none"
                     stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6">
                     </path>
@@ -1512,7 +1564,8 @@
 
 
             <div class="py-20 flex justify-center w-full relative z-30">
-                <a href="#contact" class="btn-sparkle-spin scale-110">
+                <a href="https://calendar.app.google/QrQhbpyx8YAT97nC7" target="_blank"
+                    class="btn-sparkle-spin scale-110">
                     <span class="text_button">CONSULTORÍA GRATUITA</span>
                     <div class="dots_border"></div>
                 </a>
@@ -1797,7 +1850,7 @@
 
     <script src="assets/js/contact-form.js"></script>
     <script src="assets/js/hero-animation.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.umd.js"></script>
+    <script defer src="assets/js/cookieconsent.umd.js"></script>
     <script>
         /**
          * Función auxiliar para avisar a GTM
@@ -1812,71 +1865,219 @@
             }
         }
 
-        CookieConsent.run({
-            guiOptions: {
-                consentModal: {
-                    layout: 'box',
-                    position: 'bottom right',
-                    equalWeightButtons: true,
-                    flipButtons: false
-                },
-                preferencesModal: {
-                    layout: 'box',
-                    position: 'right',
-                    equalWeightButtons: true,
-                    flipButtons: false
-                }
-            },
-            categories: {
-                necessary: {
-                    readOnly: true,
-                    enabled: true
-                },
-                analytics: {
-                    enabled: false // Bloqueado por defecto (RGPD)
-                }
-            },
-            language: {
-                default: 'es',
-                translations: {
-                    es: {
+        // Defer execution until after page load to protect Core Web Vitals
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                CookieConsent.run({
+                    guiOptions: {
                         consentModal: {
-                            title: 'Este sitio web utiliza cookies',
-                            description: 'Utilizamos cookies propias y de terceros para analizar el comportamiento y optimizar nuestra IA.',
-                            acceptAllBtn: 'Aceptar todas',
-                            acceptNecessaryBtn: 'Rechazar',
-                            showPreferencesBtn: 'Gestionar preferencias'
+                            layout: 'box',
+                            position: 'right',
+                            equalWeightButtons: true,
+                            flipButtons: false
                         },
                         preferencesModal: {
-                            title: 'Centro de Preferencias',
-                            acceptAllBtn: 'Aceptar',
-                            acceptNecessaryBtn: 'Rechazar todas',
-                            savePreferencesBtn: 'Guardar preferencias',
-                            sections: [
-                                {
-                                    title: 'Estrictamente necesarias',
-                                    description: 'Necesarias para que la web funcione.',
-                                    linkedCategory: 'necessary'
-                                },
-                                {
-                                    title: 'Analítica y Rendimiento',
-                                    description: 'Nos ayudan a entender cómo interactúas con la web (GA4 y Clarity).',
-                                    linkedCategory: 'analytics'
-                                }
-                            ]
+                            layout: 'box',
+                            position: 'right',
+                            equalWeightButtons: true,
+                            flipButtons: false
                         }
+                    },
+                    categories: {
+                        necessary: {
+                            readOnly: true,
+                            enabled: true
+                        },
+                        analytics: {
+                            enabled: false // Bloqueado por defecto (RGPD)
+                        }
+                    },
+                    language: {
+                        default: 'es',
+                        translations: {
+                            es: {
+                                consentModal: {
+                                    title: 'Este sitio web utiliza cookies',
+                                    description: 'Utilizamos cookies propias y de terceros para mejorar la experiencia del usuario.',
+                                    acceptAllBtn: 'Aceptar',
+                                    acceptNecessaryBtn: 'Rechazar',
+                                    showPreferencesBtn: 'Mostrar detalles'
+                                },
+                                preferencesModal: {
+                                    title: 'Centro de Preferencias',
+                                    acceptAllBtn: 'Aceptar',
+                                    acceptNecessaryBtn: 'Rechazar',
+                                    savePreferencesBtn: 'Guardar preferencias',
+                                    sections: [
+                                        {
+                                            title: 'Estrictamente necesarias',
+                                            description: 'Necesarias para que la web funcione.',
+                                            linkedCategory: 'necessary'
+                                        },
+                                        {
+                                            title: 'Analítica y Rendimiento',
+                                            description: 'Nos ayudan a entender cómo interactúas con la web (GA4 y Clarity).',
+                                            linkedCategory: 'analytics'
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    // Callback: Se ejecuta la primera vez que aceptan
+                    onConsent: function () {
+                        updateGtmConsent();
+                    },
+                    // Callback: Se ejecuta en cada recarga si ya aceptaron antes
+                    onBoot: function () {
+                        updateGtmConsent();
                     }
-                }
-            },
-            // Callback: Se ejecuta la primera vez que aceptan
-            onConsent: function () {
-                updateGtmConsent();
-            },
-            // Callback: Se ejecuta en cada recarga si ya aceptaron antes
-            onBoot: function () {
-                updateGtmConsent();
-            }
+                });
+            }, 2000); // 2 second delay after load
         });
+    </script>
+    <!-- Deep Chat: Carga diferida para no afectar Core Web Vitals -->
+
+    <!-- CHATBOT: CSS Externo (carga no bloqueante para Core Web Vitals) -->
+    <link rel="stylesheet" href="assets/css/chatbot.css?v=2" media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="assets/css/chatbot.css?v=2">
+    </noscript>
+
+    <!-- Estilos para enlaces del chatbot (inyectados en Shadow DOM) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(function () {
+                var deepChat = document.getElementById('chat-vextria');
+                if (deepChat && deepChat.shadowRoot) {
+                    var style = document.createElement('style');
+                    style.textContent = 'a { color: #ffffff !important; text-decoration: underline !important; } a:hover { color: #e0e0e0 !important; }';
+                    deepChat.shadowRoot.appendChild(style);
+                }
+            }, 2500);
+        });
+    </script>
+
+    <!-- CHATBOT: Wrapper del Chat -->
+    <div id="vextria-chat-wrapper">
+        <deep-chat id="chat-vextria"
+            style="height: 650px; width: 360px; background-color: #020617; border: 1px solid rgba(255,255,255,0.08); border-radius: 12px;"
+            introMessage='{"text": "¡Hola! 👋 Soy Vextri, la IA de VEXTRIA. Te ayudaré con lo que necesites."}'
+            textInput='{
+                "placeholder": {"text": "Escribe un mensaje...", "style": {"color": "#64748b"}},
+                "styles": {
+                    "container": {"backgroundColor": "#020617", "borderTop": "1px solid rgba(255,255,255,0.08)", "boxShadow": "none", "padding": "15px 0"},
+                    "text": {"color": "#e2e8f0", "fontSize": "15px", "paddingLeft": "15px"}
+                }
+            }' messageStyles='{
+                "default": {
+                    "shared": {"bubble": {"borderRadius": "10px", "padding": "10px 14px", "fontSize": "14px", "lineHeight": "1.5", "boxShadow": "none"}},
+                    "user": {"bubble": {"backgroundColor": "#7c3aed", "color": "#ffffff"}},
+                    "ai": {"bubble": {"backgroundColor": "#1e293b", "color": "#cbd5e1"}}
+                }
+            }' submitButtonStyles='{
+                "submit": {
+                    "container": {"default": {"bottom": "14px", "right": "10px"}, "hover": {"backgroundColor": "transparent"}, "click": {"backgroundColor": "transparent"}},
+                    "svg": {"styles": {"default": {"filter": "brightness(0) saturate(100%) invert(29%) sepia(55%) saturate(3476%) hue-rotate(254deg) brightness(97%) contrast(96%)"}}}
+                }
+            }' htmlClassUtilities='{
+                "ai-message-link": {"styles": {"default": {"color": "#ffffff", "textDecoration": "underline"}, "hover": {"color": "#e0e0e0"}}}
+            }'
+            request='{"url": "https://odd-rice-b381.diego-55e.workers.dev/", "method": "POST", "headers": {"Content-Type": "application/json"}}'></deep-chat>
+    </div>
+
+    <!-- CHATBOT: Launcher (Cara de Robot) -->
+    <div class="chat-launcher" id="chat-launcher" role="button" aria-label="Abrir asistente virtual" tabindex="0">
+        <div class="robot-face" id="robot-face">
+            <div class="eye">
+                <div class="pupil"></div>
+            </div>
+            <div class="eye">
+                <div class="pupil"></div>
+            </div>
+        </div>
+        <svg class="icon-close" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+        </svg>
+    </div>
+
+    <!-- CHATBOT: Script (Réplica exacta de ejemplochatbot.html) -->
+    <script>
+        (function () {
+            'use strict';
+            var launcher = document.getElementById('chat-launcher');
+            var chatWrapper = document.getElementById('vextria-chat-wrapper');
+            var isOpen = false;
+
+            // 1. CARGA DIFERIDA + ANIMACIÓN RODAR (después de 2s)
+            setTimeout(function () {
+                var script = document.createElement('script');
+                script.type = 'module';
+                script.src = 'https://unpkg.com/deep-chat@1.4.10/dist/deepChat.bundle.js';
+                document.body.appendChild(script);
+
+                // Activa la clase que "rueda" el botón hacia adentro
+                launcher.classList.add('rolled-in');
+            }, 2000);
+
+            // 2. ABRIR/CERRAR
+            function toggleChat() {
+                isOpen = !isOpen;
+                if (isOpen) {
+                    chatWrapper.classList.add('active');
+                    launcher.classList.add('is-open');
+                    launcher.setAttribute('aria-label', 'Cerrar asistente');
+                    launcher.setAttribute('aria-expanded', 'true');
+                } else {
+                    chatWrapper.classList.remove('active');
+                    launcher.classList.remove('is-open');
+                    launcher.setAttribute('aria-label', 'Abrir asistente virtual');
+                    launcher.setAttribute('aria-expanded', 'false');
+                }
+            }
+
+            launcher.addEventListener('click', toggleChat);
+            launcher.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleChat();
+                }
+            });
+
+            // Cerrar con Escape
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && isOpen) toggleChat();
+            });
+
+            // 3. EYE TRACKING (Ajustado para pupilas grandes: 2.2px)
+            document.addEventListener('mousemove', function (e) {
+                if (isOpen || !launcher.classList.contains('rolled-in')) return;
+                document.querySelectorAll('.pupil').forEach(function (pupil) {
+                    var rect = pupil.parentElement.getBoundingClientRect();
+                    var x = rect.left + rect.width / 2;
+                    var y = rect.top + rect.height / 2;
+                    var angle = Math.atan2(e.clientY - y, e.clientX - x);
+                    var moveDist = 2.2; // Reducido para pupilas grandes
+                    var moveX = Math.cos(angle) * moveDist;
+                    var moveY = Math.sin(angle) * moveDist;
+                    pupil.style.transform = 'translate(calc(-50% + ' + moveX + 'px), calc(-50% + ' + moveY + 'px))';
+                });
+            });
+
+            // Soporte táctil
+            document.addEventListener('touchmove', function (e) {
+                if (isOpen || !launcher.classList.contains('rolled-in')) return;
+                var touch = e.touches[0];
+                document.querySelectorAll('.pupil').forEach(function (pupil) {
+                    var rect = pupil.parentElement.getBoundingClientRect();
+                    var angle = Math.atan2(touch.clientY - (rect.top + rect.height / 2), touch.clientX - (rect.left + rect.width / 2));
+                    var moveX = Math.cos(angle) * 2.2;
+                    var moveY = Math.sin(angle) * 2.2;
+                    pupil.style.transform = 'translate(calc(-50% + ' + moveX + 'px), calc(-50% + ' + moveY + 'px))';
+                });
+            }, { passive: true });
+        })();
     </script>
 </body>
 

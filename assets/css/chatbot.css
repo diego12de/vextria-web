@@ -1,0 +1,237 @@
+/**
+ * ============================================
+ * CHATBOT: Cara de Robot con Eye Tracking
+ * ============================================
+ * RÉPLICA EXACTA de ejemplochatbot.html
+ * Optimizado para Core Web Vitals
+ */
+
+/* ===========================================
+   VARIABLES (Exactas del original)
+   =========================================== */
+:root {
+    --chat-primary: #7c3aed;
+    --chat-primary-dark: #4c1d95;
+    --chat-bg: #020617;
+    --chat-glass-border: rgba(255, 255, 255, 0.08);
+}
+
+/* ===========================================
+   CONTENEDOR DEL CHAT
+   =========================================== */
+#vextria-chat-wrapper {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px) scale(0.98);
+    transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    transform-origin: bottom right;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.6));
+    pointer-events: none;
+    /* No bloquea clicks cuando está cerrado */
+}
+
+#vextria-chat-wrapper.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+    /* Habilita interacción cuando está abierto */
+}
+
+/* ===========================================
+   BOTÓN ROBOT (Launcher)
+   =========================================== */
+.chat-launcher {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, var(--chat-primary), var(--chat-primary-dark));
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1001;
+    /* Animación de entrada: RODANDO desde la derecha */
+    transform: translateX(150px) rotate(720deg);
+    opacity: 0;
+    pointer-events: none;
+    /* No bloquea clicks antes de aparecer */
+    transition: transform 1.2s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease;
+}
+
+/* Estado después de rodar (visible) */
+.chat-launcher.rolled-in {
+    transform: translateX(0) rotate(0deg);
+    opacity: 1;
+    pointer-events: auto;
+    /* Habilita clicks cuando es visible */
+}
+
+.chat-launcher.rolled-in:hover {
+    transform: scale(1.1) rotate(0deg);
+    box-shadow: 0 15px 35px rgba(124, 58, 237, 0.6);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* ===========================================
+   CARA DEL ROBOT
+   =========================================== */
+.robot-face {
+    display: flex;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+/* Ojos */
+.eye {
+    width: 13px;
+    height: 19px;
+    background: #fff;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    animation: blink 4.5s infinite;
+}
+
+/* Pupilas (GRANDES: 7.5px como en el original) */
+.pupil {
+    width: 7.5px;
+    height: 7.5px;
+    background: #000;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Animación de parpadeo */
+@keyframes blink {
+
+    0%,
+    96%,
+    100% {
+        height: 19px;
+    }
+
+    98% {
+        height: 2px;
+    }
+}
+
+/* Icono de cerrar (X) */
+.icon-close {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    fill: #fff;
+    opacity: 0;
+    transform: rotate(-90deg);
+    transition: 0.3s;
+}
+
+/* ===========================================
+   ESTADOS ABIERTO/CERRADO
+   =========================================== */
+.chat-launcher.is-open .robot-face {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.5);
+}
+
+.chat-launcher.is-open .icon-close {
+    opacity: 1;
+    transform: rotate(0);
+}
+
+/* ===========================================
+   DEEP CHAT (Estilos exactos del original)
+   =========================================== */
+#chat-vextria {
+    background-color: #020617 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 12px;
+    width: 360px;
+    height: 650px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    pointer-events: none;
+    /* Hereda el bloqueo del wrapper cuando está cerrado */
+}
+
+/* Habilitar interacción cuando el chat está abierto */
+#vextria-chat-wrapper.active #chat-vextria {
+    pointer-events: auto;
+}
+
+/* Forzar fondo oscuro en el contenedor interno */
+#chat-vextria::part(chat-view) {
+    background-color: #020617 !important;
+}
+
+#chat-vextria::part(messages) {
+    background-color: #020617 !important;
+}
+
+#chat-vextria::part(input-container) {
+    background-color: #020617 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Enlaces más claros y visibles */
+#chat-vextria a,
+#chat-vextria::part(message) a {
+    color: #a78bfa !important;
+    text-decoration: underline !important;
+}
+
+#chat-vextria a:hover,
+#chat-vextria::part(message) a:hover {
+    color: #c4b5fd !important;
+}
+
+/* ===========================================
+   RESPONSIVE
+   =========================================== */
+@media (max-width: 480px) {
+
+    /* Wrapper cerrado: dimensiones mínimas, no bloquea nada */
+    #vextria-chat-wrapper {
+        bottom: 20px;
+        right: 20px;
+        left: auto;
+        width: auto;
+        height: auto;
+    }
+
+    /* Wrapper abierto: pantalla completa para el chat */
+    #vextria-chat-wrapper.active {
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: flex-end;
+    }
+
+    #chat-vextria {
+        width: 100% !important;
+        height: 85vh !important;
+        border-radius: 20px 20px 0 0 !important;
+        border: none !important;
+    }
+
+    .chat-launcher {
+        bottom: 20px;
+        right: 20px;
+    }
+}
