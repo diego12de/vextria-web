@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Insights: IA, SEO y Automatización | Vextria</title>
+
+    <meta name="description"
+        content="Artículos técnicos y estrategias sobre Posicionamiento AEO/GEO, Inteligencia Artificial y Automatización de procesos para negocios.">
+    <link rel="canonical" href="https://vextria.es/docs/">
+
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-NH55N7SR');</script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Fonts (Local & Optimized) -->
+    <link rel="preload" href="../assets/fonts/figtree-v9-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../assets/fonts/figtree-v9-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+
+    <!-- CSS (Static) -->
+    <link href="../assets/css/styles.css" rel="stylesheet">
+    <!-- Cookie Consent CSS -->
+    <link rel="stylesheet" href="../assets/css/cookieconsent.css" media="print" onload="this.media='all'">
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
+
+    <!-- Shared Styles (Glass, Glow, Card Gradients) -->
+    <style>
+        /* Reusing main site utilities */
+        .glass {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .text-glow {
+            text-shadow: 0 0 20px rgba(129, 74, 200, 0.5);
+        }
+
+        .card-gradient {
+            background: linear-gradient(#0d0d0d, #0d0d0d) padding-box,
+                linear-gradient(145deg, transparent 35%, #e81cff, #40c9ff) border-box;
+            border: 2px solid transparent;
+            transform-origin: right bottom;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+
+        .card-gradient:hover {
+            transform: rotate(2deg) scale(1.02);
+            box-shadow: 0 10px 40px -10px rgba(232, 28, 255, 0.3);
+        }
+
+        /* Cookie Consent Custom Variabes (Same as index) */
+        :root {
+            --cc-bg: #050505;
+            --cc-text: #a1a1aa;
+            --cc-btn-primary-bg: #7000ff;
+            --cc-btn-primary-text: #ffffff;
+            --cc-btn-primary-hover-bg: #5a00cc;
+            --cc-btn-secondary-bg: #1a1a1a;
+            --cc-btn-secondary-text: #ffffff;
+            --cc-btn-secondary-hover-bg: #2a2a2a;
+            --cc-toggle-bg-off: #333333;
+            --cc-toggle-bg-on: #7000ff;
+            --cc-toggle-knob-bg: #ffffff;
+            --cc-block-text: #a1a1aa;
+            --cc-cookie-category-block-bg: #0a0a0a;
+            --cc-cookie-category-block-bg-hover: #111111;
+            --cc-section-border: rgba(255, 255, 255, 0.1);
+            --cc-cookie-table-border: rgba(255, 255, 255, 0.1);
+            --cc-overlay-bg: rgba(0, 0, 0, 0.6);
+            --cc-webkit-scrollbar-bg: #050505;
+            --cc-webkit-scrollbar-bg-hover: #1a1a1a;
+        }
+    </style>
+</head>
+
+<body class="bg-background text-text-main font-sans antialiased selection:bg-primary selection:text-white">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NH55N7SR" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 inset-x-0 z-50 glass border-b border-border transition-all duration-300"
+        x-data="{ atTop: true, mobileMenuOpen: false }" @scroll.window="atTop = (window.pageYOffset < 20)">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="../index.html" class="flex items-center gap-2 group">
+                <img src="../assets/img/logo-vextria.png" alt="VEXTRIA" width="160" height="40"
+                    class="h-10 w-auto object-contain">
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="../index.html"
+                    class="text-sm font-medium text-text-muted hover:text-white transition-colors">Inicio</a>
+                <a href="../index.html#how"
+                    class="text-sm font-medium text-text-muted hover:text-white transition-colors">Metodología</a>
+                <a href="#" class="text-sm font-medium text-white transition-colors">Blog/Docs</a>
+                <a href="../index.html#contact"
+                    class="text-sm font-medium text-text-muted hover:text-white transition-colors">Contacto</a>
+            </div>
+
+            <!-- CTA Button -->
+            <a href="../index.html#contact"
+                class="hidden md:flex items-center gap-2 bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg text-sm font-medium shadow-lg shadow-primary/25 transition-all group">
+                <span>Hablemos</span>
+                <svg class="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6">
+                    </path>
+                </svg>
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden p-2 text-text-muted" @click="mobileMenuOpen = !mobileMenuOpen"
+                aria-label="Toggle Navigation">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-200"
+            x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
+            x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0"
+            x-transition:leave-end="opacity-0 -translate-y-2"
+            class="md:hidden absolute top-20 inset-x-0 bg-surface/95 border-b border-border backdrop-blur-xl"
+            style="display: none;">
+            <div class="px-6 py-4 space-y-4 flex flex-col">
+                <a href="../index.html" class="text-sm font-medium text-text-muted hover:text-white transition-colors"
+                    @click="mobileMenuOpen = false">Inicio</a>
+                <a href="../index.html#how"
+                    class="text-sm font-medium text-text-muted hover:text-white transition-colors"
+                    @click="mobileMenuOpen = false">Metodología</a>
+                <a href="#" class="text-sm font-medium text-white transition-colors"
+                    @click="mobileMenuOpen = false">Blog/Docs</a>
+                <a href="../index.html#contact"
+                    class="text-sm font-medium text-text-muted hover:text-white transition-colors"
+                    @click="mobileMenuOpen = false">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Blog Hero Section -->
+        <section
+            class="relative pt-32 pb-16 flex flex-col justify-center items-center text-center px-4 overflow-hidden">
+            <!-- Glow Effect -->
+            <div class="absolute inset-0 bg-hero-glow z-0 pointer-events-none opacity-50"></div>
+
+            <h1
+                class="relative z-10 text-4xl md:text-6xl font-semibold tracking-tight mb-6 max-w-4xl mx-auto leading-tight">
+                Insights & <span class="text-glow text-white">Conocimiento</span>
+            </h1>
+            <p class="relative z-10 text-lg text-text-muted max-w-2xl mx-auto leading-relaxed">
+                Descubre las últimas tendencias en IA Generativa, estrategias de posicionamiento AEO y automatización de
+                procesos.
+            </p>
+        </section>
+
+        <!-- Categories / Filter -->
+        <section class="pb-12 px-4 relative z-10">
+            <div class="max-w-7xl mx-auto flex justify-center gap-4 flex-wrap">
+                <a href="#"
+                    class="px-4 py-2 rounded-full bg-primary/20 border border-primary text-primary text-sm font-medium transition-all hover:bg-primary hover:text-white">Todo</a>
+                <a href="#"
+                    class="px-4 py-2 rounded-full bg-surface border border-border text-text-muted text-sm font-medium transition-all hover:border-text-dim hover:text-white">Estrategia
+                    AI</a>
+                <a href="#"
+                    class="px-4 py-2 rounded-full bg-surface border border-border text-text-muted text-sm font-medium transition-all hover:border-text-dim hover:text-white">AEO
+                    / SEO</a>
+                <a href="#"
+                    class="px-4 py-2 rounded-full bg-surface border border-border text-text-muted text-sm font-medium transition-all hover:border-text-dim hover:text-white">Automatización</a>
+            </div>
+        </section>
+
+        <!-- Articles Grid -->
+        <section class="pb-24 px-4 relative z-10">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <!-- Article Card 1 -->
+                <article
+                    class="card-gradient rounded-3xl p-6 h-full flex flex-col group cursor-pointer relative overflow-hidden"
+                    onclick="window.location.href='#'">
+                    <div
+                        class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+
+                    <div
+                        class="relative z-10 rounded-2xl overflow-hidden mb-6 aspect-video bg-surface-light border border-white/5">
+                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=800"
+                            alt="AI Strategy"
+                            class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700 grayscale group-hover:grayscale-0">
+                    </div>
+
+                    <div class="flex items-center gap-3 mb-4 text-xs font-mono text-primary uppercase tracking-wider">
+                        <span class="px-2 py-1 rounded bg-primary/10 border border-primary/20">Estrategia AI</span>
+                        <span class="text-text-muted">&bull;</span>
+                        <span class="text-text-muted">5 min lectura</span>
+                    </div>
+
+                    <h2 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors leading-tight">
+                        El futuro de la Automatización con IA
+                    </h2>
+
+                    <p class="text-text-muted text-sm leading-relaxed mb-6 flex-grow">
+                        Cómo los agentes autónomos están redefiniendo las operaciones comerciales y por qué tu empresa
+                        debe adaptarse ahora.
+                    </p>
+
+                    <div
+                        class="inline-flex items-center text-sm font-semibold text-white group-hover:translate-x-2 transition-transform">
+                        Leer artículo <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </div>
+                </article>
+
+                <!-- Article Card 2 -->
+                <article
+                    class="card-gradient rounded-3xl p-6 h-full flex flex-col group cursor-pointer relative overflow-hidden"
+                    onclick="window.location.href='#'">
+                    <div
+                        class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+
+                    <div
+                        class="relative z-10 rounded-2xl overflow-hidden mb-6 aspect-video bg-surface-light border border-white/5">
+                        <img src="https://images.unsplash.com/photo-1633419461186-7d40a2e50594?auto=format&fit=crop&q=80&w=800"
+                            alt="SEO vs AEO"
+                            class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700 grayscale group-hover:grayscale-0">
+                    </div>
+
+                    <div class="flex items-center gap-3 mb-4 text-xs font-mono text-primary uppercase tracking-wider">
+                        <span class="px-2 py-1 rounded bg-primary/10 border border-primary/20">AEO / SEO</span>
+                        <span class="text-text-muted">&bull;</span>
+                        <span class="text-text-muted">7 min lectura</span>
+                    </div>
+
+                    <h2 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors leading-tight">
+                        AEO: El fin del SEO tradicional
+                    </h2>
+
+                    <p class="text-text-muted text-sm leading-relaxed mb-6 flex-grow">
+                        Por qué optimizar para Google ya no es suficiente y cómo conquistar las respuestas de ChatGPT y
+                        Perplexity.
+                    </p>
+
+                    <div
+                        class="inline-flex items-center text-sm font-semibold text-white group-hover:translate-x-2 transition-transform">
+                        Leer artículo <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer" class="border-t border-border py-12 bg-surface/20">
+        <div
+            class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-xs text-text-dim">
+            <p>&copy; 2026 Vextria. All rights reserved.</p>
+            <div class="flex gap-4 mt-4 md:mt-0">
+                <a href="../contact.html" class="hover:text-white transition-colors">Contacto</a>
+                <a href="../legal/terminos-condiciones.html" class="hover:text-white transition-colors">Aviso Legal</a>
+                <a href="../legal/politica-privacidad.html" class="hover:text-white transition-colors">Privacidad</a>
+                <a href="../legal/politica-cookies.html" class="hover:text-white transition-colors">Cookies</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../assets/js/contact-form.js"></script>
+    <script defer src="../assets/js/cookieconsent.umd.js"></script>
+    <script>
+        // Initialize Cookie Consent (Same configuration as main site)
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                if (typeof CookieConsent !== 'undefined') {
+                    CookieConsent.run({
+                        // ... Same config as index.html
+                        guiOptions: { consentModal: { layout: 'box', position: 'right', equalWeightButtons: true, flipButtons: false }, preferencesModal: { layout: 'box', position: 'right', equalWeightButtons: true, flipButtons: false } },
+                        categories: { necessary: { readOnly: true, enabled: true }, analytics: { enabled: false } },
+                        language: { default: 'es', translations: { es: { consentModal: { title: 'Este sitio web utiliza cookies', description: 'Utilizamos cookies propias y de terceros para mejorar la experiencia del usuario.', acceptAllBtn: 'Aceptar', acceptNecessaryBtn: 'Rechazar', showPreferencesBtn: 'Mostrar detalles' }, preferencesModal: { title: 'Centro de Preferencias', acceptAllBtn: 'Aceptar', acceptNecessaryBtn: 'Rechazar', savePreferencesBtn: 'Guardar preferencias', sections: [{ title: 'Estrictamente necesarias', description: 'Necesarias para que la web funcione.', linkedCategory: 'necessary' }, { title: 'Analítica y Rendimiento', description: 'Nos ayudan a entender cómo interactúas con la web.', linkedCategory: 'analytics' }] } } } },
+                        onConsent: function () { if (CookieConsent.acceptedCategory('analytics')) { window.dataLayer = window.dataLayer || []; window.dataLayer.push({ 'event': 'analytics_granted' }); } }
+                    });
+                }
+            }, 2000);
+        });
+    </script>
+
+</body>
+
+</html>

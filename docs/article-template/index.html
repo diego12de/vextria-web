@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Título del Artículo SEO] | Vextria Docs</title>
+
+    <meta name="description" content="[Descripción corta del artículo para Google, entre 150 y 160 caracteres].">
+
+    <!-- Cambiar esta URL por la final del post -->
+    <link rel="canonical" href="https://vextria.es/docs/article-template/">
+
+    <!-- Open Graph (Shared on LinkedIn/Twitter/WhatsApp) -->
+    <meta property="og:title" content="[Título del Artículo]">
+    <meta property="og:description" content="[Descripción corta del artículo]">
+    <meta property="og:image" content="https://vextria.es/assets/img/logo-vextria.png">
+    <!-- Cambiar por imagen destacada -->
+    <meta property="og:url" content="https://vextria.es/docs/article-template/">
+    <meta property="og:type" content="article">
+
+    <!-- Fonts -->
+    <link rel="preload" href="../../assets/fonts/figtree-v9-latin-regular.woff2" as="font" type="font/woff2"
+        crossorigin>
+    <link rel="preload" href="../../assets/fonts/figtree-v9-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+
+    <!-- CSS -->
+    <link href="../../assets/css/styles.css" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
+
+    <!-- Article Specific Styles -->
+    <style>
+        /* Article Typography - Simplified "Prose" */
+        .article-content {
+            color: #d1d5db;
+            /* text-gray-300 */
+            line-height: 1.8;
+            font-size: 1.125rem;
+        }
+
+        .article-content h2 {
+            color: #ffffff;
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content h3 {
+            color: #f3f4f6;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content ul,
+        .article-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.5rem;
+            list-style-type: disc;
+        }
+
+        .article-content strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .article-content a {
+            color: #a855f7;
+            /* Primary Purple */
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .article-content blockquote {
+            border-left: 4px solid #a855f7;
+            padding-left: 1.5rem;
+            font-style: italic;
+            color: #9ca3af;
+            font-size: 1.25rem;
+            margin-block: 2rem;
+        }
+
+        .article-content pre {
+            background-color: #1e1e1e;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            overflow-x: auto;
+            border: 1px solid #333;
+            margin-block: 2rem;
+        }
+    </style>
+
+    <!-- Schema JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://vextria.es/docs/article-template/"
+      },
+      "headline": "[Título del Artículo]",
+      "description": "[Descripción corta]",
+      "image": "https://vextria.es/assets/img/logo-vextria.png",  
+      "author": {
+        "@type": "Person",
+        "name": "Diego Carrodeguas",
+        "url": "https://vextria.es"
+      },  
+      "publisher": {
+        "@type": "Organization",
+        "name": "Vextria",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://vextria.es/assets/img/logo-vextria.png"
+        }
+      },
+      "datePublished": "2026-01-28",
+      "dateModified": "2026-01-28"
+    }
+    </script>
+</head>
+
+<body class="bg-background text-text-main font-sans antialiased selection:bg-primary selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 inset-x-0 z-50 glass border-b border-border" x-data="{ mobileMenuOpen: false }">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="../../index.html" class="flex items-center gap-2">
+                <img src="../../assets/img/logo-vextria.png" alt="VEXTRIA" class="h-10 w-auto object-contain">
+            </a>
+
+            <div class="hidden md:flex items-center gap-8">
+                <a href="../../index.html"
+                    class="text-sm font-medium text-text-muted hover:text-white transition-colors">Inicio</a>
+                <a href="../index.html"
+                    class="text-sm font-medium text-text-muted hover:text-white transition-colors">Blog/Docs</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden p-2 text-text-muted" @click="mobileMenuOpen = !mobileMenuOpen">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile Dropdown -->
+        <div x-show="mobileMenuOpen"
+            class="md:hidden absolute top-20 inset-x-0 bg-black border-b border-border p-6 space-y-4"
+            style="display:none;">
+            <a href="../../index.html" class="block text-text-muted">Inicio</a>
+            <a href="../index.html" class="block text-white">Blog</a>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-24 px-4">
+        <article class="max-w-3xl mx-auto">
+
+            <!-- Article Header -->
+            <header class="mb-12 text-center md:text-left">
+                <div class="flex items-center justify-center md:justify-start gap-4 mb-6">
+                    <span
+                        class="px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold uppercase tracking-wider">Categoría</span>
+                    <time class="text-text-muted text-sm">28 Enero, 2026</time>
+                </div>
+
+                <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-8 text-white">
+                    [Título del Artículo Optimizado para SEO]
+                </h1>
+
+                <div
+                    class="flex items-center justify-center md:justify-start gap-4 p-4 rounded-xl bo border border-white/5 bg-white/5 w-fit">
+                    <img src="../../assets/img/diego-profile.webp" alt="Diego Carrodeguas"
+                        class="w-10 h-10 rounded-full object-cover grayscale">
+                    <div class="text-left">
+                        <div class="text-white font-medium text-sm">Diego Carrodeguas</div>
+                        <div class="text-text-muted text-xs">AI Architect</div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Featured Image -->
+            <div class="mb-12 rounded-2xl overflow-hidden border border-white/10 aspect-video bg-surface-light">
+                <!-- <img src="..." alt="Descripción" class="w-full h-full object-cover"> -->
+                <div class="w-full h-full flex items-center justify-center text-text-muted">
+                    <span>[Imagen Destacada 16:9]</span>
+                </div>
+            </div>
+
+            <!-- Content Body -->
+            <div class="article-content">
+                <p class="lead text-xl text-white mb-8">
+                    [Introducción: Resumen de lo que el lector aprenderá. Debe contener la palabra clave principal en
+                    las primeras 100 palabras.]
+                </p>
+
+                <h2>1. Primer Subtítulo Importante (H2)</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.
+                </p>
+
+                <h3>1.1 Detalle específico (H3)</h3>
+                <p>
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat.
+                </p>
+
+                <blockquote>
+                    "La frase destacada o cita importante que quieras resaltar visualmente en el artículo."
+                </blockquote>
+
+                <h2>2. Conclusión</h2>
+                <p>
+                    Resumen final y llamada a la acción.
+                </p>
+            </div>
+
+            <!-- Share / Footer Article -->
+            <div class="mt-16 pt-8 border-t border-white/10 flex justify-between items-center">
+                <a href="../index.html" class="flex items-center text-text-muted hover:text-white transition-colors">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    Volver al Blog
+                </a>
+            </div>
+
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-border py-12 bg-surface/20">
+        <div class="max-w-7xl mx-auto px-6 text-center text-xs text-text-dim">
+            <p>&copy; 2026 Vextria. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

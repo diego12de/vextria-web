@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vextria Admin Dashboard</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        vextria: {
+                            900: '#0f172a', // Slate 900
+                            800: '#1e293b', // Slate 800
+                            700: '#334155', // Slate 700
+                            accent: '#6366f1', // Indigo 500
+                            accent_hover: '#4f46e5', // Indigo 600
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Scrollbar customization */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+    </style>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-vextria-900 text-white min-h-screen flex overflow-hidden">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-vextria-900 border-r border-gray-800 flex-shrink-0 hidden md:flex flex-col">
+        <div class="p-6 flex items-center gap-3">
+            <div
+                class="w-8 h-8 bg-gradient-to-tr from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center font-bold text-lg">
+                V</div>
+            <span class="text-xl font-bold tracking-tight">VEXTRIA <span
+                    class="text-xs font-normal text-gray-400 block -mt-1">Admin</span></span>
+        </div>
+
+        <nav class="flex-1 px-4 space-y-2 mt-4">
+            <a href="#" onclick="showSection('dashboard')" id="nav-dashboard"
+                class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl bg-vextria-800 text-white shadow-lg shadow-indigo-500/10 border border-gray-700 transition-all">
+                <i class="fa-solid fa-chart-pie text-indigo-400"></i>
+                <span class="font-medium">Resumen</span>
+            </a>
+            <a href="#" onclick="showSection('calculator')" id="nav-calculator"
+                class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-vextria-800 transition-all">
+                <i class="fa-solid fa-calculator"></i>
+                <span class="font-medium">Calculadora</span>
+            </a>
+            <a href="#" onclick="showSection('projects')" id="nav-projects"
+                class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-vextria-800 transition-all">
+                <i class="fa-solid fa-list-check"></i>
+                <span class="font-medium">Proyectos</span>
+            </a>
+            <a href="#" onclick="showSection('projections')" id="nav-projections"
+                class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-vextria-800 transition-all">
+                <i class="fa-solid fa-chart-line"></i>
+                <span class="font-medium">Proyecciones</span>
+            </a>
+            <a href="#" onclick="showSection('notes')" id="nav-notes"
+                class="nav-item flex items-center gap-3 px-4 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-vextria-800 transition-all">
+                <i class="fa-solid fa-note-sticky"></i>
+                <span class="font-medium">Notas</span>
+            </a>
+        </nav>
+
+        <div class="p-4 border-t border-gray-800">
+            <div class="text-xs text-center text-gray-500">&copy; 2026 Vextria Systems</div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 overflow-y-auto relative z-0">
+        <!-- Mobile Header -->
+        <div
+            class="md:hidden flex items-center justify-between p-4 border-b border-gray-800 bg-vextria-900/90 backdrop-blur sticky top-0 z-50">
+            <span class="font-bold text-lg">VEXTRIA</span>
+            <button class="text-gray-300 focus:outline-none">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <div class="p-6 max-w-7xl mx-auto space-y-6">
+
+            <!-- Header -->
+            <header class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                <div>
+                    <h1 class="text-2xl font-bold text-white">Hola, Diego 👋</h1>
+                    <p class="text-gray-400 text-sm">Aquí tienes el estado actual de tu imperio.</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span
+                        class="px-3 py-1 rounded-full bg-green-500/10 text-green-400 text-xs border border-green-500/20 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                        Sistema Operativo
+                    </span>
+                    <button
+                        class="p-2 rounded-lg bg-vextria-800 border border-gray-700 text-gray-400 hover:text-white transition">
+                        <i class="fa-solid fa-bell"></i>
+                    </button>
+                    <button
+                        class="p-2 rounded-lg bg-vextria-800 border border-gray-700 text-gray-400 hover:text-white transition">
+                        <i class="fa-solid fa-gear"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Dashboard Overview Section -->
+            <section id="section-dashboard" class="space-y-6 animate-fade-in">
+                <!-- Stats Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Revenue Card -->
+                    <div class="glass-panel rounded-2xl p-6 relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <i class="fa-solid fa-wallet text-6xl text-indigo-400"></i>
+                        </div>
+                        <h3 class="text-gray-400 text-sm font-medium mb-1">Ingresos Totales (Mes)</h3>
+                        <div class="text-3xl font-bold text-white" id="stat-total-revenue">$0</div>
+                        <div class="mt-4 flex items-center gap-2 text-xs text-green-400">
+                            <i class="fa-solid fa-arrow-trend-up"></i>
+                            <span>Actualizado ahora</span>
+                        </div>
+                    </div>
+
+                    <!-- Projects Card -->
+                    <div class="glass-panel rounded-2xl p-6 relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <i class="fa-solid fa-layer-group text-6xl text-purple-400"></i>
+                        </div>
+                        <h3 class="text-gray-400 text-sm font-medium mb-1">Proyectos Activos</h3>
+                        <div class="text-3xl font-bold text-white" id="stat-active-projects">0</div>
+                        <div class="mt-4 flex items-center gap-2 text-xs text-purple-400">
+                            <i class="fa-solid fa-bolt"></i>
+                            <span>En desarrollo</span>
+                        </div>
+                    </div>
+
+                    <!-- Profit Card -->
+                    <div class="glass-panel rounded-2xl p-6 relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                            <i class="fa-solid fa-coins text-6xl text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-gray-400 text-sm font-medium mb-1">Beneficio Neto Estimado</h3>
+                        <div class="text-3xl font-bold text-emerald-400" id="stat-net-profit">$0</div>
+                        <div class="mt-4 flex items-center gap-2 text-xs text-gray-400">
+                            <span>Post-impuestos aproximado</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions / Mini Tools -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Mini Projects List -->
+                    <div class="glass-panel rounded-2xl p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-bold text-lg">Proyectos Recientes</h3>
+                            <button onclick="showSection('projects')"
+                                class="text-xs text-indigo-400 hover:text-indigo-300">Ver todos</button>
+                        </div>
+                        <div class="space-y-3" id="mini-project-list">
+                            <!-- JS will populate -->
+                            <div class="text-center text-gray-500 py-4 text-sm">No hay proyectos activos</div>
+                        </div>
+                    </div>
+
+                    <!-- Mini Notepad -->
+                    <div class="glass-panel rounded-2xl p-6 flex flex-col">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="font-bold text-lg">Notas Rápidas</h3>
+                            <span class="text-xs text-gray-500"><i class="fa-solid fa-save mr-1"></i>
+                                Auto-guardado</span>
+                        </div>
+                        <textarea id="quick-note-pad"
+                            class="flex-1 w-full bg-vextria-800/50 border border-gray-700 rounded-xl p-3 text-sm text-gray-300 focus:outline-none focus:border-indigo-500/50 resize-none"
+                            placeholder="Escribe una idea rápida..."></textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Calculator Section -->
+            <section id="section-calculator" class="hidden animate-fade-in max-w-3xl mx-auto">
+                <div class="glass-panel rounded-2xl p-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-2xl font-bold">Calculadora de Ganancias</h2>
+                        <button onclick="resetCalculator()"
+                            class="text-xs px-3 py-1 rounded bg-red-500/10 text-red-400 hover:bg-red-500/20 transition">Resetear</button>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-medium text-gray-400 mb-1">Ingresos Brutos ($)</label>
+                                <input type="number" id="calc-revenue"
+                                    class="w-full bg-vextria-900 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition"
+                                    placeholder="0.00" oninput="calculateProfit()">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-gray-400 mb-1">Gastos Operativos
+                                    ($)</label>
+                                <input type="number" id="calc-expenses"
+                                    class="w-full bg-vextria-900 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition"
+                                    placeholder="0.00" oninput="calculateProfit()">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-gray-400 mb-1">Impuestos (%)</label>
+                                <input type="number" id="calc-tax-rate"
+                                    class="w-full bg-vextria-900 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition"
+                                    value="20" oninput="calculateProfit()">
+                            </div>
+                        </div>
+
+                        <div
+                            class="bg-vextria-900/50 rounded-xl p-6 flex flex-col justify-center space-y-4 border border-gray-800">
+                            <div>
+                                <span class="text-gray-500 text-xs uppercase tracking-wider">Beneficio Bruto</span>
+                                <div class="text-xl font-semibold text-white" id="display-gross">$0.00</div>
+                            </div>
+                            <div class="h-px bg-gray-700"></div>
+                            <div>
+                                <span class="text-gray-500 text-xs uppercase tracking-wider">Impuestos Estimados</span>
+                                <div class="text-xl font-semibold text-red-400" id="display-tax">$0.00</div>
+                            </div>
+                            <div class="h-px bg-gray-700"></div>
+                            <div>
+                                <span class="text-emerald-500 text-xs font-bold uppercase tracking-wider">Beneficio
+                                    Neto</span>
+                                <div class="text-3xl font-bold text-emerald-400" id="display-net">$0.00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="section-projects" class="hidden animate-fade-in">
+                <div class="glass-panel rounded-2xl p-6">
+                    <div class="flex flex-col md:flex-row items-center justify-between mb-6 gap-4">
+                        <h2 class="text-2xl font-bold">Gestión de Proyectos</h2>
+                        <button onclick="openAddProjectModal()"
+                            class="w-full md:w-auto px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium transition flex items-center justify-center gap-2 shadow-lg shadow-indigo-500/20">
+                            <i class="fa-solid fa-plus"></i> Nuevo Proyecto
+                        </button>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="text-gray-400 text-xs border-b border-gray-700">
+                                    <th class="py-3 px-4 font-medium uppercase">Proyecto</th>
+                                    <th class="py-3 px-4 font-medium uppercase">Cliente</th>
+                                    <th class="py-3 px-4 font-medium uppercase">Valor</th>
+                                    <th class="py-3 px-4 font-medium uppercase">Estado</th>
+                                    <th class="py-3 px-4 font-medium uppercase text-right">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="projects-table-body" class="text-sm">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="no-projects-msg" class="text-center py-10 text-gray-500 hidden">
+                        <i class="fa-solid fa-folder-open text-4xl mb-3 opacity-30"></i>
+                        <p>No hay proyectos registrados aún.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projections Section -->
+            <section id="section-projections" class="hidden animate-fade-in">
+                <div class="glass-panel rounded-2xl p-8 max-w-5xl mx-auto">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h2 class="text-2xl font-bold">Proyecciones de Ingresos</h2>
+                            <p class="text-sm text-gray-400 mt-1">Calcula tus ganancias esperadas basándote en métricas
+                                de negocio</p>
+                        </div>
+                        <button onclick="resetProjections()"
+                            class="text-xs px-3 py-1 rounded bg-red-500/10 text-red-400 hover:bg-red-500/20 transition">Resetear</button>
+                    </div>
+
+                    <!-- Input Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="space-y-4">
+                            <h3 class="text-sm font-bold text-indigo-400 uppercase tracking-wider mb-3">Parámetros de
+                                Entrada</h3>
+                            <div>
+                                <label class="block text-xs font-medium text-gray-400 mb-1">Leads Mensuales</label>
+                                <input type="number" id="proj-leads"
+                                    class="w-full bg-vextria-900 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition"
+                                    placeholder="100" oninput="calculateProjections()">
+                                <p class="text-xs text-gray-500 mt-1">Número de clientes potenciales por mes</p>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-gray-400 mb-1">Tasa de Conversión
+                                    (%)</label>
+                                <input type="number" id="proj-conversion" step="0.1"
+                                    class="w-full bg-vextria-900 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition"
+                                    placeholder="10" oninput="calculateProjections()">
+                                <p class="text-xs text-gray-500 mt-1">% de leads que se convierten en clientes</p>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-gray-400 mb-1">Valor Promedio por Cliente
+                                    ($)</label>
+                                <input type="number" id="proj-avg-value"
+                                    class="w-full bg-vextria-900 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition"
+                                    placeholder="1000" oninput="calculateProjections()">
+                                <p class="text-xs text-gray-500 mt-1">Ingreso promedio por cliente</p>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-gray-400 mb-1">Gastos Operativos Mensuales
+                                    ($)</label>
+                                <input type="number" id="proj-expenses"
+                                    class="w-full bg-vextria-900 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition"
+                                    placeholder="500" oninput="calculateProjections()">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-gray-400 mb-1">Tasa de Impuestos
+                                    (%)</label>
+                                <input type="number" id="proj-tax" step="0.1"
+                                    class="w-full bg-vextria-900 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-indigo-500 transition"
+                                    value="20" oninput="calculateProjections()">
+                            </div>
+                        </div>
+
+                        <!-- Results Column -->
+                        <div class="space-y-4">
+                            <h3 class="text-sm font-bold text-emerald-400 uppercase tracking-wider mb-3">Proyecciones
+                            </h3>
+
+                            <!-- Clients Expected -->
+                            <div class="bg-vextria-900/50 rounded-xl p-4 border border-gray-800">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-xs text-gray-500 uppercase tracking-wider">Clientes
+                                        Esperados/Mes</span>
+                                    <i class="fa-solid fa-users text-purple-400"></i>
+                                </div>
+                                <div class="text-2xl font-bold text-white" id="proj-clients">0</div>
+                            </div>
+
+                            <!-- Monthly Revenue -->
+                            <div
+                                class="bg-gradient-to-br from-indigo-500/10 to-purple-500/10 rounded-xl p-4 border border-indigo-500/20">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-xs text-indigo-300 uppercase tracking-wider font-bold">Ingresos
+                                        Mensuales</span>
+                                    <i class="fa-solid fa-calendar-day text-indigo-400"></i>
+                                </div>
+                                <div class="text-3xl font-bold text-indigo-300" id="proj-monthly">$0</div>
+                                <div class="text-xs text-gray-400 mt-1">Bruto proyectado</div>
+                            </div>
+
+                            <!-- Quarterly Revenue -->
+                            <div
+                                class="bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-xl p-4 border border-purple-500/20">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-xs text-purple-300 uppercase tracking-wider font-bold">Ingresos
+                                        Trimestrales</span>
+                                    <i class="fa-solid fa-calendar-week text-purple-400"></i>
+                                </div>
+                                <div class="text-3xl font-bold text-purple-300" id="proj-quarterly">$0</div>
+                                <div class="text-xs text-gray-400 mt-1">3 meses</div>
+                            </div>
+
+                            <!-- Annual Revenue -->
+                            <div
+                                class="bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-xl p-4 border border-emerald-500/20">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-xs text-emerald-300 uppercase tracking-wider font-bold">Ingresos
+                                        Anuales</span>
+                                    <i class="fa-solid fa-calendar text-emerald-400"></i>
+                                </div>
+                                <div class="text-3xl font-bold text-emerald-300" id="proj-annual">$0</div>
+                                <div class="text-xs text-gray-400 mt-1">12 meses</div>
+                            </div>
+
+                            <!-- Net Profit -->
+                            <div
+                                class="bg-gradient-to-br from-yellow-500/10 to-orange-500/10 rounded-xl p-5 border-2 border-yellow-500/30">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-xs text-yellow-300 uppercase tracking-wider font-bold">Beneficio
+                                        Neto Mensual</span>
+                                    <i class="fa-solid fa-coins text-yellow-400"></i>
+                                </div>
+                                <div class="text-4xl font-bold text-yellow-300" id="proj-net-profit">$0</div>
+                                <div class="text-xs text-gray-400 mt-1">Post-impuestos y gastos</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Progress Bars -->
+                    <div class="space-y-3">
+                        <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-3">Desglose Visual</h3>
+                        <div>
+                            <div class="flex justify-between text-xs text-gray-400 mb-1">
+                                <span>Ingresos Brutos</span>
+                                <span id="bar-revenue-label">$0</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-3 overflow-hidden">
+                                <div id="bar-revenue"
+                                    class="bg-gradient-to-r from-indigo-500 to-purple-500 h-full rounded-full transition-all duration-500"
+                                    style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs text-gray-400 mb-1">
+                                <span>Gastos</span>
+                                <span id="bar-expenses-label">$0</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-3 overflow-hidden">
+                                <div id="bar-expenses"
+                                    class="bg-gradient-to-r from-red-500 to-orange-500 h-full rounded-full transition-all duration-500"
+                                    style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs text-gray-400 mb-1">
+                                <span>Beneficio Neto</span>
+                                <span id="bar-profit-label">$0</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-3 overflow-hidden">
+                                <div id="bar-profit"
+                                    class="bg-gradient-to-r from-emerald-500 to-teal-500 h-full rounded-full transition-all duration-500"
+                                    style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Notes Section (Detailed) -->
+            <section id="section-notes" class="hidden animate-fade-in">
+                <div class="glass-panel rounded-2xl p-6 h-[70vh] flex flex-col">
+                    <h2 class="text-2xl font-bold mb-4">Notas & Ideas</h2>
+                    <textarea id="main-notes-area"
+                        class="flex-1 w-full bg-vextria-900 border border-gray-700 rounded-xl p-6 text-base text-gray-300 focus:outline-none focus:border-indigo-500 transition resize-none font-mono"
+                        placeholder="Escribe tus planes para dominar el mundo..."></textarea>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Modal for Add Project -->
+    <div id="project-modal"
+        class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] hidden items-center justify-center p-4">
+        <div class="bg-vextria-800 rounded-2xl border border-gray-700 w-full max-w-md p-6 shadow-2xl relative">
+            <button onclick="closeAddProjectModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <h3 class="text-xl font-bold mb-4">Añadir Proyecto</h3>
+
+            <form onsubmit="addProject(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-medium text-gray-400 mb-1">Nombre del Proyecto</label>
+                    <input type="text" name="name" required
+                        class="w-full bg-vextria-900 border border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-gray-400 mb-1">Cliente</label>
+                    <input type="text" name="client" required
+                        class="w-full bg-vextria-900 border border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-gray-400 mb-1">Valor Estimado ($)</label>
+                    <input type="number" name="value" required
+                        class="w-full bg-vextria-900 border border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-gray-400 mb-1">Estado</label>
+                    <select name="status"
+                        class="w-full bg-vextria-900 border border-gray-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-500">
+                        <option value="pending">Pendiente</option>
+                        <option value="active">En Desarrollo</option>
+                        <option value="completed">Completado</option>
+                    </select>
+                </div>
+                <div class="pt-2">
+                    <button type="submit"
+                        class="w-full py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium transition">Guardar
+                        Proyecto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Logic Script -->
+    <script src="app.js"></script>
+
+    <style>
+        .animate-fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</body>
+
+</html>
